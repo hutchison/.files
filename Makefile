@@ -1,5 +1,7 @@
 DOTFILES = $(shell pwd)
 
+.PHONY: clean zsh git vim
+
 all: clean zsh git vim
 
 clean:
