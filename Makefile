@@ -1,11 +1,13 @@
 DOTFILES = $(shell pwd)
 
-all: clean zsh git
+all: clean zsh git vim
 
 clean:
-	rm ~/.oh-my-zsh
-	rm ~/.zshrc
-	rm ~/.gitconfig
+	rm -f ~/.oh-my-zsh
+	rm -f ~/.zshrc
+	rm -f ~/.gitconfig
+	rm -f ~/.vim
+	rm -f ~/.vimrc
 
 zsh:
 	ln -Ffs $(DOTFILES)/oh-my-zsh ~/.oh-my-zsh
@@ -13,3 +15,7 @@ zsh:
 
 git:
 	ln -fs $(DOTFILES)/gitconfig ~/.gitconfig
+
+vim:
+	ln -Fs $(DOTFILES)/vim ~/.vim
+	ln -fs $(DOTFILES)/vimrc ~/.vimrc
