@@ -78,3 +78,5 @@ export LANG=de_DE.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias e=vim
