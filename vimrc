@@ -19,3 +19,5 @@ set wildmenu
 set nobackup
 
 colorscheme solarized
+
+let g:airline_powerline_fonts = 1

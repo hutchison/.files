@@ -1,6 +1,6 @@
 DOTFILES = $(shell pwd)
 
-.PHONY: clean zsh git vim
+.PHONY: clean zsh git vim fonts
 
 all: clean zsh git vim
 
@@ -21,3 +21,6 @@ git:
 vim:
 	ln -Fs $(DOTFILES)/vim ~/.vim
 	ln -fs $(DOTFILES)/vimrc ~/.vimrc
+
+fonts:
+	$(shell $(DOTFILES)/fonts/install.sh)
