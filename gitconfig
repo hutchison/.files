@@ -1,0 +1,31 @@
+[user]
+	name = "Ernie"
+	email = "studiendekanat@med.uni-rostock.de"
+[core]
+	editor = vim
+	pager = less
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	interactive = auto
+	branch = auto
+[diff]
+	mnemonicprefix = true
+[merge]
+	tool = vimdiff
+	summary = true
+[alias]
+	st = status -sb
+	ci = commit -v
+	br = branch
+	co = checkout
+	df = diff
+	ad = add
+	unstage = reset HEAD
+	mff = merge --no-ff --log
+[push]
+	default = matching
+
+[web]
+	browser = open
