@@ -23,4 +23,4 @@ vim:
 	ln -fs $(DOTFILES)/vimrc ~/.vimrc
 
 fonts:
-	$(shell $(DOTFILES)/fonts/install.sh)
+	$(DOTFILES)/fonts/install.sh
