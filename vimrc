@@ -17,6 +17,7 @@ set backspace=indent,eol,start
 set smartindent
 set wildmenu
 set nobackup
+set noswapfile
 
 colorscheme solarized
 
