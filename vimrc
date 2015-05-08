@@ -23,6 +23,14 @@ colorscheme solarized
 
 let g:airline_powerline_fonts = 1
 
+"schaltet hlsearch aus
+noremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+" zum Tag/Funktionsdef. springen:
+nmap <leader>f <C-]>
+" buffer movement:
+nmap <leader>e <ESC>:bnext<CR>
+nmap <leader>q <ESC>:bprevious<CR>
+
 """ Snippets
 " Was müssen wir drücken, damit Snippets ausgelöst werden?
 let g:UltiSnipsExpandTrigger="<c-j>"
