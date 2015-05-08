@@ -80,3 +80,29 @@ export LANG=de_DE.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias e=vim
+
+# virtualenvwrapper:
+export VIRTUALENVWRAPPER_PYTHON=$(which python3)
+export VIRTUALENV_PYTHON=$VIRTUALENVWRAPPER_PYTHON
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/projects
+if [[ -x $(which virtualenvwrapper.sh) ]]; then
+	source $(which virtualenvwrapper.sh)
+fi
+
+function virtualenvwrapper_status () {
+	if [[ $VIRTUALENVWRAPPER_WORKON_CD ]]; then
+		print -P -- "\tvirtualenvwrapper: %F{002}✓%f"
+		print -P -- "\t%F{004}Python:%f\t\t$VIRTUALENVWRAPPER_PYTHON"
+		print -P -- "\t%F{004}virt. Envs:%f\t$WORKON_HOME"
+		print -P -- "\t%F{004}Projekte:%f\t$PROJECT_HOME"
+	fi
+}
+
+function startup_status () {
+	clear
+	archey
+	virtualenvwrapper_status
+}
+
+startup_status

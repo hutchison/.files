@@ -30,6 +30,8 @@ slate:
 
 python:
 	pip3 install --upgrade -r $(DOTFILES)/python/requirements.txt
+	-mkdir ~/.virtualenvs
+	-mkdir ~/projects
 
 fonts:
 	$(DOTFILES)/fonts/install.sh
