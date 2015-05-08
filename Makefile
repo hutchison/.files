@@ -1,8 +1,8 @@
 DOTFILES = $(shell pwd)
 
-.PHONY: clean zsh git vim fonts slate
+.PHONY: clean zsh git vim fonts slate python
 
-all: clean zsh git vim slate
+all: clean zsh git vim slate python
 
 clean:
 	rm -f ~/.oh-my-zsh
@@ -11,6 +11,8 @@ clean:
 	rm -f ~/.vim
 	rm -f ~/.vimrc
 	rm -f ~/.slate
+	# ein - vor dem Kommando ignoriert eventuelle Fehler:
+	-pip3 uninstall -y -r $(DOTFILES)/python/requirements.txt
 
 zsh:
 	ln -Ffs $(DOTFILES)/oh-my-zsh ~/.oh-my-zsh
@@ -25,6 +27,9 @@ vim:
 
 slate:
 	ln -fs $(DOTFILES)/slate ~/.slate
+
+python:
+	pip3 install --upgrade -r $(DOTFILES)/python/requirements.txt
 
 fonts:
 	$(DOTFILES)/fonts/install.sh
