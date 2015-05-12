@@ -21,6 +21,12 @@ set noswapfile
 
 colorscheme solarized
 
+set ttyfast
+
+" zeige besondere Zeichen bei Tabs etc. an:
+set list
+set listchars=tab:▸\ ,extends:❯,precedes:❮
+
 let g:airline_powerline_fonts = 1
 
 "schaltet hlsearch aus
