@@ -46,3 +46,9 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " Alle Snippets anzeigen:
 let g:UltiSnipsListSnippets="<c-K>"
+
+""" Konfiguration von YouCompleteMe
+""" bei Bedarf auskommentieren
+"let g:ycm_server_keep_logfiles = 1
+"let g:ycm_server_log_level = 'debug'
+let g:ycm_path_to_python_interpreter = '/usr/bin/python'
