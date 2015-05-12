@@ -99,6 +99,13 @@ function virtualenvwrapper_status () {
 		print -P -- "\t%F{004}aktuelle Projekte:%f"
 		echo -n "\t"
 		workon | paste -s -
+		echo
+	fi
+}
+
+function apache_status () {
+	if [[ $(curl -sI localhost | grep "Server") =~ "Apache" ]]; then
+		print -P -- "\tlokaler Apache: %F{002}✓%f"
 	fi
 }
 
@@ -106,6 +113,7 @@ function startup_status () {
 	clear
 	archey
 	virtualenvwrapper_status
+	apache_status
 }
 
 startup_status
