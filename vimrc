@@ -10,6 +10,8 @@ set laststatus=2
 set hlsearch
 set incsearch
 set ignorecase
+" setzt automatisch das g Flag bei Textersetzungen:
+set gdefault
 
 let mapleader=','
 
