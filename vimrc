@@ -12,6 +12,8 @@ set incsearch
 set ignorecase
 " setzt automatisch das g Flag bei Textersetzungen:
 set gdefault
+" wechselt automatisch das Verzeichnis:
+set autochdir
 
 let mapleader=','
 
