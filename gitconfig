@@ -27,6 +27,5 @@
 	mff = merge --no-ff --log
 [push]
 	default = matching
-
 [web]
 	browser = open
