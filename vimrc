@@ -66,3 +66,8 @@ let g:airline#extensions#whitespace#mixed_indent_algo = 1
 
 """ Syntastic
 let g:syntastic_python_checkers = ["pyflakes", "python"]
+
+""" NERDTree
+let NERDTreeHighlightCursorline = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
