@@ -40,6 +40,9 @@ nmap <leader>f <C-]>
 " buffer movement:
 nmap <leader>e <ESC>:bnext<CR>
 nmap <leader>q <ESC>:bprevious<CR>
+" NERDTree:
+noremap <C-n> :NERDTreeToggle<CR>
+inoremap <C-n> <ESC>:NERDTreeToggle<CR>
 
 """ Snippets
 " Was müssen wir drücken, damit Snippets ausgelöst werden?
