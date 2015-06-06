@@ -50,9 +50,9 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 " Zum nächsten Snippet:
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 " Zum vorherigen Snippet:
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 " Alle Snippets anzeigen:
-let g:UltiSnipsListSnippets="<c-K>"
+let g:UltiSnipsListSnippets="<c-H>"
 
 """ Konfiguration von YouCompleteMe
 """ bei Bedarf auskommentieren
