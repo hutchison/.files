@@ -111,7 +111,7 @@ function apache_status () {
 
 function startup_status () {
 	clear
-	archey
+	screenfetch
 	virtualenvwrapper_status
 	apache_status
 }
