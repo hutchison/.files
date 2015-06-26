@@ -4,6 +4,7 @@ execute pathogen#infect()
 " most common options:
 syntax on
 set number
+set hidden
 set nocompatible
 filetype plugin indent on
 set laststatus=2
