@@ -51,8 +51,8 @@ nmap <leader>f <C-]>
 nmap <leader>e <ESC>:bnext<CR>
 nmap <leader>q <ESC>:bprevious<CR>
 " NERDTree:
-noremap <C-n> :NERDTreeToggle<CR>
-inoremap <C-n> <ESC>:NERDTreeToggle<CR>
+noremap <C-l> :NERDTreeToggle<CR>
+inoremap <C-l> <ESC>:NERDTreeToggle<CR>
 
 """ Snippets
 " Was müssen wir drücken, damit Snippets ausgelöst werden?
