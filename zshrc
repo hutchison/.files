@@ -87,6 +87,9 @@ else
 	alias se='sudo -e'
 fi
 
+# Ein # ignoriert den Rest der Zeile:
+setopt interactivecomments
+
 # virtualenvwrapper:
 export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 export VIRTUALENV_PYTHON=$VIRTUALENVWRAPPER_PYTHON
