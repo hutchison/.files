@@ -79,7 +79,13 @@ export LANG=de_DE.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias e=vim
+export EDITOR=vim
+alias e=$EDITOR
+if [[ -x $(which sudoedit) ]]; then
+	alias se=sudoedit
+else
+	alias se='sudo -e'
+fi
 
 # virtualenvwrapper:
 export VIRTUALENVWRAPPER_PYTHON=$(which python3)
