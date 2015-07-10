@@ -128,9 +128,16 @@ function apache_status () {
 	fi
 }
 
+function landscape_status () {
+	if [[ -x $(which landscape-sysinfo) ]]; then
+		landscape-sysinfo --exclude-sysinfo-plugins=LandscapeLink
+	fi
+}
+
 function startup_status () {
 	clear
 	screenfetch
+	landscape_status
 	virtualenvwrapper_status
 	apache_status
 }
