@@ -113,10 +113,12 @@ function virtualenvwrapper_status () {
 		print -P -- "\t%F{004}Python:%f\t\t$VIRTUALENVWRAPPER_PYTHON"
 		print -P -- "\t%F{004}virt. Envs:%f\t$WORKON_HOME"
 		print -P -- "\t%F{004}Projekte:%f\t$PROJECT_HOME"
-		print -P -- "\t%F{004}aktuelle Projekte:%f"
-		echo -n "\t"
-		workon | paste -s -
-		echo
+		if [[ -n "$(workon)" ]]; then
+			print -P -- "\t%F{004}aktuelle Projekte:%f"
+			echo -n "\t"
+			workon | paste -s -
+			echo
+		fi
 	fi
 }
 
