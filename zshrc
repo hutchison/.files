@@ -130,7 +130,7 @@ function apache_status () {
 
 function landscape_status () {
 	if [[ -x $(which landscape-sysinfo) ]]; then
-		landscape-sysinfo --exclude-sysinfo-plugins=LandscapeLink
+		landscape-sysinfo --exclude-sysinfo-plugins=LandscapeLink | sed 's/^\s*/\t/'
 	fi
 }
 
