@@ -52,7 +52,7 @@ plugins=(git brew pip pylint vagrant vi-mode)
 bindkey -M vicmd '?' history-incremental-search-backward
 export KEYTIMEOUT=1
 
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
