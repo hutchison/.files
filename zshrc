@@ -60,6 +60,11 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 export LANG=de_DE.UTF-8
 
+# In ~/.environment packen wir Einstellungen wie HTTP_PROXY und so:
+if [[ -f "$HOME/.environment" ]]; then
+	source $HOME/.environment
+fi
+
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
