@@ -109,6 +109,7 @@ fi
 
 function virtualenvwrapper_status () {
 	if [[ -n $VIRTUALENVWRAPPER_WORKON_CD ]]; then
+		echo
 		print -P -- "\tvirtualenvwrapper: %F{002}✓%f"
 		print -P -- "\t%F{004}Python:%f\t\t$VIRTUALENVWRAPPER_PYTHON"
 		print -P -- "\t%F{004}virt. Envs:%f\t$WORKON_HOME"
@@ -124,6 +125,7 @@ function virtualenvwrapper_status () {
 
 function apache_status () {
 	if [[ $(curl -sI localhost | grep "Server") =~ "Apache" ]]; then
+		echo
 		print -P -- "\tlokaler Apache: %F{002}✓%f"
 	fi
 }
