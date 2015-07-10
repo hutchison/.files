@@ -103,7 +103,7 @@ if [[ -x $(which virtualenvwrapper.sh) ]]; then
 fi
 
 function virtualenvwrapper_status () {
-	if [[ $VIRTUALENVWRAPPER_WORKON_CD ]]; then
+	if [[ -n $VIRTUALENVWRAPPER_WORKON_CD ]]; then
 		print -P -- "\tvirtualenvwrapper: %F{002}✓%f"
 		print -P -- "\t%F{004}Python:%f\t\t$VIRTUALENVWRAPPER_PYTHON"
 		print -P -- "\t%F{004}virt. Envs:%f\t$WORKON_HOME"
