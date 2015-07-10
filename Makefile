@@ -29,7 +29,7 @@ slate:
 	ln -fs $(DOTFILES)/slate ~/.slate
 
 python:
-	pip3 install --upgrade -r $(DOTFILES)/python/requirements.txt
+	pip3 install --user --upgrade -r $(DOTFILES)/python/requirements.txt
 	-mkdir ~/.virtualenvs
 	-mkdir ~/projects
 
