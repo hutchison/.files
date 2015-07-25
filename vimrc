@@ -48,8 +48,8 @@ noremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 " zum Tag/Funktionsdef. springen:
 nmap <leader>f <C-]>
 " buffer movement:
-nmap <leader>e <ESC>:bnext<CR>
-nmap <leader>q <ESC>:bprevious<CR>
+nnoremap <space> :bnext<cr>
+nnoremap <backspace> :bprevious<cr>
 " NERDTree:
 noremap <C-l> :NERDTreeToggle<CR>
 inoremap <C-l> <ESC>:NERDTreeToggle<CR>
