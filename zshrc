@@ -95,6 +95,10 @@ else
 	alias se='sudo -e'
 fi
 
+function gim () {
+	vim $(git ls-files -m) -p
+}
+
 # Ein # ignoriert den Rest der Zeile:
 setopt interactivecomments
 
