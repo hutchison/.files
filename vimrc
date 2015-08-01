@@ -44,7 +44,7 @@ set listchars=tab:▸\ ,extends:❯,precedes:❮
 let g:airline_powerline_fonts = 1
 
 "schaltet hlsearch aus
-noremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+noremap <silent> <return> :nohlsearch<Bar>:echo<CR>
 " zum Tag/Funktionsdef. springen:
 nmap <leader>f <C-]>
 " buffer movement:
