@@ -52,8 +52,31 @@ plugins=(git brew pip pylint vagrant vi-mode)
 bindkey -M vicmd '?' history-incremental-search-backward
 export KEYTIMEOUT=1
 
-export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:$PATH"
-# export MANPATH="/usr/local/man:$MANPATH"
+# die Einträge von $path müssen 'unique' sein:
+typeset -U path
+
+# überprüfe die Existenz von Verzeichnissen und füge sie zu $path hinzu
+if [[ -d "/usr/sbin" ]]; then
+	path=("/usr/sbin" $path)
+fi
+if [[ -d "/usr/local/sbin" ]]; then
+	path=("/usr/local/sbin" $path)
+fi
+if [[ -d "/usr/local/bin" ]]; then
+	path=("/usr/local/bin" $path)
+fi
+if [[ -d "$HOME/.local/bin" ]]; then
+	path=("$HOME/.local/bin" $path)
+fi
+if [[ -d "$HOME/bin" ]]; then
+	path=("$HOME/bin" $path)
+fi
+if [[ -d "$HOME/bin" ]]; then
+	path=("$HOME/bin" $path)
+fi
+if [[ -d "$HOME/Library/Python/3.4/bin" ]]; then
+	path=("$HOME/Library/Python/3.4/bin" $path)
+fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -122,7 +145,6 @@ function virtualenvwrapper_status () {
 			print -P -- "\t%F{004}aktuelle Projekte:%f"
 			echo -n "\t"
 			workon | paste -s -
-			echo
 		fi
 	fi
 }
@@ -140,9 +162,15 @@ function landscape_status () {
 	fi
 }
 
+function path_status () {
+	print -P -- "\t%F{004}aktueller Pfad:%f"
+	echo $PATH | tr -s ':' '\n' | awk '{print "\t"$0 }'
+}
+
 function startup_status () {
 	clear
 	screenfetch
+	path_status
 	landscape_status
 	virtualenvwrapper_status
 	apache_status
