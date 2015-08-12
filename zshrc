@@ -166,7 +166,9 @@ function path_status () {
 
 function startup_status () {
 	clear
-	screenfetch
+	if [[ $(which screenfetch) ]]; then
+		screenfetch
+	fi
 	path_status
 	landscape_status
 	virtualenvwrapper_status
