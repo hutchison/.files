@@ -16,7 +16,13 @@ set number
 set hidden
 set nocompatible
 filetype plugin indent on
+
+" zeige immer die Statuszeile an
+" (ist wichtig, damit die schöne airline angezeigt wird)
 set laststatus=2
+" zeige _nicht_ den aktuellen Modus an
+" (das übernimmt die schöne airline)
+set noshowmode
 set hlsearch
 set incsearch
 set ignorecase
