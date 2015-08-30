@@ -1,8 +1,20 @@
 DOTFILES = $(shell pwd)
+APTITUDE = sudo aptitude
 
 .PHONY: clean zsh git vim fonts slate python
 
 all: clean zsh git vim slate python
+
+install: install-cmake
+	git submodule update --init --recursive
+	cd vim/bundle/youcompleteme; bash install.sh
+
+install-cmake:
+ifeq ($(shell uname),Darwin)
+	brew install cmake
+else
+	$(APTITUDE) install -y cmake
+endif
 
 clean:
 	rm -f ~/.oh-my-zsh
