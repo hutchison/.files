@@ -7,7 +7,7 @@ all: clean zsh git vim slate python
 
 install: install-cmake
 	git submodule update --init --recursive
-	cd vim/bundle/youcompleteme; bash install.sh
+	cd $(DOTFILES)/vim/bundle/youcompleteme; bash install.sh
 
 install-cmake:
 ifeq ($(shell uname),Darwin)
