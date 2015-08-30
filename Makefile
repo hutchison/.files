@@ -41,9 +41,9 @@ slate:
 	ln -fs $(DOTFILES)/slate ~/.slate
 
 python:
-	pip3 install --user --upgrade -r $(DOTFILES)/python/requirements.txt
-	-mkdir ~/.virtualenvs
-	-mkdir ~/projects
+	pip3 install --user --upgrade -r "$(DOTFILES)/python/requirements.txt"
+	@if [ -d "$(HOME)/.virtualenvs" ]; then echo "~/.virtualenvs already exists"; else mkdir -v "$(HOME)/.virtualenvs"; fi
+	@if [ -d "$(HOME)/projects" ]; then echo "~/projects already exists"; else mkdir -v "$(HOME)/projects"; fi
 
 fonts:
 	$(DOTFILES)/fonts/install.sh
