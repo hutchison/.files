@@ -53,6 +53,8 @@ let g:airline_powerline_fonts = 1
 noremap <silent> <return> :nohlsearch<Bar>:echo<CR>
 " zum Tag/Funktionsdef. springen:
 nmap <leader>f <C-]>
+" map <F5> to make:
+nmap <F5> :make<CR>
 " buffer movement:
 nnoremap <space> :bnext<cr>
 nnoremap <backspace> :bprevious<cr>
