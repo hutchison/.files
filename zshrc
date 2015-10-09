@@ -71,8 +71,8 @@ fi
 if [[ -d "$HOME/bin" ]]; then
 	path=("$HOME/bin" $path)
 fi
-if [[ -d "$HOME/Library/Python/3.4/bin" ]]; then
-	path=("$HOME/Library/Python/3.4/bin" $path)
+if [[ -d "$HOME/Library/Python/3.5/bin" ]]; then
+	path=("$HOME/Library/Python/3.5/bin" $path)
 fi
 
 source $ZSH/oh-my-zsh.sh
