@@ -59,8 +59,7 @@ nmap <F5> :make<CR>
 nnoremap <space> :bnext<cr>
 nnoremap <backspace> :bprevious<cr>
 " NERDTree:
-noremap <C-l> :NERDTreeToggle<CR>
-inoremap <C-l> <ESC>:NERDTreeToggle<CR>
+noremap <C-g> :NERDTreeToggle<CR>
 " split navigations:
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
