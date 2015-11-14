@@ -45,7 +45,7 @@ set ttyfast
 
 " zeige besondere Zeichen bei Tabs etc. an:
 set list
-set listchars=tab:▸\ ,extends:❯,precedes:❮
+set listchars=tab:▸\ ,extends:❯,precedes:❮,eol:¬
 
 let g:airline_powerline_fonts = 1
 
