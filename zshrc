@@ -50,6 +50,7 @@ plugins=(git brew pip pylint vagrant vi-mode)
 # User configuration
 
 bindkey -M vicmd '?' history-incremental-search-backward
+bindkey -M vicmd 'K' run-help
 export KEYTIMEOUT=1
 
 # die Einträge von $path müssen 'unique' sein:
