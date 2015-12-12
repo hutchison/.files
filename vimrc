@@ -99,6 +99,9 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
+""" Startify
+let g:startify_custom_header = map(split(system('fortune -a'), '\n'), '"   ". v:val') + ['','']
+
 " python with virtualenv support
 python << EOF
 import os
