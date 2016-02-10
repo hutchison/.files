@@ -47,6 +47,11 @@ HIST_STAMPS="yyyy-mm-dd"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git brew pip pylint vagrant vi-mode)
 
+# zsh-completions:
+if [[ -d "/usr/local/share/zsh-completions" ]]; then
+	fpath=(/usr/local/share/zsh-completions $fpath)
+fi
+
 # User configuration
 
 bindkey -M vicmd '?' history-incremental-search-backward
