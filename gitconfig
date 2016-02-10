@@ -25,6 +25,7 @@
 	ad = add
 	unstage = reset HEAD
 	mff = merge --no-ff --log
+	lol = log --oneline --decorate --graph
 [push]
 	default = matching
 [web]
