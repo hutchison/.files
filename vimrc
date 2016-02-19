@@ -68,10 +68,10 @@ nnoremap <backspace> :bprevious<cr>
 " NERDTree:
 noremap <C-g> :NERDTreeToggle<CR>
 " split navigations:
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <DOWN> <C-W><C-J>
+nnoremap <UP> <C-W><C-K>
+nnoremap <RIGHT> <C-W><C-L>
+nnoremap <LEFT> <C-W><C-H>
 inoremap <C-l> \
 
 """ Snippets
