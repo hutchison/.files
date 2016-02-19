@@ -55,6 +55,13 @@ noremap <silent> <return> :nohlsearch<Bar>:echo<CR>
 nmap <leader>f <C-]>
 " map <F5> to make:
 nmap <F5> :make<CR>
+" öffne meine .vimrc:
+nmap <silent> <leader>v :next $MYVIMRC<CR>
+" wenn meine .vimrc verändert wurde, dann lade sie automatisch neu:
+augroup VimReload
+	autocmd!
+	autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup end
 " buffer movement:
 nnoremap <space> :bnext<cr>
 nnoremap <backspace> :bprevious<cr>
