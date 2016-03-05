@@ -6,10 +6,14 @@ alias full 	move screenOriginX;screenOriginY		screenSizeX;screenSizeY
 alias lefthalf	move screenOriginX;screenOriginY		screenSizeX/2;screenSizeY
 alias righthalf move screenOriginX+screenSizeX/2;screenOriginY	screenSizeX/2;screenSizeY
 alias fullnext 	move screenOriginX;screenOriginY		screenSizeX;screenSizeY next
+alias righthalftop move screenOriginX+screenSizeX/2;screenOriginY	screenSizeX/2;screenSizeY/2
+alias righthalfbot move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2	screenSizeX/2;screenSizeY/2
 
 bind k:${hyper} ${full}
 bind h:${hyper} ${lefthalf}
 bind l:${hyper} ${righthalf}
 bind j:${hyper} ${fullnext}
+bind n:${hyper} ${righthalftop}
+bind m:${hyper} ${righthalfbot}
 
 bind delete:${hyper} relaunch
