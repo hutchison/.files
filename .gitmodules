@@ -16,9 +16,6 @@
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive
-[submodule "vim/bundle/ctrlp"]
-	path = vim/bundle/ctrlp
-	url = https://github.com/kien/ctrlp.vim
 [submodule "vim/bundle/youcompleteme"]
 	path = vim/bundle/youcompleteme
 	url = https://github.com/Valloric/YouCompleteMe
