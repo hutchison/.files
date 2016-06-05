@@ -176,9 +176,9 @@ function path_status () {
 
 function startup_status () {
 	clear
-	if [[ $(which archey) ]]; then
+	if [[ $(command -v "archey") ]]; then
 		archey
-	elif [[ $(which screenfetch) ]]; then
+	elif [[ $(command -v "screenfetch") ]]; then
 		screenfetch
 	fi
 	path_status
