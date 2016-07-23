@@ -81,7 +81,7 @@ inoremap <C-l> \
 cnoremap <C-l> \
 inoremap <C-c> [
 inoremap <C-v> ]
-inoremap <C-x> \|
+inoremap <C-y> \|
 
 """ Snippets
 " Was müssen wir drücken, damit Snippets ausgelöst werden?
