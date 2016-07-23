@@ -38,7 +38,6 @@ endif
 install-homebrew:
 ifeq ($(shell uname),Darwin)
 	@if [ -x $(shell which brew) ]; then echo "Homebrew already installed."; else $(DOTFILES)/scripts/install_homebrew.sh; fi
-	brew install brew-cask
 else
 	@echo "We are not on a Mac, so we don't need Homebrew."
 endif
@@ -62,13 +61,13 @@ ifeq ($(shell uname),Darwin)
 	brew cask install slate
 endif
 
-install-vim: install-homebrew install-cmake update-submodules
+install-vim: install-homebrew install-cmake install-python3 update-submodules
 ifeq ($(shell uname),Darwin)
-	brew install vim
+	brew install macvim
 else
 	$(APTITUDE) install -y vim-nox
 endif
-	bash $(DOTFILES)/vim/bundle/youcompleteme/install.sh
+	python3 $(DOTFILES)/vim/bundle/youcompleteme/install.py --clang-completer
 
 install-zsh: install-homebrew
 ifeq ($(shell uname),Darwin)
