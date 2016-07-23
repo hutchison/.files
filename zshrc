@@ -140,6 +140,12 @@ if [[ -x $(which virtualenvwrapper.sh) ]]; then
 	source $(which virtualenvwrapper.sh)
 fi
 
+# Der C-Compiler soll in diesen Ordnern automatisch nach Headerdateien suchen:
+export CPATH="/usr/local/include:/usr/local/opt/openssl/include:/usr/local/opt/gettext/include"
+export INCLUDE=$CPATH
+# Der C-Compiler soll in diesen Ordnern automatisch nach Bibliotheksdateien suchen:
+export LIBRARY_PATH="/usr/local/lib:/usr/local/opt/openssl/lib:/usr/local/opt/gettext/lib"
+
 function virtualenvwrapper_status () {
 	if [[ -n $VIRTUALENVWRAPPER_WORKON_CD ]]; then
 		echo
