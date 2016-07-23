@@ -3,7 +3,7 @@ runtime bundle/pathogen/autoload/pathogen.vim
 " To disable a plugin, add it's bundle name to the following list
 let g:pathogen_disabled = []
 
-if !has('python')
+if !has('python3')
 	call add(g:pathogen_disabled, 'ultisnips')
 	call add(g:pathogen_disabled, 'youcompleteme')
 endif
@@ -97,7 +97,8 @@ let g:UltiSnipsListSnippets="<c-H>"
 """ bei Bedarf auskommentieren
 "let g:ycm_server_keep_logfiles = 1
 "let g:ycm_server_log_level = 'debug'
-let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+let g:ycm_server_python_interpreter = '/usr/local/bin/python3'
+let g:ycm_path_to_python_interpreter = '/usr/local/bin/python3'
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_confirm_extra_conf = 0
 
@@ -121,13 +122,3 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 
 """ Startify
 let g:startify_custom_header = map(split(system('fortune -a'), '\n'), '"   ". v:val') + ['','']
-
-" python with virtualenv support
-python << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
