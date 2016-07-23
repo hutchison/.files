@@ -63,7 +63,7 @@ endif
 
 install-vim: install-homebrew install-cmake install-python3 update-submodules
 ifeq ($(shell uname),Darwin)
-	brew install macvim
+	brew install macvim --with-python3
 else
 	$(APTITUDE) install -y vim-nox
 endif
