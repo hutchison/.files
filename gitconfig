@@ -13,6 +13,7 @@
 	branch = auto
 [diff]
 	mnemonicprefix = true
+	compactionHeuristic = true
 [merge]
 	tool = vimdiff
 	summary = true
