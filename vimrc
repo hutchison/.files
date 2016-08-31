@@ -36,7 +36,9 @@ let mapleader=','
 set backspace=indent,eol,start
 set smartindent
 set wildmenu
-set nobackup
+set backup
+let $BACKUPDIR=$HOME . '/.vim/backup/'
+set backupdir=$BACKUPDIR
 set noswapfile
 
 colorscheme solarized
