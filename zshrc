@@ -192,6 +192,44 @@ function path_status () {
 	echo $PATH | tr -s ':' '\n' | awk '{print "\t"$0 }'
 }
 
+function create_directory_if_not_exists() {
+	if [[ ! -d $1 ]]; then
+		mkdir -p $1
+	fi
+}
+
+function is_mounted() {
+	mount | grep -q "^$1"
+}
+
+function mount_sshfs() {
+	local SOURCE=$1
+	local TARGET=$2
+
+	create_directory_if_not_exists $TARGET
+
+	if ! is_mounted $SOURCE; then
+		sshfs $SOURCE $TARGET
+	fi
+}
+
+function mount_stuff () {
+	local SSH_CONFIG="$HOME/.ssh/config"
+
+	echo
+	print -P -- "\t%F{004}mounted stuff:%f"
+
+	if grep -q "joerdis" $SSH_CONFIG ; then
+		mount_sshfs "joerdis:/home/md" "$HOME/mnt/joerdis"
+		echo "\tjoerdis:/home/md → $HOME/mnt/joerdis"
+	fi
+
+	if grep -q "muenster" $SSH_CONFIG ; then
+		mount_sshfs "muenster:" "$HOME/mnt/muenster"
+		echo "\tmuenster: → $HOME/mnt/muenster"
+	fi
+}
+
 function startup_status () {
 	clear
 	if command -v archey >/dev/null 2>&1; then
@@ -203,6 +241,7 @@ function startup_status () {
 	landscape_status
 	virtualenvwrapper_status
 	apache_status
+	mount_stuff
 }
 
 startup_status
