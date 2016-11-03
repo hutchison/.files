@@ -194,9 +194,9 @@ function path_status () {
 
 function startup_status () {
 	clear
-	if [[ $(command -v "archey") ]]; then
+	if command -v archey >/dev/null 2>&1; then
 		archey
-	elif [[ $(command -v "screenfetch") ]]; then
+	elif command -v screenfetch >/dev/null 2>&1; then
 		screenfetch
 	fi
 	path_status
