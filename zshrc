@@ -202,31 +202,62 @@ function is_mounted() {
 	mount | grep -q "^$1"
 }
 
+SSH_CONFIG="$HOME/.ssh/config"
+
+function get_ssh_hostname() {
+	local HOST=$1
+
+	ssh -G $HOST | awk '/^hostname / {print $2}'
+}
+
+function get_ssh_port() {
+	local HOST=$1
+
+	ssh -G $HOST | awk '/^port / {print $2}'
+}
+
+function is_reachable() {
+	local HOST=$1
+	local PORT=$2
+
+	nc -G 3 -z $HOST $PORT > /dev/null 2>&1
+}
+
 function mount_sshfs() {
-	local SOURCE=$1
-	local TARGET=$2
+	local SOURCE="$1"
+	# ${stringvar%%:*} löscht aus $stringvar die Regex :* von hinten weg
+	local HOST=${SOURCE%%:*}
+	local HOSTNAME=$(get_ssh_hostname "$HOST")
+	local PORT=$(get_ssh_port "$HOST")
+	local TARGET="$2"
 
-	create_directory_if_not_exists $TARGET
+	if grep -q "$HOST" $SSH_CONFIG ; then
 
-	if ! is_mounted $SOURCE; then
-		sshfs $SOURCE $TARGET
+		create_directory_if_not_exists $TARGET
+
+		if ! is_mounted $SOURCE ; then
+			if is_reachable $HOSTNAME $PORT; then
+				print -P -- "\t%F{002}✓%f $SOURCE → $TARGET"
+				sshfs -p $PORT $SOURCE $TARGET
+			else
+				print -P -- "\t%F{001}✗%f $HOST ($HOSTNAME:$PORT) seems down"
+			fi
+		else
+			print -P -- "\t%F{002}✓%f $SOURCE already mounted"
+		fi
+	else
+		print -P -- "\t%F{001}✗%f $HOST ∉ $SSH_CONFIG"
 	fi
 }
 
 function mount_stuff () {
-	local SSH_CONFIG="$HOME/.ssh/config"
+	if [[ -e $SSH_CONFIG ]]; then
+		echo
+		print -P -- "\t%F{004}custom mounts:%f"
 
-	echo
-	print -P -- "\t%F{004}mounted stuff:%f"
-
-	if grep -q "joerdis" $SSH_CONFIG ; then
 		mount_sshfs "joerdis:/home/md" "$HOME/mnt/joerdis"
-		echo "\tjoerdis:/home/md → $HOME/mnt/joerdis"
-	fi
-
-	if grep -q "muenster" $SSH_CONFIG ; then
+		mount_sshfs "marquis:/home/md" "$HOME/mnt/marquis"
 		mount_sshfs "muenster:" "$HOME/mnt/muenster"
-		echo "\tmuenster: → $HOME/mnt/muenster"
 	fi
 }
 
