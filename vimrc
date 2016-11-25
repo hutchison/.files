@@ -78,6 +78,11 @@ nnoremap <DOWN> <C-W><C-J>
 nnoremap <UP> <C-W><C-K>
 nnoremap <RIGHT> <C-W><C-L>
 nnoremap <LEFT> <C-W><C-H>
+" H und L benutze ich ohnehin nicht. Daher ist‘s clever, wenn sie was
+" sinnvolles tun:
+nnoremap H 0
+nnoremap L $
+
 " Shortcuts für häufig benutzte Zeichen:
 inoremap <C-l> \
 cnoremap <C-l> \
