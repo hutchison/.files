@@ -77,9 +77,6 @@ fi
 if [[ -d "$HOME/bin" ]]; then
 	path=("$HOME/bin" $path)
 fi
-if [[ -d "$HOME/Library/Python/3.5/bin" ]]; then
-	path=("$HOME/Library/Python/3.5/bin" $path)
-fi
 if [[ -d "/usr/local/texlive/2014/bin/x86_64-darwin" ]]; then
 	path=("/usr/local/texlive/2014/bin/x86_64-darwin" $path)
 fi
