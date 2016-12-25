@@ -5,6 +5,7 @@
 	editor = vim
 	pager = less
 	excludesfile = /Users/admin/.gitignore_global
+	precomposeunicode = false
 [color]
 	ui = auto
 	diff = auto
