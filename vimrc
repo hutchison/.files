@@ -129,3 +129,14 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 
 """ Startify
 let g:startify_custom_header = map(split(system('fortune -a'), '\n'), '"   ". v:val') + ['','']
+
+let g:git_autocommit_on_save = 0
+
+function GitQuickcommit()
+	if exists('b:git_dir') && g:git_autocommit_on_save
+		:silent ! git add %
+		:silent ! git commit -q -m "Auto-commit: %" > /dev/null 2>&1
+	endif
+endfunction
+
+autocmd BufWritePost * call GitQuickcommit()
