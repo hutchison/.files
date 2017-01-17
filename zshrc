@@ -272,7 +272,6 @@ function startup_status () {
 	landscape_status
 	virtualenvwrapper_status
 	apache_status
-	mount_stuff
 }
 
 startup_status
