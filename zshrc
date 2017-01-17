@@ -74,6 +74,9 @@ fi
 if [[ -d "$HOME/.local/bin" ]]; then
 	path=("$HOME/.local/bin" $path)
 fi
+if [[ -d "$HOME/Library/Python/3.6/bin" ]]; then
+	path=("$HOME/Library/Python/3.6/bin" $path)
+fi
 if [[ -d "$HOME/bin" ]]; then
 	path=("$HOME/bin" $path)
 fi
