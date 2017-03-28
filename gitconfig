@@ -27,6 +27,8 @@
 	ad = add
 	unstage = reset HEAD
 	mff = merge --no-ff --log
+	mt = merge --no-ff --no-commit
+	ma = merge --abort
 	lol = log --oneline --decorate --graph
 [push]
 	default = matching
