@@ -1,4 +1,4 @@
-setlocal textwidth=80  " lines longer than 80 columns will be broken
+setlocal textwidth=79  " lines longer than 80 columns will be broken
 setlocal colorcolumn=+1
 setlocal shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
 setlocal tabstop=4     " a hard TAB displays as 4 columns
