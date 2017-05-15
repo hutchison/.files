@@ -90,6 +90,10 @@ inoremap <C-c> [
 inoremap <C-v> ]
 inoremap <C-y> \|
 
+" Shortcuts für Orthographie:
+" Move to next misspelled word after the cursor.
+nmap <leader>s ]s
+
 """ Snippets
 " Was müssen wir drücken, damit Snippets ausgelöst werden?
 let g:UltiSnipsExpandTrigger="<c-j>"
