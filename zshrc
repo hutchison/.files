@@ -140,6 +140,12 @@ function gim () {
 	vim $(git ls-files -m) -p
 }
 
+if command -v youtube-dl >/dev/null 2>&1; then
+	function youtube-mp3 () {
+		youtube-dl -x --audio-format mp3 $@
+	}
+fi
+
 # Ein # ignoriert den Rest der Zeile:
 setopt interactivecomments
 
