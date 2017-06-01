@@ -156,7 +156,7 @@ au Syntax * RainbowParenthesesLoadBraces
 
 let g:git_autocommit_on_save = 0
 
-function GitQuickcommit()
+function! GitQuickcommit()
 	if exists('b:git_dir') && g:git_autocommit_on_save
 		:silent ! git add %
 		:silent ! git commit -q -m "Auto-commit: %" > /dev/null 2>&1
