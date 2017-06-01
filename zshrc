@@ -118,7 +118,12 @@ fi
 
 export EDITOR=vim
 alias e=$EDITOR
-if [[ -x $(which sudoedit) ]]; then
+
+function command_exists() {
+	command -v $1 > /dev/null 2>&1
+}
+
+if command_exists sudoedit ; then
 	alias se=sudoedit
 else
 	alias se='sudo -e'
@@ -140,9 +145,27 @@ function gim () {
 	vim $(git ls-files -m) -p
 }
 
-if command -v youtube-dl >/dev/null 2>&1; then
+if command_exists youtube-dl ; then
 	function youtube-mp3 () {
 		youtube-dl -x --audio-format mp3 $@
+	}
+fi
+
+if command_exists iconv ; then
+	function latin1_to_utf8 () {
+		filename=$(basename "$1")
+		extension="${filename##*.}"
+		filename="${filename%.*}"
+
+		iconv -f latin1 -t utf8 "$1" > "$filename"_utf8."$extension"
+	}
+
+	function utf8_to_latin1 () {
+		filename=$(basename "$1")
+		extension="${filename##*.}"
+		filename="${filename%.*}"
+
+		iconv -f utf8 -t latin1 "$1" > "$filename"_latin1."$extension"
 	}
 fi
 
@@ -187,7 +210,7 @@ function apache_status () {
 }
 
 function landscape_status () {
-	if [[ -x $(which landscape-sysinfo) ]]; then
+	if command_exists landscape-sysinfo ; then
 		echo
 		landscape-sysinfo --exclude-sysinfo-plugins=LandscapeLink | sed 's/^\s*/\t/'
 	fi
