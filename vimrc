@@ -122,7 +122,8 @@ let g:ycm_filetype_blacklist = {
 	\ 'vimwiki' : 1,
 	\ 'pandoc' : 1,
 	\ 'infolog' : 1,
-	\ 'mail' : 0
+	\ 'mail' : 0,
+	\ 'startify' : 0
 \}
 
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
