@@ -19,17 +19,17 @@
 	tool = vimdiff
 	summary = true
 [alias]
-	st = status -sb
-	ci = commit -v
+	ad = add
 	br = branch
+	ci = commit -v
 	co = checkout
 	df = diff
-	ad = add
-	unstage = reset HEAD
+	lol = log --oneline --decorate --graph
+	ma = merge --abort
 	mff = merge --no-ff --log
 	mt = merge --no-ff --no-commit
-	ma = merge --abort
-	lol = log --oneline --decorate --graph
+	st = status -sb
+	unstage = reset HEAD
 [push]
 	default = matching
 [web]
