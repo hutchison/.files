@@ -133,7 +133,7 @@ map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 
 """ Syntastic
-let g:syntastic_python_checkers = ["pyflakes", "python"]
+let g:syntastic_python_checkers = ["flake8", "pyflakes"]
 let g:syntastic_tex_checkers = ["chktex", "lacheck"]
 " Flake8
 let python_highlight_all=1
