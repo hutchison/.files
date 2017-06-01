@@ -45,7 +45,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew brew-cask pip pylint vagrant vi-mode ssh-agent)
+plugins=(git brew brew-cask pip pylint vagrant vi-mode ssh-agent osx)
 
 # zsh-completions:
 if [[ -d "/usr/local/share/zsh-completions" ]]; then
