@@ -169,6 +169,12 @@ if command_exists iconv ; then
 	}
 fi
 
+if [[ $(uname) = "Darwin" ]]; then
+	function einschlafen() {
+		sudo shutdown -s +"$1"
+	}
+fi
+
 # Ein # ignoriert den Rest der Zeile:
 setopt interactivecomments
 
