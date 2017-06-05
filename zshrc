@@ -62,14 +62,14 @@ export KEYTIMEOUT=1
 typeset -U path
 
 # überprüfe die Existenz von Verzeichnissen und füge sie zu $path hinzu
+if [[ -d "/usr/local/bin" ]]; then
+	path=("/usr/local/bin" $path)
+fi
 if [[ -d "/usr/sbin" ]]; then
 	path=("/usr/sbin" $path)
 fi
 if [[ -d "/usr/local/sbin" ]]; then
 	path=("/usr/local/sbin" $path)
-fi
-if [[ -d "/usr/local/bin" ]]; then
-	path=("/usr/local/bin" $path)
 fi
 if [[ -d "$HOME/.local/bin" ]]; then
 	path=("$HOME/.local/bin" $path)
