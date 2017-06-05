@@ -145,6 +145,12 @@ function gim () {
 	vim $(git ls-files -m) -p
 }
 
+if command_exists fzf ; then
+	function f() {
+		e $(fzf)
+	}
+fi
+
 if command_exists youtube-dl ; then
 	function youtube-mp3 () {
 		youtube-dl -x --audio-format mp3 $@
