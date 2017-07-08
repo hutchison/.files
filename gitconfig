@@ -23,6 +23,7 @@
 	br = branch
 	ci = commit -v
 	co = checkout
+	cp = cherry-pick
 	df = diff
 	lol = log --oneline --decorate --graph
 	ma = merge --abort
