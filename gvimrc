@@ -1,4 +1,5 @@
 " Stellt das Piepen ab
 set visualbell
 
-set guifont=Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline:h11
+set macligatures
+set guifont=Fira\ Code:h13
