@@ -11,7 +11,7 @@ endif
 execute pathogen#infect()
 
 " most common options:
-syntax on
+syntax enable
 set number
 set hidden
 set nocompatible
