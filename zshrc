@@ -62,27 +62,21 @@ export KEYTIMEOUT=1
 typeset -U path
 
 # überprüfe die Existenz von Verzeichnissen und füge sie zu $path hinzu
-if [[ -d "/usr/local/bin" ]]; then
-	path=("/usr/local/bin" $path)
-fi
-if [[ -d "/usr/sbin" ]]; then
-	path=("/usr/sbin" $path)
-fi
-if [[ -d "/usr/local/sbin" ]]; then
-	path=("/usr/local/sbin" $path)
-fi
-if [[ -d "$HOME/.local/bin" ]]; then
-	path=("$HOME/.local/bin" $path)
-fi
-if [[ -d "$HOME/Library/Python/3.6/bin" ]]; then
-	path=("$HOME/Library/Python/3.6/bin" $path)
-fi
-if [[ -d "$HOME/bin" ]]; then
-	path=("$HOME/bin" $path)
-fi
-if [[ -d "/usr/local/texlive/2014/bin/x86_64-darwin" ]]; then
-	path=("/usr/local/texlive/2014/bin/x86_64-darwin" $path)
-fi
+add_to_path() {
+	if [[ -d "$1" ]]; then
+		path=("$1" $path)
+	fi
+}
+
+add_to_path "/usr/local/bin"
+add_to_path "/usr/sbin"
+add_to_path "/usr/local/sbin" ]]
+add_to_path "$HOME/.local/bin"
+add_to_path "$HOME/Library/Python/3.6/bin"
+add_to_path "$HOME/bin"
+add_to_path "/usr/local/texlive/2014/bin/x86_64-darwin"
+add_to_path "/usr/local/opt/bison/bin"
+add_to_path "/usr/local/opt/flex/bin"
 
 source $ZSH/oh-my-zsh.sh
 
