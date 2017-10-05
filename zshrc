@@ -309,4 +309,8 @@ function startup_status () {
 	apache_status
 }
 
+function mcal () {
+	gcal -i -K -s 1 $1
+}
+
 startup_status
