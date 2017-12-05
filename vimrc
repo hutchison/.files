@@ -88,7 +88,9 @@ inoremap <C-l> \
 cnoremap <C-l> \
 inoremap <C-c> [
 inoremap <C-v> ]
-inoremap <C-y> \|
+inoremap <C-_> <Bar>
+inoremap <C-d> {
+inoremap <C-f> }
 
 " Shortcuts für Orthographie:
 " Move to next misspelled word after the cursor.
