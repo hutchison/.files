@@ -151,12 +151,6 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 """ Startify
 let g:startify_custom_header = map(split(system('fortune -a'), '\n'), '"   ". v:val') + ['','']
 
-""" Aktiviere die Regenbogenklammern:
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
 
 let g:git_autocommit_on_save = 0
 
