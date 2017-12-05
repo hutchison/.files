@@ -58,11 +58,11 @@ let g:airline_powerline_fonts = 1
 "schaltet hlsearch aus
 noremap <silent> <return> :nohlsearch<Bar>:echo<CR>
 " zum Tag/Funktionsdef. springen:
-nmap <leader>f <C-]>
+nnoremap <leader>f <C-]>
 " map <F5> to make:
-nmap <F5> :make<CR>
+nnoremap <F5> :make<CR>
 " öffne meine .vimrc:
-nmap <silent> <leader>v :next $MYVIMRC<CR>
+nnoremap <silent> <leader>v :next $MYVIMRC<CR>
 " wenn meine .vimrc verändert wurde, dann lade sie automatisch neu:
 augroup VimReload
 	autocmd!
@@ -88,11 +88,13 @@ inoremap <C-l> \
 cnoremap <C-l> \
 inoremap <C-c> [
 inoremap <C-v> ]
-inoremap <C-y> \|
+inoremap <C-_> <Bar>
+inoremap <C-d> {
+inoremap <C-f> }
 
 " Shortcuts für Orthographie:
 " Move to next misspelled word after the cursor.
-nmap <leader>s ]s
+nnoremap <leader>s ]s
 
 """ Snippets
 " Was müssen wir drücken, damit Snippets ausgelöst werden?
@@ -127,7 +129,7 @@ let g:ycm_filetype_blacklist = {
 	\ 'startify' : 0
 \}
 
-map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+noremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 """ Airline
 " der zweite Algorithmus zur Whitespaceerkennung funktioniert wohl besser:
@@ -148,12 +150,6 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 
 """ Startify
 let g:startify_custom_header = map(split(system('fortune -a'), '\n'), '"   ". v:val') + ['','']
-
-""" Aktiviere die Regenbogenklammern:
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
 
 
 let g:git_autocommit_on_save = 0
