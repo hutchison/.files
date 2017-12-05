@@ -92,7 +92,7 @@ inoremap <C-y> \|
 
 " Shortcuts für Orthographie:
 " Move to next misspelled word after the cursor.
-nmap <leader>s ]s
+nnoremap <leader>s ]s
 
 """ Snippets
 " Was müssen wir drücken, damit Snippets ausgelöst werden?
@@ -127,7 +127,7 @@ let g:ycm_filetype_blacklist = {
 	\ 'startify' : 0
 \}
 
-map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+noremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 """ Airline
 " der zweite Algorithmus zur Whitespaceerkennung funktioniert wohl besser:
