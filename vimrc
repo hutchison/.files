@@ -58,11 +58,11 @@ let g:airline_powerline_fonts = 1
 "schaltet hlsearch aus
 noremap <silent> <return> :nohlsearch<Bar>:echo<CR>
 " zum Tag/Funktionsdef. springen:
-nmap <leader>f <C-]>
+nnoremap <leader>f <C-]>
 " map <F5> to make:
-nmap <F5> :make<CR>
+nnoremap <F5> :make<CR>
 " öffne meine .vimrc:
-nmap <silent> <leader>v :next $MYVIMRC<CR>
+nnoremap <silent> <leader>v :next $MYVIMRC<CR>
 " wenn meine .vimrc verändert wurde, dann lade sie automatisch neu:
 augroup VimReload
 	autocmd!
