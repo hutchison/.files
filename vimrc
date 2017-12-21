@@ -113,7 +113,8 @@ let g:UltiSnipsListSnippets="<c-H>"
 let g:ycm_server_python_interpreter = '/usr/local/bin/python3'
 let g:ycm_path_to_python_interpreter = '/usr/local/bin/python3'
 let g:ycm_python_binary_path = 'python3'
-let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_min_num_of_chars_for_completion = 5
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_filetype_blacklist = {
 	\ 'tagbar' : 1,
