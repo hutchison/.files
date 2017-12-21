@@ -61,12 +61,16 @@ ifeq ($(shell uname),Darwin)
 	brew cask install slate
 endif
 
-install-vim: install-homebrew install-cmake install-python3 update-submodules
+install-vim: brew-vim install-ycm
+
+brew-vim: install-homebrew install-cmake install-python3 update-submodules
 ifeq ($(shell uname),Darwin)
-	brew install macvim --with-override-system-vim --with-python3
+	brew install vim --with-override-system-vim --with-python3
 else
 	$(APTITUDE) install -y vim-nox
 endif
+
+install-ycm: install-python3 update-submodules
 	python3 $(DOTFILES)/vim/bundle/youcompleteme/install.py --clang-completer
 
 install-zsh: install-homebrew
