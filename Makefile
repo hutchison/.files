@@ -65,7 +65,7 @@ install-vim: brew-vim install-ycm
 
 brew-vim: install-homebrew install-cmake install-python3 update-submodules
 ifeq ($(shell uname),Darwin)
-	brew install vim --with-override-system-vim --with-python3
+	brew install vim --with-override-system-vi --with-python3
 else
 	$(APTITUDE) install -y vim-nox
 endif
