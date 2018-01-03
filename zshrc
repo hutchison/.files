@@ -45,7 +45,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew brew-cask pip pylint vagrant vi-mode ssh-agent)
+plugins=(git brew brew-cask pip pylint vagrant vi-mode ssh-agent osx)
 
 # zsh-completions:
 if [[ -d "/usr/local/share/zsh-completions" ]]; then
@@ -62,27 +62,21 @@ export KEYTIMEOUT=1
 typeset -U path
 
 # überprüfe die Existenz von Verzeichnissen und füge sie zu $path hinzu
-if [[ -d "/usr/sbin" ]]; then
-	path=("/usr/sbin" $path)
-fi
-if [[ -d "/usr/local/sbin" ]]; then
-	path=("/usr/local/sbin" $path)
-fi
-if [[ -d "/usr/local/bin" ]]; then
-	path=("/usr/local/bin" $path)
-fi
-if [[ -d "$HOME/.local/bin" ]]; then
-	path=("$HOME/.local/bin" $path)
-fi
-if [[ -d "$HOME/bin" ]]; then
-	path=("$HOME/bin" $path)
-fi
-if [[ -d "$HOME/Library/Python/3.5/bin" ]]; then
-	path=("$HOME/Library/Python/3.5/bin" $path)
-fi
-if [[ -d "/usr/local/texlive/2014/bin/x86_64-darwin" ]]; then
-	path=("/usr/local/texlive/2014/bin/x86_64-darwin" $path)
-fi
+add_to_path() {
+	if [[ -d "$1" ]]; then
+		path=("$1" $path)
+	fi
+}
+
+add_to_path "/usr/local/bin"
+add_to_path "/usr/sbin"
+add_to_path "/usr/local/sbin"
+add_to_path "$HOME/.local/bin"
+add_to_path "$HOME/Library/Python/3.6/bin"
+add_to_path "$HOME/bin"
+add_to_path "/usr/local/texlive/2014/bin/x86_64-darwin"
+add_to_path "/usr/local/opt/bison/bin"
+add_to_path "/usr/local/opt/flex/bin"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -118,7 +112,12 @@ fi
 
 export EDITOR=vim
 alias e=$EDITOR
-if [[ -x $(which sudoedit) ]]; then
+
+function command_exists() {
+	command -v $1 > /dev/null 2>&1
+}
+
+if command_exists sudoedit ; then
 	alias se=sudoedit
 else
 	alias se='sudo -e'
@@ -140,6 +139,42 @@ function gim () {
 	vim $(git ls-files -m) -p
 }
 
+if command_exists fzf ; then
+	function f() {
+		e $(fzf)
+	}
+fi
+
+if command_exists youtube-dl ; then
+	function youtube-mp3 () {
+		youtube-dl -x --audio-format mp3 $@
+	}
+fi
+
+if command_exists iconv ; then
+	function latin1_to_utf8 () {
+		filename=$(basename "$1")
+		extension="${filename##*.}"
+		filename="${filename%.*}"
+
+		iconv -f latin1 -t utf8 "$1" > "$filename"_utf8."$extension"
+	}
+
+	function utf8_to_latin1 () {
+		filename=$(basename "$1")
+		extension="${filename##*.}"
+		filename="${filename%.*}"
+
+		iconv -f utf8 -t latin1 "$1" > "$filename"_latin1."$extension"
+	}
+fi
+
+if [[ $(uname) = "Darwin" ]]; then
+	function einschlafen() {
+		sudo shutdown -s +"$1"
+	}
+fi
+
 # Ein # ignoriert den Rest der Zeile:
 setopt interactivecomments
 
@@ -157,6 +192,7 @@ export CPATH="/usr/local/include:/usr/local/opt/openssl/include:/usr/local/opt/g
 export INCLUDE=$CPATH
 # Der C-Compiler soll in diesen Ordnern automatisch nach Bibliotheksdateien suchen:
 export LIBRARY_PATH="/usr/local/lib:/usr/local/opt/openssl/lib:/usr/local/opt/gettext/lib"
+export LD_LIBRARY_PATH="/usr/local/lib64:/usr/local/lib"
 
 function virtualenvwrapper_status () {
 	if [[ -n $VIRTUALENVWRAPPER_WORKON_CD ]]; then
@@ -181,7 +217,7 @@ function apache_status () {
 }
 
 function landscape_status () {
-	if [[ -x $(which landscape-sysinfo) ]]; then
+	if command_exists landscape-sysinfo ; then
 		echo
 		landscape-sysinfo --exclude-sysinfo-plugins=LandscapeLink | sed 's/^\s*/\t/'
 	fi
@@ -272,7 +308,10 @@ function startup_status () {
 	landscape_status
 	virtualenvwrapper_status
 	apache_status
-	mount_stuff
+}
+
+function mcal () {
+	gcal -i -K -s 1 $1
 }
 
 startup_status

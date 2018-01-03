@@ -5,6 +5,7 @@
 	editor = vim
 	pager = less
 	excludesfile = /Users/admin/.gitignore_global
+	precomposeunicode = false
 [color]
 	ui = auto
 	diff = auto
@@ -18,15 +19,20 @@
 	tool = vimdiff
 	summary = true
 [alias]
-	st = status -sb
-	ci = commit -v
-	br = branch
-	co = checkout
-	df = diff
 	ad = add
-	unstage = reset HEAD
-	mff = merge --no-ff --log
+	br = branch
+	ci = commit -v
+	co = checkout
+	cp = cherry-pick
+	df = diff
 	lol = log --oneline --decorate --graph
+	ma = merge --abort
+	mff = merge --no-ff --log
+	mt = merge --no-ff --no-commit
+	pom = pull origin master
+	re = remote -v
+	st = status -sb
+	unstage = reset HEAD
 [push]
 	default = matching
 [web]

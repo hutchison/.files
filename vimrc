@@ -11,7 +11,7 @@ endif
 execute pathogen#infect()
 
 " most common options:
-syntax on
+syntax enable
 set number
 set hidden
 set nocompatible
@@ -58,11 +58,11 @@ let g:airline_powerline_fonts = 1
 "schaltet hlsearch aus
 noremap <silent> <return> :nohlsearch<Bar>:echo<CR>
 " zum Tag/Funktionsdef. springen:
-nmap <leader>f <C-]>
+nnoremap <leader>f <C-]>
 " map <F5> to make:
-nmap <F5> :make<CR>
+nnoremap <F5> :make<CR>
 " öffne meine .vimrc:
-nmap <silent> <leader>v :next $MYVIMRC<CR>
+nnoremap <silent> <leader>v :next $MYVIMRC<CR>
 " wenn meine .vimrc verändert wurde, dann lade sie automatisch neu:
 augroup VimReload
 	autocmd!
@@ -78,12 +78,23 @@ nnoremap <DOWN> <C-W><C-J>
 nnoremap <UP> <C-W><C-K>
 nnoremap <RIGHT> <C-W><C-L>
 nnoremap <LEFT> <C-W><C-H>
+" H und L benutze ich ohnehin nicht. Daher ist‘s clever, wenn sie was
+" sinnvolles tun:
+nnoremap H 0
+nnoremap L $
+
 " Shortcuts für häufig benutzte Zeichen:
 inoremap <C-l> \
 cnoremap <C-l> \
 inoremap <C-c> [
 inoremap <C-v> ]
-inoremap <C-y> \|
+inoremap <C-_> <Bar>
+inoremap <C-d> {
+inoremap <C-f> }
+
+" Shortcuts für Orthographie:
+" Move to next misspelled word after the cursor.
+nnoremap <leader>s ]s
 
 """ Snippets
 " Was müssen wir drücken, damit Snippets ausgelöst werden?
@@ -101,18 +112,34 @@ let g:UltiSnipsListSnippets="<c-H>"
 "let g:ycm_server_log_level = 'debug'
 let g:ycm_server_python_interpreter = '/usr/local/bin/python3'
 let g:ycm_path_to_python_interpreter = '/usr/local/bin/python3'
-let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_python_binary_path = 'python3'
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_min_num_of_chars_for_completion = 5
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_filetype_blacklist = {
+	\ 'tagbar' : 1,
+	\ 'qf' : 1,
+	\ 'notes' : 1,
+	\ 'markdown' : 0,
+	\ 'unite' : 1,
+	\ 'text' : 0,
+	\ 'vimwiki' : 1,
+	\ 'pandoc' : 1,
+	\ 'infolog' : 1,
+	\ 'mail' : 0,
+	\ 'startify' : 0
+\}
 
-map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+noremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 """ Airline
 " der zweite Algorithmus zur Whitespaceerkennung funktioniert wohl besser:
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 
 """ Syntastic
-let g:syntastic_python_checkers = ["pyflakes", "python"]
+let g:syntastic_python_checkers = ["flake8", "pyflakes"]
 let g:syntastic_tex_checkers = ["chktex", "lacheck"]
+let g:syntastic_java_checkers = []
 " Flake8
 let python_highlight_all=1
 
@@ -124,3 +151,15 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 
 """ Startify
 let g:startify_custom_header = map(split(system('fortune -a'), '\n'), '"   ". v:val') + ['','']
+
+
+let g:git_autocommit_on_save = 0
+
+function! GitQuickcommit()
+	if exists('b:git_dir') && g:git_autocommit_on_save
+		:silent ! git add %
+		:silent ! git commit -q -m "Auto-commit: %" > /dev/null 2>&1
+	endif
+endfunction
+
+autocmd BufWritePost * call GitQuickcommit()
