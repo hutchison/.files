@@ -15,6 +15,9 @@
 [diff]
 	mnemonicprefix = true
 	compactionHeuristic = true
+	submodule = log
+[status]
+	submoduleSummary = true
 [merge]
 	tool = vimdiff
 	summary = true
