@@ -28,32 +28,44 @@ help:
 
 install: install-fonts install-homebrew install-git install-python3 install-slate install-vim install-zsh
 
-install-cmake: install-homebrew
-ifeq ($(shell uname),Darwin)
-	brew install cmake
-else
-	$(APTITUDE) install -y cmake
-endif
-
+BREW := $(shell command -v brew 2> /dev/null)
 install-homebrew:
+ifndef BREW
 ifeq ($(shell uname),Darwin)
 	@if [ -x $(shell which brew) ]; then echo "Homebrew already installed."; else $(DOTFILES)/scripts/install_homebrew.sh; fi
 else
 	@echo "We are not on a Mac, so we don't need Homebrew."
 endif
+endif
 
+CMAKE := $(shell command -v cmake 2> /dev/null)
+install-cmake: install-homebrew
+ifndef CMAKE
+ifeq ($(shell uname),Darwin)
+	brew install cmake
+else
+	$(APTITUDE) install -y cmake
+endif
+endif
+
+GIT := $(shell command -v git 2> /dev/null)
 install-git: install-homebrew
+ifndef GIT
 ifeq ($(shell uname),Darwin)
 	brew install git
 else
 	$(APTITUDE) install -y git
 endif
+endif
 
+PYTHON3 := $(shell command -v python3 2> /dev/null)
 install-python3: install-homebrew
+ifndef PYTHON3
 ifeq ($(shell uname),Darwin)
 	brew install python3
 else
 	$(APTITUDE) install -y python3 python3-pip
+endif
 endif
 
 install-slate: install-homebrew
@@ -63,21 +75,28 @@ endif
 
 install-vim: brew-vim install-ycm
 
+# Wenn wir auf einem Mac sind, dann wollen wir vim per Homebrew installieren, auch wenn es schon existiert.
+VIM := $(shell command -v vim 2> /dev/null)
 brew-vim: install-homebrew install-cmake install-python3 update-submodules
 ifeq ($(shell uname),Darwin)
 	brew install vim --with-override-system-vi --with-python3
 else
+ifndef VIM
 	$(APTITUDE) install -y vim-nox
+endif
 endif
 
 install-ycm: install-python3 update-submodules
 	python3 $(DOTFILES)/vim/bundle/youcompleteme/install.py --clang-completer
 
+ZSH := $(shell command -v zsh 2> /dev/null)
 install-zsh: install-homebrew
+ifndef ZSH
 ifeq ($(shell uname),Darwin)
 	brew install zsh
 else
 	$(APTITUDE) install -y zsh
+endif
 endif
 
 install-fonts:
