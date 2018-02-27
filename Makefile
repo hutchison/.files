@@ -99,7 +99,7 @@ else
 endif
 endif
 
-install-fonts:
+install-fonts: update-submodules
 	$(DOTFILES)/fonts/install.sh
 
 update-submodules: install-git
