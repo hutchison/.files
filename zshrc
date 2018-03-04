@@ -223,6 +223,13 @@ function landscape_status () {
 	fi
 }
 
+function my_screenfetch () {
+	screenfetch_cmd="$HOME/dotfiles/scripts/screenfetch/screenfetch-dev"
+	if [[ -x $screenfetch_cmd ]]; then
+		$screenfetch_cmd
+	fi
+}
+
 function path_status () {
 	print -P -- "\t%F{004}aktueller Pfad:%f"
 	echo $PATH | tr -s ':' '\n' | awk '{print "\t"$0 }'
@@ -299,11 +306,7 @@ function mount_stuff () {
 
 function startup_status () {
 	clear
-	if command -v archey >/dev/null 2>&1; then
-		archey
-	elif command -v screenfetch >/dev/null 2>&1; then
-		screenfetch
-	fi
+	my_screenfetch
 	path_status
 	landscape_status
 	virtualenvwrapper_status
