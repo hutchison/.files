@@ -183,7 +183,7 @@ export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 export VIRTUALENV_PYTHON=$VIRTUALENVWRAPPER_PYTHON
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/projects
-if [[ -x $(which virtualenvwrapper.sh) ]]; then
+if command_exists virtualenvwrapper.sh ; then
 	source $(which virtualenvwrapper.sh)
 fi
 
