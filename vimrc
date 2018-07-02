@@ -97,6 +97,8 @@ inoremap <C-f> }
 nnoremap <leader>s ]s
 
 """ Snippets
+" Wo wird nach Snippets gesucht?
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
 " Was müssen wir drücken, damit Snippets ausgelöst werden?
 let g:UltiSnipsExpandTrigger="<c-j>"
 " Zum nächsten Snippet:

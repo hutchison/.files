@@ -22,9 +22,6 @@
 [submodule "vim/bundle/ultisnips"]
 	path = vim/bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
-[submodule "vim/bundle/snippets"]
-	path = vim/bundle/snippets
-	url = hutch@fornax.uberspace.de:snippets
 [submodule "vim/bundle/better-whitespace"]
 	path = vim/bundle/better-whitespace
 	url = https://github.com/ntpeters/vim-better-whitespace.git
@@ -79,3 +76,6 @@
 [submodule "vim/bundle/pddl-syntax"]
 	path = vim/bundle/pddl-syntax
 	url = https://github.com/PontusPersson/pddl.vim.git
+[submodule "scripts/screenfetch"]
+	path = scripts/screenfetch
+	url = https://github.com/KittyKatt/screenFetch.git

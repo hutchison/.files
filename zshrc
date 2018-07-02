@@ -183,7 +183,7 @@ export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 export VIRTUALENV_PYTHON=$VIRTUALENVWRAPPER_PYTHON
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/projects
-if [[ -x $(which virtualenvwrapper.sh) ]]; then
+if command_exists virtualenvwrapper.sh ; then
 	source $(which virtualenvwrapper.sh)
 fi
 
@@ -220,6 +220,13 @@ function landscape_status () {
 	if command_exists landscape-sysinfo ; then
 		echo
 		landscape-sysinfo --exclude-sysinfo-plugins=LandscapeLink | sed 's/^\s*/\t/'
+	fi
+}
+
+function my_screenfetch () {
+	screenfetch_cmd="$HOME/dotfiles/scripts/screenfetch/screenfetch-dev"
+	if [[ -x $screenfetch_cmd ]]; then
+		$screenfetch_cmd
 	fi
 }
 
@@ -299,11 +306,7 @@ function mount_stuff () {
 
 function startup_status () {
 	clear
-	if command -v archey >/dev/null 2>&1; then
-		archey
-	elif command -v screenfetch >/dev/null 2>&1; then
-		screenfetch
-	fi
+	my_screenfetch
 	path_status
 	landscape_status
 	virtualenvwrapper_status
