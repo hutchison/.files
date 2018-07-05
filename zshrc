@@ -72,7 +72,7 @@ add_to_path "/usr/local/bin"
 add_to_path "/usr/sbin"
 add_to_path "/usr/local/sbin" ]]
 add_to_path "$HOME/.local/bin"
-add_to_path "$HOME/Library/Python/3.7/bin"
+add_to_path "$HOME/Library/Python/3.6/bin"
 add_to_path "$HOME/bin"
 add_to_path "/usr/local/texlive/2014/bin/x86_64-darwin"
 add_to_path "/usr/local/opt/bison/bin"
