@@ -266,10 +266,12 @@ function get_ssh_port() {
 }
 
 function is_reachable() {
-	local HOST=$1
-	local PORT=$2
+	if command_exists netcat ; then
+		local HOST=$1
+		local PORT=$2
 
-	nc -G 3 -z $HOST $PORT > /dev/null 2>&1
+		netcat -w 3 -z $HOST $PORT > /dev/null 2>&1
+	fi
 }
 
 function mount_sshfs() {
