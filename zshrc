@@ -1,5 +1,11 @@
+# Ort meiner dotfiles
+# "${(%):-%N}" ist das aktuelle Skript
+# "readlink -f" löst eventuelle Softlinks auf (die .zshrc liegt normalerweise in $HOME und ist ein Softlink auf die zshrc im Repo)
+# "dirname" gibt uns das gesuchte Verzeichnis
+export DOTFILES=$(dirname $(readlink -f "${(%):-%N}"))
+
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=$DOTFILES/oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -224,7 +230,7 @@ function landscape_status () {
 }
 
 function my_screenfetch () {
-	screenfetch_cmd="$HOME/dotfiles/scripts/screenfetch/screenfetch-dev"
+	screenfetch_cmd="$DOTFILES/scripts/screenfetch/screenfetch-dev"
 	if [[ -x $screenfetch_cmd ]]; then
 		$screenfetch_cmd
 	fi
