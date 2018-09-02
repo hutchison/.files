@@ -100,7 +100,8 @@ nnoremap <leader>s ]s
 " Wo wird nach Snippets gesucht?
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
 " Was müssen wir drücken, damit Snippets ausgelöst werden?
-let g:UltiSnipsExpandTrigger="<c-j>"
+" Default ist <TAB>
+"let g:UltiSnipsExpandTrigger="<c-j>"
 " Zum nächsten Snippet:
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 " Zum vorherigen Snippet:
