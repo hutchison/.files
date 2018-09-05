@@ -1,8 +1,8 @@
 # Ort meiner dotfiles
 # "${(%):-%N}" ist das aktuelle Skript
-# "readlink -f" löst eventuelle Softlinks auf (die .zshrc liegt normalerweise in $HOME und ist ein Softlink auf die zshrc im Repo)
+# "readlink" löst eventuelle Softlinks auf (die .zshrc liegt normalerweise in $HOME und ist ein Softlink auf die zshrc im Repo)
 # "dirname" gibt uns das gesuchte Verzeichnis
-export DOTFILES=$(dirname $(readlink -f "${(%):-%N}"))
+export DOTFILES=$(dirname $(readlink "${(%):-%N}"))
 
 # Path to your oh-my-zsh installation.
 export ZSH=$DOTFILES/oh-my-zsh
