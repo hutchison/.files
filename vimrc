@@ -100,7 +100,8 @@ nnoremap <leader>s ]s
 " Wo wird nach Snippets gesucht?
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
 " Was müssen wir drücken, damit Snippets ausgelöst werden?
-let g:UltiSnipsExpandTrigger="<c-j>"
+" Default ist <TAB>
+"let g:UltiSnipsExpandTrigger="<c-j>"
 " Zum nächsten Snippet:
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 " Zum vorherigen Snippet:
@@ -110,6 +111,9 @@ let g:UltiSnipsListSnippets="<c-H>"
 
 """ Konfiguration von YouCompleteMe
 """ bei Bedarf auskommentieren
+let g:ycm_key_list_select_completion=['<c-j>']
+let g:ycm_key_list_previous_completion=['<c-s-j>']
+
 "let g:ycm_server_keep_logfiles = 1
 "let g:ycm_server_log_level = 'debug'
 
@@ -135,8 +139,9 @@ let g:ycm_filetype_blacklist = {
 	\ 'vimwiki' : 1,
 	\ 'pandoc' : 1,
 	\ 'infolog' : 1,
-	\ 'mail' : 0,
-	\ 'startify' : 0
+	\ 'mail' : 1,
+	\ 'startify' : 1,
+	\ 'tex' : 1
 \}
 
 noremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
