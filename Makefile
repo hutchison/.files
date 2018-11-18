@@ -64,7 +64,7 @@ ifndef PYTHON3
 ifeq ($(shell uname),Darwin)
 	brew install python3
 else
-	$(APT) install -y python3 python3-pip
+	$(APT) install -y python3 python3-pip python3-dev
 endif
 endif
 
