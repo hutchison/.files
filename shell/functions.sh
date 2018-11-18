@@ -105,7 +105,9 @@ function virtualenvwrapper_status () {
 		if [[ -n "$(workon)" ]]; then
 			print -P -- "\t%F{004}aktuelle Projekte:%f"
 			echo -n "\t"
-			workon | paste -s - | sed 's/\t/    /g' | fmt
+			# Das $ bei sed ist nötig, weil sonst unter macOS nur
+			# der Buchstabe t ersetzt wird.
+			workon | paste -s - | sed $'s/\t/    /g' | fmt
 		fi
 	fi
 }
