@@ -1,5 +1,5 @@
 DOTFILES = $(shell pwd)
-APTITUDE = sudo aptitude
+APT = sudo apt
 
 .PHONY: help \
 	clean \
@@ -44,7 +44,7 @@ ifndef CMAKE
 ifeq ($(shell uname),Darwin)
 	brew install cmake
 else
-	$(APTITUDE) install -y cmake
+	$(APT) install -y cmake
 endif
 endif
 
@@ -54,7 +54,7 @@ ifndef GIT
 ifeq ($(shell uname),Darwin)
 	brew install git
 else
-	$(APTITUDE) install -y git
+	$(APT) install -y git
 endif
 endif
 
@@ -64,7 +64,7 @@ ifndef PYTHON3
 ifeq ($(shell uname),Darwin)
 	brew install python3
 else
-	$(APTITUDE) install -y python3 python3-pip
+	$(APT) install -y python3 python3-pip
 endif
 endif
 
@@ -82,7 +82,7 @@ ifeq ($(shell uname),Darwin)
 	brew install vim --with-override-system-vi --with-python3
 else
 ifndef VIM
-	$(APTITUDE) install -y vim-nox
+	$(APT) install -y vim-nox
 endif
 endif
 
@@ -95,7 +95,7 @@ ifndef ZSH
 ifeq ($(shell uname),Darwin)
 	brew install zsh
 else
-	$(APTITUDE) install -y zsh
+	$(APT) install -y zsh
 endif
 endif
 
