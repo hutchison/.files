@@ -124,11 +124,13 @@ ifeq ($(shell uname),Darwin)
 endif
 
 setup-vim: install-vim
-	ln -Fs $(DOTFILES)/vim ~/.vim
+	rm -f ~/.vim
+	ln -fs $(DOTFILES)/vim ~/.vim
 	ln -fs $(DOTFILES)/vimrc ~/.vimrc
 
 setup-zsh: install-zsh update-submodules
-	ln -Ffs $(DOTFILES)/oh-my-zsh ~/.oh-my-zsh
+	rm -f ~/.oh-my-zsh
+	ln -fs $(DOTFILES)/oh-my-zsh ~/.oh-my-zsh
 	ln -fs $(DOTFILES)/zshrc ~/.zshrc
 
 clean:
