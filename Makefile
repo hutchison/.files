@@ -54,7 +54,7 @@ ifeq ($(shell uname),Darwin)
 endif
 	git submodule update --init --recursive
 
-install-ycm: bootstrap update-submodules
+install-ycm: bootstrap
 	python3 $(DOTFILES)/vim/bundle/youcompleteme/install.py --clang-completer
 
 install-fonts: bootstrap
@@ -83,7 +83,7 @@ setup-vim: bootstrap
 	ln -fs $(DOTFILES)/vim ~/.vim
 	ln -fs $(DOTFILES)/vimrc ~/.vimrc
 
-setup-zsh: bootstrap update-submodules
+setup-zsh: bootstrap
 	rm -f ~/.oh-my-zsh
 	ln -fs $(DOTFILES)/oh-my-zsh ~/.oh-my-zsh
 	ln -fs $(DOTFILES)/zshrc ~/.zshrc
