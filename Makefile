@@ -30,7 +30,7 @@ help:
 	@echo "    setup-vim \t\t\t to setup vim"
 	@echo "    setup-zsh \t\t\t to setup zsh"
 
-install: install-homebrew bootstrap install-fonts
+install: install-homebrew bootstrap install-fonts install-ycm
 
 BREW := $(shell command -v brew 2> /dev/null)
 install-homebrew:
