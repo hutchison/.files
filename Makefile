@@ -60,7 +60,7 @@ install-ycm: bootstrap
 install-fonts: bootstrap
 	$(DOTFILES)/fonts/install.sh
 
-setup: setup-git setup-python setup-slate setup-vim setup-zsh
+setup: setup-git setup-python setup-slate setup-vim setup-tmux setup-zsh
 
 setup-git: bootstrap
 	ln -fs $(DOTFILES)/gitconfig ~/.gitconfig
@@ -72,6 +72,9 @@ setup-python: bootstrap
 	pip3 install --user --upgrade -r "$(DOTFILES)/python/requirements.txt"
 	@if [ -d "$(HOME)/.virtualenvs" ]; then echo "~/.virtualenvs already exists"; else mkdir -v "$(HOME)/.virtualenvs"; fi
 	@if [ -d "$(HOME)/projects" ]; then echo "~/projects already exists"; else mkdir -v "$(HOME)/projects"; fi
+
+setup-tmux:
+	ln -fs $(DOTFILES)/tmux.conf ~/.tmux.conf
 
 setup-slate:
 ifeq ($(shell uname),Darwin)
