@@ -49,7 +49,7 @@ ifeq ($(shell uname),Linux)
 	$(INSTALL) python3-pip python3-dev vim-nox
 endif
 ifeq ($(shell uname),Darwin)
-	$(INSTALL) vim --with-override-system-vi --with-python3
+	$(INSTALL) vim
 	$(PKG_CMD) cask install slate
 endif
 	git submodule update --init --recursive
