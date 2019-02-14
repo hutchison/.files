@@ -5,7 +5,7 @@ ifeq ($(shell uname),Darwin)
 else
 	PKG_CMD = sudo apt
 endif
-UPDATE = $(PKG_CMD) update
+UPGRADE = $(PKG_CMD) upgrade
 INSTALL = $(PKG_CMD) install
 
 .PHONY: help \
@@ -28,6 +28,7 @@ help:
 	@echo "    setup-python \t\t to setup python"
 	@echo "    setup-slate \t\t to setup slate"
 	@echo "    setup-vim \t\t\t to setup vim"
+	@echo "    setup-ycm \t\t\t to setup you-complete-me"
 	@echo "    setup-zsh \t\t\t to setup zsh"
 
 install: install-homebrew bootstrap install-fonts install-ycm
@@ -53,9 +54,6 @@ ifeq ($(shell uname),Darwin)
 	$(PKG_CMD) cask install slate
 endif
 	git submodule update --init --recursive
-
-install-ycm: bootstrap
-	python3 $(DOTFILES)/vim/bundle/youcompleteme/install.py --clang-completer
 
 install-fonts: bootstrap
 	$(DOTFILES)/fonts/install.sh
@@ -85,6 +83,9 @@ setup-vim: bootstrap
 	rm -f ~/.vim
 	ln -fs $(DOTFILES)/vim ~/.vim
 	ln -fs $(DOTFILES)/vimrc ~/.vimrc
+
+setup-ycm: bootstrap
+	python3 $(DOTFILES)/vim/bundle/youcompleteme/install.py --clang-completer
 
 setup-zsh: bootstrap
 	rm -f ~/.oh-my-zsh
