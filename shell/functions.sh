@@ -112,6 +112,26 @@ function virtualenvwrapper_status () {
 	fi
 }
 
+function reinstall_virtualenv () {
+	local name_venv="$1"
+
+	if [[ -z "$name_venv" ]]; then
+		echo "No arguments given."
+		return 1
+	fi
+
+	source $(which virtualenvwrapper.sh)
+
+	lsvirtualenv -b | grep -q "$name_venv"
+	if [[ $? == 0 ]]; then
+		rmvirtualenv "$name_venv"
+	fi
+
+	mkvirtualenv "$name_venv"
+
+	pip3 install -U pip setuptools
+}
+
 function apache_status () {
 	if [[ $(curl -sI localhost | grep "Server") =~ "Apache" ]]; then
 		echo
