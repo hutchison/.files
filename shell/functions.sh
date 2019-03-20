@@ -172,3 +172,10 @@ function startup_status () {
 	virtualenvwrapper_status
 	apache_status
 }
+
+function fix_file_permissions () {
+	# Ordner kriegen 755:
+	find . -type d -exec chmod 775 {} \;
+	# Dateien kriegen 644:
+	find . -type f -exec chmod 644 {} \;
+}
