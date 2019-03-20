@@ -88,7 +88,7 @@ function mcal () {
 
 # Versetzt das System nach "$1" Minuten in den Schlafmodus
 function einschlafen() {
-	if [[ "$OSTYPE" == "darwin" ]]; then
+	if [[ "$OSTYPE" == darwin* ]]; then
 		sudo shutdown -s +"$1"
 	else
 		echo_error "Funktioniert gerade nur auf macOS."
