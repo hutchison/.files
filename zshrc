@@ -69,10 +69,10 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-source $DOTFILES/shell/functions.sh
-
 export EDITOR=vim
 alias e=$EDITOR
+
+source $DOTFILES/shell/functions.sh
 
 # Ein # ignoriert den Rest der Zeile
 setopt interactivecomments
