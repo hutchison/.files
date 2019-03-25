@@ -12,7 +12,6 @@ execute pathogen#infect()
 
 " most common options:
 syntax enable
-set number
 set hidden
 set nocompatible
 filetype plugin indent on
@@ -23,6 +22,10 @@ set laststatus=2
 " zeige _nicht_ den aktuellen Modus an
 " (das übernimmt die schöne airline)
 set noshowmode
+" zeige die Zeilennummern an:
+set number
+" aber zeige die relative Zeilennummer an, damit man schnell springen kann:
+set relativenumber
 set hlsearch
 set incsearch
 set ignorecase
