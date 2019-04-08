@@ -88,7 +88,7 @@ function mcal () {
 
 # Versetzt das System nach "$1" Minuten in den Schlafmodus
 function einschlafen() {
-	if [[ "$OSTYPE" == "darwin" ]]; then
+	if [[ "$OSTYPE" == darwin* ]]; then
 		sudo shutdown -s +"$1"
 	else
 		echo_error "Funktioniert gerade nur auf macOS."
@@ -171,4 +171,11 @@ function startup_status () {
 	landscape_status
 	virtualenvwrapper_status
 	apache_status
+}
+
+function fix_file_permissions () {
+	# Ordner kriegen 755:
+	find . -type d -exec chmod 775 {} \;
+	# Dateien kriegen 644:
+	find . -type f -exec chmod 644 {} \;
 }
