@@ -74,6 +74,9 @@ alias e=$EDITOR
 
 source $DOTFILES/shell/functions.sh
 
+# 'r' wiederholt den letzten Befehl, beißt sich aber mit der Statistiksoftware R
+disable r
+
 # Ein # ignoriert den Rest der Zeile
 setopt interactivecomments
 # '?' im vi-command-Modus sucht rückwärts, wie man es von vim gewohnt ist
