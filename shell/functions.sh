@@ -155,7 +155,7 @@ function my_screenfetch () {
 
 function path_status () {
 	print -P -- "\t%F{004}aktueller Pfad:%f"
-	echo $PATH | tr -s ':' '\n' | awk '{print "\t"$0 }'
+	echo $PATH | tr -s ':' '\n' | awk '{print "\t" $0 }'
 }
 
 function create_directory_if_not_exists() {
