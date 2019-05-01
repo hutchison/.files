@@ -10,10 +10,13 @@ endif
 
 execute pathogen#infect()
 
-" most common options:
+" Syntaxhighlighting muss schon sein:
 syntax enable
+" versteckte Buffer bleiben erhalten:
 set hidden
+" This option has the effect of making Vim either more Vi-compatible, or make Vim behave in a more useful way:
 set nocompatible
+" enable detection, plugins and indenting in one step:
 filetype plugin indent on
 
 " zeige immer die Statuszeile an
@@ -29,22 +32,37 @@ set relativenumber
 set hlsearch
 set incsearch
 set ignorecase
-" setzt automatisch das g Flag bei Textersetzungen:
+" Always replace all occurences of a line
 set gdefault
 " wechselt automatisch das Verzeichnis:
 set autochdir
 
-let mapleader=','
-
 set backspace=indent,eol,start
+" enable detection, plugins and indenting in one step:
 set smartindent
+" Enhanced command line completion:
 set wildmenu
+" Complete files like a shell:
+set wildmode=list:longest
 set backup
 let $BACKUPDIR=$HOME . '/.vim/backup/'
 set backupdir=$BACKUPDIR
 set noswapfile
+" Automatically read a file that has changed on disk:
+set autoread
+" make plugins smoother:
+set lazyredraw
+
+" Farbenspiel:
+set t_Co=16
+let g:solarized_termcolors=16
+let g:solarized_termtrans=0
+let g:solarized_menu=0
+let g:solarized_italic=1
+let g:solarized_contrast="high"
 
 colorscheme solarized
+
 hi Normal ctermbg=none
 hi NonText ctermbg=none
 hi SpecialKey ctermbg=none
@@ -56,35 +74,55 @@ set ttyfast
 set list
 set listchars=tab:▸\ ,extends:❯,precedes:❮,eol:¬
 
-let g:airline_powerline_fonts = 1
-
-"schaltet hlsearch aus
-noremap <silent> <return> :nohlsearch<Bar>:echo<CR>
-" zum Tag/Funktionsdef. springen:
-nnoremap <leader>f <C-]>
-" map <F5> to make:
-nnoremap <F5> :make<CR>
-" öffne meine .vimrc:
-nnoremap <silent> <leader>v :next $MYVIMRC<CR>
 " wenn meine .vimrc verändert wurde, dann lade sie automatisch neu:
 augroup VimReload
 	autocmd!
 	autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup end
+
+""" Mappings
+
+let mapleader=','
+
+" zur Definition/Deklaration springen:
+noremap <leader>f :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" map <F5> to make:
+nnoremap <leader>m :make<CR>
+
+" Shortcuts für Orthographie:
+" Move to next misspelled word after the cursor.
+nnoremap <leader>r ]s
+
+" Start a substitute
+nnoremap <leader>s :%s,
+
+" öffne meine .vimrc:
+nnoremap <silent> <leader>v :next $MYVIMRC<CR>
+
+"schaltet hlsearch aus
+noremap <silent> <return> :nohlsearch<Bar>:echo<CR>
+
 " buffer movement:
 nnoremap <space> :bnext<cr>
 nnoremap <backspace> :bprevious<cr>
+
 " NERDTree:
 noremap <C-g> :NERDTreeToggle<CR>
+
 " split navigations:
 nnoremap <DOWN> <C-W><C-J>
 nnoremap <UP> <C-W><C-K>
 nnoremap <RIGHT> <C-W><C-L>
 nnoremap <LEFT> <C-W><C-H>
+
 " H und L benutze ich ohnehin nicht. Daher ist‘s clever, wenn sie was
 " sinnvolles tun:
 nnoremap H 0
 nnoremap L $
+
+" Yank from the cursor to the end of the line, to be consistent with C and D:
+nnoremap Y y$
 
 " Shortcuts für häufig benutzte Zeichen:
 inoremap <C-l> \
@@ -94,10 +132,6 @@ inoremap <C-v> ]
 inoremap <C-_> <Bar>
 inoremap <C-d> {
 inoremap <C-f> }
-
-" Shortcuts für Orthographie:
-" Move to next misspelled word after the cursor.
-nnoremap <leader>s ]s
 
 """ Snippets
 " Wo wird nach Snippets gesucht?
@@ -112,8 +146,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 " Alle Snippets anzeigen:
 let g:UltiSnipsListSnippets="<c-H>"
 
-""" Konfiguration von YouCompleteMe
-""" bei Bedarf auskommentieren
+""" YouCompleteMe
+" bei Bedarf auskommentieren
 let g:ycm_key_list_select_completion=['<c-j>']
 let g:ycm_key_list_previous_completion=['<c-s-j>']
 
@@ -147,18 +181,10 @@ let g:ycm_filetype_blacklist = {
 	\ 'tex' : 1
 \}
 
-noremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
 """ Airline
+let g:airline_powerline_fonts=1
 " der zweite Algorithmus zur Whitespaceerkennung funktioniert wohl besser:
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
-
-""" Syntastic
-let g:syntastic_python_checkers = ["flake8", "pyflakes"]
-let g:syntastic_tex_checkers = ["chktex", "lacheck"]
-let g:syntastic_java_checkers = []
-" Flake8
-let python_highlight_all=1
 
 """ NERDTree
 let NERDTreeHighlightCursorline = 1
@@ -166,10 +192,9 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
-""" Startify
-let g:startify_custom_header = map(split(system('fortune -a'), '\n'), '"   ". v:val') + ['','']
-
-
+""" quick commit mode via git
+" Wenn g:git_autocommit_on_save aktiviert ist, dann wird bei jedem
+" Schreibvorgang auch ein Commit erzeugt.
 let g:git_autocommit_on_save = 0
 
 function! GitQuickcommit()
