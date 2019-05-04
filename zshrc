@@ -127,4 +127,7 @@ export INCLUDE=$CPATH
 export LIBRARY_PATH="/usr/local/lib:/usr/local/opt/openssl/lib:/usr/local/opt/gettext/lib"
 export LD_LIBRARY_PATH="/usr/local/lib64:/usr/local/lib"
 
+# Einstellungen für den fuzzy file finder:
+export FZF_DEFAULT_COMMAND="find . -type f ! -iwholename '*.pyc' ! -iwholename '*.git*'"
+
 startup_status
