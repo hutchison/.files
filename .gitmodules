@@ -79,3 +79,6 @@
 [submodule "scripts/screenfetch"]
 	path = scripts/screenfetch
 	url = https://github.com/KittyKatt/screenFetch.git
+[submodule "scripts/fzf"]
+	path = scripts/fzf
+	url = https://github.com/junegunn/fzf.git
