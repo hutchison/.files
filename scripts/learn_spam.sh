@@ -1,10 +1,11 @@
 #!/bin/bash
 
-for dir in ~/users/*; do
-	[ -e "$dir" ] || continue
-	for f in $dir/.Spam/cur/*; do
-		[ -e "$f" ] || continue
-		spamc -L spam -U ~/tmp/spamd.sock < "$f"
-		grep -h ^Subject: "$f"
+dir="$1"
+
+if [[ "$dir" != "" ]]; then
+	for f in "$dir/"*; do
+		spamc -L spam -U $HOME/tmp/spamd.sock < "$f"
 	done
-done
+else
+	echo "Please specify a directory which contains spam-mails."
+fi
