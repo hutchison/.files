@@ -10,3 +10,5 @@ pylint
 virtualenvwrapper
 # zum Hochladen zu PyPI:
 twine
+# wird für UltiSnips gebraucht:
+unidecode
