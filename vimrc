@@ -85,7 +85,11 @@ augroup end
 let mapleader=','
 
 " zur Definition/Deklaration springen:
-noremap <leader>f :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>f :YcmCompleter GoTo<CR>
+
+" zum Tag springen:
+" hilfreich für help-files
+nnoremap <leader>t <C-]>
 
 " map <F5> to make:
 nnoremap <leader>m :make<CR>
