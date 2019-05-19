@@ -53,7 +53,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git pip pylint vi-mode ssh-agent)
+plugins=(git pip pylint vi-mode ssh-agent fzf)
 if [[ "$OSTYPE" == "darwin" ]]; then
 	plugins=(brew-cask osx $plugins)
 fi
@@ -64,8 +64,6 @@ if [[ -d "/usr/local/share/zsh-completions" ]]; then
 fi
 
 export LANG=de_DE.UTF-8
-
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -132,7 +130,14 @@ export LD_LIBRARY_PATH="/usr/local/lib64:/usr/local/lib"
 # -type f         → es werden nur Dateien gelistet
 # ! -iwholename … → diese Dateien werden ignoriert
 export FZF_DEFAULT_COMMAND="find -L . -type f ! -iwholename '*.pyc' ! -iwholename '*.git*'"
+export FZF_BASE="$DOTFILES/scripts/fzf"
 
 export REGEX_MATRIKELNUMMER="\d\{7,9\}"
+
+# Einstellungen für Go (Programmiersprache):
+export GOPATH="$HOME/.go"
+create_directory_if_not_exists $GOPATH
+
+source $ZSH/oh-my-zsh.sh
 
 startup_status

@@ -10,7 +10,7 @@ INSTALL = $(PKG_CMD) install
 
 .PHONY: help \
 	clean \
-	install install-fonts install-homebrew \
+	install install-fonts install-homebrew install-fzf \
 	setup setup-git setup-python setup-slate setup-vim setup-zsh
 
 help:
@@ -31,7 +31,7 @@ help:
 	@echo "    setup-ycm \t\t\t to setup you-complete-me"
 	@echo "    setup-zsh \t\t\t to setup zsh"
 
-install: install-homebrew bootstrap install-fonts install-ycm
+install: install-homebrew bootstrap install-fonts install-fzf
 
 BREW := $(shell command -v brew 2> /dev/null)
 install-homebrew:
@@ -57,6 +57,9 @@ endif
 
 install-fonts: bootstrap
 	$(DOTFILES)/fonts/install.sh
+
+install-fzf: bootstrap
+	$(DOTFILES)/scripts/fzf/install --bin
 
 setup: setup-git setup-python setup-slate setup-vim setup-tmux setup-zsh
 
