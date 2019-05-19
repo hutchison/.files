@@ -1,4 +1,12 @@
+pip
+wheel
+setuptools
 ipython
+# für den besseren Umgang mit SQlite Dateien:
+litecli
+tvoverlord
+youtube-dl
 pylint
-unidecode
 virtualenvwrapper
+# zum Hochladen zu PyPI:
+twine
