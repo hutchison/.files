@@ -133,4 +133,6 @@ export LD_LIBRARY_PATH="/usr/local/lib64:/usr/local/lib"
 # ! -iwholename … → diese Dateien werden ignoriert
 export FZF_DEFAULT_COMMAND="find -L . -type f ! -iwholename '*.pyc' ! -iwholename '*.git*'"
 
+export REGEX_MATRIKELNUMMER="\d\{7,9\}"
+
 startup_status
