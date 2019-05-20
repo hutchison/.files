@@ -1,12 +1,5 @@
 DOTFILES = $(shell pwd)
-
-ifeq ($(shell uname),Darwin)
-	PKG_CMD = brew
-else
-	PKG_CMD = sudo apt
-endif
-UPGRADE = $(PKG_CMD) upgrade
-INSTALL = $(PKG_CMD) install
+OS_TYPE := $(shell uname)
 
 .PHONY: help \
 	clean \
@@ -31,27 +24,89 @@ help:
 	@echo "    setup-ycm \t\t\t to setup you-complete-me"
 	@echo "    setup-zsh \t\t\t to setup zsh"
 
+is_installed = $(shell command -v $(1) 2> /dev/null)
+pkgs_to_install =
+casks_to_install =
+
+CMAKE := $(call is_installed,cmake)
+ifndef CMAKE
+	pkgs_to_install += "cmake"
+endif
+
+GIT := $(call is_installed,git)
+ifndef GIT
+	pkgs_to_install += "git"
+endif
+
+PYTHON3 := $(call is_installed,python3)
+ifndef PYTHON3
+	pkgs_to_install += "python3"
+endif
+
+ZSH := $(call is_installed,zsh)
+ifndef ZSH
+	pkgs_to_install += "zsh"
+endif
+
+CURL := $(call is_installed,curl)
+ifndef CURL
+	pkgs_to_install += "curl"
+endif
+
+WGET := $(call is_installed,wget)
+ifndef WGET
+	pkgs_to_install += "wget"
+endif
+
+VIM := $(call is_installed,vim)
+ifndef VIM
+ifeq "$(OS_TYPE)" "Darwin"
+	pkgs_to_install += "vim"
+endif
+ifeq "$(OS_TYPE)" "Linux"
+	pkgs_to_install += "vim-nox"
+endif
+endif
+
+ifeq "$(OS_TYPE)" "Darwin"
+SLATE := $(shell brew cask list | grep slate)
+ifndef SLATE
+	casks_to_install += "slate"
+endif
+endif
+
+ifeq "$(OS_TYPE)" "Darwin"
+	PKG_CMD = brew
+else
+	PKG_CMD = sudo apt
+endif
+
+BREW := $(call is_installed,brew)
+
+UPGRADE = $(PKG_CMD) upgrade
+INSTALL = $(PKG_CMD) install
+
 install: install-homebrew bootstrap install-fonts install-fzf
 
-BREW := $(shell command -v brew 2> /dev/null)
 install-homebrew:
+ifeq "$(OS_TYPE)" "Darwin"
 ifndef BREW
-ifeq ($(shell uname),Darwin)
-	@if [ -x $(shell which brew) ]; then echo "Homebrew already installed."; else $(DOTFILES)/scripts/install_homebrew.sh; fi
-else
-	@echo "We are not on a Mac, so we don't need Homebrew."
+	$(DOTFILES)/scripts/install_homebrew.sh
 endif
 endif
 
 bootstrap: install-homebrew
-	$(UPDATE)
-	$(INSTALL) cmake git python3 zsh curl wget
-ifeq ($(shell uname),Linux)
-	$(INSTALL) python3-pip python3-dev vim-nox
+	$(UPGRADE)
+ifneq "$(strip $(pkgs_to_install))" ""
+	$(INSTALL) $(pkgs_to_install)
 endif
-ifeq ($(shell uname),Darwin)
-	$(INSTALL) vim
-	$(PKG_CMD) cask install slate
+ifeq "$(OS_TYPE)" "Linux"
+	$(INSTALL) python3-pip python3-dev
+endif
+ifeq "$(OS_TYPE)" "Darwin"
+ifneq "$(strip $(casks_to_install))" ""
+	$(PKG_CMD) cask install $(casks_to_install)
+endif
 endif
 	git submodule update --init --recursive
 
@@ -78,7 +133,7 @@ setup-tmux:
 	ln -fs $(DOTFILES)/tmux.conf ~/.tmux.conf
 
 setup-slate:
-ifeq ($(shell uname),Darwin)
+ifeq "$(OS_TYPE)" "Darwin"
 	ln -fs $(DOTFILES)/slate ~/.slate
 endif
 
