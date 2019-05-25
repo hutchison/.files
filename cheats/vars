@@ -1,0 +1,10 @@
+# Last argument of previous command
+
+$_ or !$
+
+# https://stackoverflow.com/questions/3371294/how-can-i-recall-the-argument-of-the-previous-bash-command
+# https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#History-Interaction
+
+# First argument of previous command:
+
+!^

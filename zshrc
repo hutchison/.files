@@ -138,6 +138,11 @@ export REGEX_MATRIKELNUMMER="\d\{7,9\}"
 export GOPATH="$HOME/.go"
 create_directory_if_not_exists $GOPATH
 
+# Einstellungen für cheat:
+# https://github.com/cheat/cheat
+
+export CHEAT_PATH="$DOTFILES/cheats"
+
 source $ZSH/oh-my-zsh.sh
 
 startup_status
