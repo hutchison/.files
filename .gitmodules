@@ -82,3 +82,6 @@
 [submodule "scripts/fzf"]
 	path = scripts/fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule "scripts/cheat"]
+	path = scripts/cheat
+	url = https://github.com/cheat/cheat.git
