@@ -179,3 +179,33 @@ function fix_file_permissions () {
 	# Dateien kriegen 644:
 	find . -type f -exec chmod 644 {} \;
 }
+
+function iplay () {
+	osascript -e 'tell application "iTunes" to play';
+}
+
+function istop () {
+	osascript -e 'tell application "iTunes" to stop';
+}
+
+function ipause () {
+	osascript -e 'tell application "iTunes" to pause';
+}
+
+function play_track () {
+	osascript -e "tell application \"iTunes\" to play track \"$@\"";
+}
+
+function inext () {
+	osascript -e 'tell application "iTunes" to next track';
+}
+
+function ivol () {
+	osascript -e "tell application \"iTunes\" to set sound volume to $1";
+}
+
+function say_with_music_control () {
+	ivol 30
+	say "$1"
+	ivol 100
+}
