@@ -1,4 +1,15 @@
+pip
+wheel
+setuptools
 ipython
+# für den besseren Umgang mit SQlite Dateien:
+litecli
+tvoverlord
+youtube-dl
 pylint
-unidecode
 virtualenvwrapper
+cheat
+# zum Hochladen zu PyPI:
+twine
+# wird für UltiSnips gebraucht:
+unidecode

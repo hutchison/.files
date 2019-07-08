@@ -85,7 +85,11 @@ augroup end
 let mapleader=','
 
 " zur Definition/Deklaration springen:
-noremap <leader>f :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>f :YcmCompleter GoTo<CR>
+
+" zum Tag springen:
+" hilfreich für help-files
+nnoremap <leader>t <C-]>
 
 " map <F5> to make:
 nnoremap <leader>m :make<CR>
@@ -189,6 +193,8 @@ let g:ycm_filetype_blacklist = {
 let g:airline_powerline_fonts=1
 " der zweite Algorithmus zur Whitespaceerkennung funktioniert wohl besser:
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
+" zeigt die aktuellen Buffer an:
+let g:airline#extensions#tabline#enabled = 1
 
 """ NERDTree
 let NERDTreeHighlightCursorline = 1
