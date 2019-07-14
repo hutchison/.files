@@ -1,0 +1,1 @@
+:args <files>           opens files in buffers (:e doesn’t work with multiple files)
