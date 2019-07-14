@@ -136,6 +136,10 @@ inoremap <C-v> ]
 inoremap <C-_> <Bar>
 inoremap <C-d> {
 inoremap <C-f> }
+inoremap <Right> →
+inoremap <Left> ←
+inoremap <Up> ↑
+inoremap <Down> ↓
 
 """ Snippets
 " Wo wird nach Snippets gesucht?
