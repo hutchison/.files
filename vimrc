@@ -136,6 +136,10 @@ inoremap <C-v> ]
 inoremap <C-_> <Bar>
 inoremap <C-d> {
 inoremap <C-f> }
+inoremap <Right> →
+inoremap <Left> ←
+inoremap <Up> ↑
+inoremap <Down> ↓
 
 """ Snippets
 " Wo wird nach Snippets gesucht?
@@ -189,6 +193,8 @@ let g:ycm_filetype_blacklist = {
 let g:airline_powerline_fonts=1
 " der zweite Algorithmus zur Whitespaceerkennung funktioniert wohl besser:
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
+" zeigt die aktuellen Buffer an:
+let g:airline#extensions#tabline#enabled = 1
 
 """ NERDTree
 let NERDTreeHighlightCursorline = 1
