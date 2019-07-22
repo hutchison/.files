@@ -101,6 +101,7 @@ if command_exists python3 ; then
 	add_to_path "$(python3 -m site --user-base)/bin"
 fi
 add_to_path "$HOME/bin"
+add_to_path "$HOME/.cargo/bin"
 add_to_path "/usr/local/opt/bison/bin"
 add_to_path "/usr/local/opt/flex/bin"
 
