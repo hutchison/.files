@@ -46,7 +46,7 @@ DISABLE_AUTO_UPDATE="true"
 HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM=$DOTFILES/shell/zsh_customizations
 
 # Which plugins would you like to load?
 # (plugins can be found in ~/.oh-my-zsh/plugins/*)
