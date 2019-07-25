@@ -1,7 +1,7 @@
 runtime bundle/pathogen/autoload/pathogen.vim
 
 " To disable a plugin, add it's bundle name to the following list
-let g:pathogen_disabled = []
+let g:pathogen_disabled = ['ultisnips', 'youcompleteme', 'syntastic', 'gitgutter']
 
 if !has('python3')
 	call add(g:pathogen_disabled, 'ultisnips')
