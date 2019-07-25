@@ -176,11 +176,12 @@ let g:ycm_min_num_of_chars_for_completion = 5
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_filetype_blacklist = {
 	\ 'tagbar' : 1,
+	\ 'json' : 1,
 	\ 'qf' : 1,
 	\ 'notes' : 1,
-	\ 'markdown' : 0,
+	\ 'markdown' : 1,
 	\ 'unite' : 1,
-	\ 'text' : 0,
+	\ 'text' : 1,
 	\ 'vimwiki' : 1,
 	\ 'pandoc' : 1,
 	\ 'infolog' : 1,
