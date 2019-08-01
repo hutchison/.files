@@ -107,7 +107,7 @@ function virtualenvwrapper_status () {
 			echo -n "\t"
 			# Das $ bei sed ist nötig, weil sonst unter macOS nur
 			# der Buchstabe t ersetzt wird.
-			workon | paste -s - | sed $'s/\t/    /g' | fmt
+			workon | fmt
 		fi
 	fi
 }
