@@ -142,7 +142,7 @@ setup-vim: bootstrap
 	ln -fs $(DOTFILES)/vim ~/.vim
 	ln -fs $(DOTFILES)/vimrc ~/.vimrc
 
-setup-ycm: bootstrap
+setup-ycm:
 	python3 $(DOTFILES)/vim/bundle/youcompleteme/install.py --clang-completer
 
 setup-zsh: bootstrap
