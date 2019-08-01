@@ -1,7 +1,7 @@
 runtime bundle/pathogen/autoload/pathogen.vim
 
 " To disable a plugin, add it's bundle name to the following list
-let g:pathogen_disabled = ['ultisnips', 'youcompleteme', 'syntastic', 'gitgutter']
+let g:pathogen_disabled = ['syntastic', 'gitgutter']
 
 if !has('python3')
 	call add(g:pathogen_disabled, 'ultisnips')
@@ -12,6 +12,8 @@ execute pathogen#infect()
 
 " Syntaxhighlighting muss schon sein:
 syntax enable
+set regexpengine=1
+set redrawtime=100
 " versteckte Buffer bleiben erhalten:
 set hidden
 " This option has the effect of making Vim either more Vi-compatible, or make Vim behave in a more useful way:
