@@ -7,7 +7,9 @@ setlocal softtabstop=2 " insert/delete 4 spaces when hitting a TAB/BACKSPACE
 setlocal shiftround    " round indent to multiple of 'shiftwidth'
 setlocal autoindent    " align the new line indent with the previous line
 
-let g:tex_flavor='latex'
+setlocal syntax=plaintex
+
+let g:tex_flavor='plaintex'
 let g:syntastic_tex_checkers = ["chktex"]
 """ Um in tex-Dateien Warnungen abzuschalten musst du folgendes tun:
 "
