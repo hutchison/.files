@@ -13,7 +13,9 @@ execute pathogen#infect()
 " Syntaxhighlighting muss schon sein:
 syntax enable
 set regexpengine=1
-set redrawtime=100
+" Zeit, die vergehen darf, bevor das Syntaxhighlighting abgebrochen wird:
+" (z.B. weil's zu lange dauert)
+set redrawtime=50
 " versteckte Buffer bleiben erhalten:
 set hidden
 " This option has the effect of making Vim either more Vi-compatible, or make Vim behave in a more useful way:
