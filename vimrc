@@ -154,13 +154,13 @@ inoremap <Down> ↓
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
 " Was müssen wir drücken, damit Snippets ausgelöst werden?
 " Default ist <TAB>
-let g:UltiSnipsExpandTrigger="<c-Space>"
+let g:UltiSnipsExpandTrigger="<TAB>"
 " Zum nächsten Snippet:
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<TAB>"
 " Zum vorherigen Snippet:
-let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+let g:UltiSnipsJumpBackwardTrigger="<C-p>"
 " Alle Snippets anzeigen:
-let g:UltiSnipsListSnippets="<c-i>"
+let g:UltiSnipsListSnippets="<C-t>"
 
 """ YouCompleteMe
 " bei Bedarf auskommentieren
