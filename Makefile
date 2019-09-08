@@ -21,7 +21,6 @@ help:
 	@echo "    setup-python \t\t to setup python"
 	@echo "    setup-slate \t\t to setup slate"
 	@echo "    setup-vim \t\t\t to setup vim"
-	@echo "    setup-ycm \t\t\t to setup you-complete-me"
 	@echo "    setup-zsh \t\t\t to setup zsh"
 
 is_installed = $(shell command -v $(1) 2> /dev/null)
@@ -141,9 +140,6 @@ setup-vim: bootstrap
 	rm -f ~/.vim
 	ln -fs $(DOTFILES)/vim ~/.vim
 	ln -fs $(DOTFILES)/vimrc ~/.vimrc
-
-setup-ycm:
-	python3 $(DOTFILES)/vim/bundle/youcompleteme/install.py --clang-completer
 
 setup-zsh: bootstrap
 	rm -f ~/.oh-my-zsh

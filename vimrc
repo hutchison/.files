@@ -5,7 +5,6 @@ let g:pathogen_disabled = ['syntastic', 'gitgutter']
 
 if !has('python3')
 	call add(g:pathogen_disabled, 'ultisnips')
-	call add(g:pathogen_disabled, 'youcompleteme')
 endif
 
 execute pathogen#infect()
@@ -88,9 +87,6 @@ augroup end
 
 let mapleader=','
 
-" zur Definition/Deklaration springen:
-nnoremap <leader>f :YcmCompleter GoTo<CR>
-
 " zum Tag springen:
 " hilfreich für help-files
 nnoremap <leader>t <C-]>
@@ -161,42 +157,6 @@ let g:UltiSnipsJumpForwardTrigger="<TAB>"
 let g:UltiSnipsJumpBackwardTrigger="<C-p>"
 " Alle Snippets anzeigen:
 let g:UltiSnipsListSnippets="<C-t>"
-
-""" YouCompleteMe
-" bei Bedarf auskommentieren
-let g:ycm_key_list_select_completion=['<c-j>']
-let g:ycm_key_list_previous_completion=['<c-s-j>']
-
-"let g:ycm_server_keep_logfiles = 1
-"let g:ycm_server_log_level = 'debug'
-
-if filereadable('/usr/local/bin/python3')
-	let g:ycm_server_python_interpreter = '/usr/local/bin/python3'
-	let g:ycm_path_to_python_interpreter = '/usr/local/bin/python3'
-else
-	let g:ycm_server_python_interpreter = '/usr/bin/python3'
-	let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
-endif
-
-let g:ycm_python_binary_path = 'python3'
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_min_num_of_chars_for_completion = 5
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_filetype_blacklist = {
-	\ 'tagbar' : 1,
-	\ 'json' : 1,
-	\ 'qf' : 1,
-	\ 'notes' : 1,
-	\ 'markdown' : 1,
-	\ 'unite' : 1,
-	\ 'text' : 1,
-	\ 'vimwiki' : 1,
-	\ 'pandoc' : 1,
-	\ 'infolog' : 1,
-	\ 'mail' : 1,
-	\ 'startify' : 1,
-	\ 'tex' : 1
-\}
 
 """ Airline
 let g:airline_powerline_fonts=1
