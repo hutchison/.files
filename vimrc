@@ -101,6 +101,10 @@ nnoremap <leader>m :make<CR>
 " Shortcuts für Orthographie:
 " Move to next misspelled word after the cursor.
 nnoremap <leader>r ]s
+" Add word under the cursor as a good word:
+nnoremap <leader>R zg
+" Add word under the cursor as a wrong word:
+nnoremap <leader>W zw
 
 " Start a substitute
 nnoremap <leader>s :%s,
