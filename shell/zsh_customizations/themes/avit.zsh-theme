@@ -14,65 +14,71 @@ local _return_status="%{$fg_bold[red]%}%(?..⍉)%{$reset_color%}"
 local _hist_no="%{$fg[grey]%}%h%{$reset_color%}"
 
 function _current_dir() {
-  local _max_pwd_length="65"
-  if [[ $(echo -n $PWD | wc -c) -gt ${_max_pwd_length} ]]; then
-    echo "%{$fg_bold[blue]%}%-2~ ... %3~%{$reset_color%} "
-  else
-    echo "%{$fg_bold[blue]%}%~%{$reset_color%} "
-  fi
+	local _max_pwd_length="65"
+	if [[ $(echo -n $PWD | wc -c) -gt ${_max_pwd_length} ]]; then
+		echo "%{$fg_bold[blue]%}%-2~ ... %3~%{$reset_color%} "
+	else
+		echo "%{$fg_bold[blue]%}%~%{$reset_color%} "
+	fi
 }
 
 function _user_host() {
-  if [[ -n $SSH_CONNECTION ]]; then
-    me="%n@%m"
-  elif [[ $LOGNAME != $USER ]]; then
-    me="%n"
-  fi
-  if [[ -n $me ]]; then
-    echo "%{$fg[cyan]%}$me%{$reset_color%}:"
-  fi
+	# Wenn ~/.local_hostname existiert, dann wird davon die erste Zeile
+	# gelesen und als lokaler Hostname genutzt und angezeigt
+	local local_hostname_file="$HOME/.local_hostname"
+	if [[ -f "$local_hostname_file" ]]; then
+		read local_hostname < $local_hostname_file
+		me="%n@%U$local_hostname%u"
+	elif [[ -n $SSH_CONNECTION ]]; then
+		me="%n@%m"
+	elif [[ $LOGNAME != $USER ]]; then
+		me="%n"
+	fi
+	if [[ -n $me ]]; then
+		echo "%{$fg[cyan]%}$me%{$reset_color%}:"
+	fi
 }
 
 function _vi_status() {
-  if {echo $fpath | grep -q "plugins/vi-mode"}; then
-    echo "$(vi_mode_prompt_info)"
-  fi
+	if {echo $fpath | grep -q "plugins/vi-mode"}; then
+		echo "$(vi_mode_prompt_info)"
+	fi
 }
 
 # Determine the time since last commit. If branch is clean,
 # use a neutral color, otherwise colors will vary according to time.
 function _git_time_since_commit() {
-# Only proceed if there is actually a commit.
-  if last_commit=$(git log --pretty=format:'%at' -1 2> /dev/null); then
-    now=$(date +%s)
-    seconds_since_last_commit=$((now-last_commit))
+	# Only proceed if there is actually a commit.
+	if last_commit=$(git log --pretty=format:'%at' -1 2> /dev/null); then
+		now=$(date +%s)
+		seconds_since_last_commit=$((now-last_commit))
 
-    # Totals
-    minutes=$((seconds_since_last_commit / 60))
-    hours=$((seconds_since_last_commit/3600))
+		# Totals
+		minutes=$((seconds_since_last_commit / 60))
+		hours=$((seconds_since_last_commit/3600))
 
-    # Sub-hours and sub-minutes
-    days=$((seconds_since_last_commit / 86400))
-    sub_hours=$((hours % 24))
-    sub_minutes=$((minutes % 60))
+		# Sub-hours and sub-minutes
+		days=$((seconds_since_last_commit / 86400))
+		sub_hours=$((hours % 24))
+		sub_minutes=$((minutes % 60))
 
-    if [ $hours -ge 24 ]; then
-      commit_age="${days}d"
-    elif [ $minutes -gt 60 ]; then
-      commit_age="${sub_hours}h${sub_minutes}m"
-    else
-      commit_age="${minutes}m"
-    fi
+		if [ $hours -ge 24 ]; then
+			commit_age="${days}d"
+		elif [ $minutes -gt 60 ]; then
+			commit_age="${sub_hours}h${sub_minutes}m"
+		else
+			commit_age="${minutes}m"
+		fi
 
-    color=$ZSH_THEME_GIT_TIME_SINCE_COMMIT_NEUTRAL
-    echo "$color$commit_age%{$reset_color%}"
-  fi
+		color=$ZSH_THEME_GIT_TIME_SINCE_COMMIT_NEUTRAL
+		echo "$color$commit_age%{$reset_color%}"
+	fi
 }
 
 if [[ $USER == "root" ]]; then
-  CARETCOLOR="red"
+	CARETCOLOR="red"
 else
-  CARETCOLOR="white"
+	CARETCOLOR="white"
 fi
 
 MODE_INDICATOR="%{$fg_bold[yellow]%}❮%{$reset_color%}%{$fg[yellow]%}❮❮%{$reset_color%}"
