@@ -22,6 +22,7 @@ set nocompatible
 " enable detection, plugins and indenting in one step:
 filetype plugin indent on
 
+set nocursorline
 " zeige immer die Statuszeile an
 " (ist wichtig, damit die schöne airline angezeigt wird)
 set laststatus=2
