@@ -113,7 +113,11 @@ install-fonts: bootstrap
 	$(DOTFILES)/fonts/install.sh
 
 install-fzf: bootstrap
+ifeq "$(OS_TYPE)" "Linux"
+	$(INSTALL) fzf
+else
 	$(DOTFILES)/scripts/fzf/install --bin
+endif
 
 setup: setup-git setup-python setup-slate setup-vim setup-tmux setup-zsh
 

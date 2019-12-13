@@ -50,11 +50,9 @@ function youtube-mp3 () {
 # Konvertiert latin1 einfach zu utf8
 function latin1_to_utf8 () {
 	if command_exists iconv ; then
-		filename=$(basename "$1")
-		extension="${filename##*.}"
-		filename="${filename%.*}"
-
-		iconv -f latin1 -t utf8 "$1" > "$filename"_utf8."$extension"
+		tmpfile=$(mktemp)
+		iconv -f latin1 -t utf8 "$1" > "$tmpfile"
+		mv "$tmpfile" "$1"
 	else
 		echo_error "Please install iconv"
 	fi
@@ -63,11 +61,9 @@ function latin1_to_utf8 () {
 # Konvertiert utf8 einfach zu latin1
 function utf8_to_latin1 () {
 	if command_exists iconv ; then
-		filename=$(basename "$1")
-		extension="${filename##*.}"
-		filename="${filename%.*}"
-
-		iconv -f utf8 -t latin1 "$1" > "$filename"_latin1."$extension"
+		tmpfile=$(mktemp)
+		iconv -f utf8 -t latin1 "$1" > "$tmpfile"
+		mv "$tmpfile" "$1"
 	else
 		echo_error "Please install iconv"
 	fi

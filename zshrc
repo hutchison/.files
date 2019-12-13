@@ -108,6 +108,10 @@ add_to_path "/usr/local/opt/flex/bin"
 # In ~/.environment packen wir Einstellungen wie HTTP_PROXY und so:
 source_if_exists "$HOME/.environment"
 
+if command_exists xdg-open ; then
+	alias open=xdg-open
+fi
+
 # virtualenvwrapper:
 if command_exists python3 ; then
 	export VIRTUALENVWRAPPER_PYTHON=$(which python3)
