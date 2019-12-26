@@ -212,6 +212,10 @@ function countdown(){
 		echo -ne "$(gdate -u --date @$(($date1 - `gdate +%s`)) +%H:%M:%S)\r";
 		sleep 0.1
 	done
+
+	if [[ "$OSTYPE" == darwin* ]]; then
+		osascript -e 'display notification "Zeit ist abgelaufen" with title "Countdown fertig"'
+	fi
 }
 function stopwatch(){
 	date1=`gdate +%s`;
