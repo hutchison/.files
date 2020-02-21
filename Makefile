@@ -106,8 +106,8 @@ ifeq "$(OS_TYPE)" "Darwin"
 ifneq "$(strip $(casks_to_install))" ""
 	$(PKG_CMD) cask install $(casks_to_install)
 endif
-	pip3 install --user --upgrade -r "$(DOTFILES)/python/requirements.txt"
 endif
+	pip3 install --user --upgrade -r "$(DOTFILES)/python/requirements.txt"
 	git submodule update --init --recursive
 
 install-fonts: bootstrap
