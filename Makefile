@@ -16,7 +16,7 @@ help:
 	@echo "    install-fonts \t\t to just install some fonts"
 	@echo "    install-homebrew \t\t to just install homebrew"
 	@echo
-	@echo "    setup \t\t\t to setup all programs"
+	@echo "    setup \t\t\t to setup all programs (installs nothing, just links config files)"
 	@echo "    setup-git \t\t\t to setup git"
 	@echo "    setup-python \t\t to setup python"
 	@echo "    setup-slate \t\t to setup slate"
@@ -106,6 +106,7 @@ ifeq "$(OS_TYPE)" "Darwin"
 ifneq "$(strip $(casks_to_install))" ""
 	$(PKG_CMD) cask install $(casks_to_install)
 endif
+	pip3 install --user --upgrade -r "$(DOTFILES)/python/requirements.txt"
 endif
 	git submodule update --init --recursive
 
@@ -121,14 +122,10 @@ endif
 
 setup: setup-git setup-python setup-slate setup-vim setup-tmux setup-zsh
 
-setup-git: bootstrap
+setup-git:
 	ln -fs $(DOTFILES)/gitconfig ~/.gitconfig
-	@echo
-	@echo "Be sure to change your name and email in every repo that you work on,"
-	@echo "unless you want to be named '$(shell git config --get user.name)'."
 
-setup-python: bootstrap
-	pip3 install --user --upgrade -r "$(DOTFILES)/python/requirements.txt"
+setup-python:
 	@if [ -d "$(HOME)/.virtualenvs" ]; then echo "~/.virtualenvs already exists"; else mkdir -v "$(HOME)/.virtualenvs"; fi
 	@if [ -d "$(HOME)/projects" ]; then echo "~/projects already exists"; else mkdir -v "$(HOME)/projects"; fi
 
@@ -140,12 +137,12 @@ ifeq "$(OS_TYPE)" "Darwin"
 	ln -fs $(DOTFILES)/slate ~/.slate
 endif
 
-setup-vim: bootstrap
+setup-vim:
 	rm -f ~/.vim
 	ln -fs $(DOTFILES)/vim ~/.vim
 	ln -fs $(DOTFILES)/vimrc ~/.vimrc
 
-setup-zsh: bootstrap
+setup-zsh:
 	rm -f ~/.oh-my-zsh
 	ln -fs $(DOTFILES)/oh-my-zsh ~/.oh-my-zsh
 	ln -fs $(DOTFILES)/zshrc ~/.zshrc
