@@ -145,7 +145,6 @@ inoremap <Right> →
 inoremap <Left> ←
 inoremap <Up> ↑
 inoremap <Down> ↓
-inoremap <C-S-d> <C-r>=strftime("%F")<CR>
 
 """ Snippets
 " Wo wird nach Snippets gesucht?
