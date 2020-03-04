@@ -146,7 +146,7 @@ create_directory_if_not_exists $GOPATH
 # Einstellungen für cheat:
 # https://github.com/cheat/cheat
 
-export CHEAT_PATH="$DOTFILES/cheats:$DOTFILES/scripts/cheat/cheat/cheatsheets"
+export CHEAT_PATH="$DOTFILES/cheats:$DOTFILES/scripts/cheat/cheat/cheatsheets:$DOTFILES/community_cheatsheets"
 
 source $ZSH/oh-my-zsh.sh
 
