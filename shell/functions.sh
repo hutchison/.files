@@ -221,3 +221,13 @@ function stopwatch(){
 		sleep 0.1
 	done
 }
+
+function mv() {
+	if [[ "$@" =~ ".*FB.*" && "$@" =~ ".*Web.*" ]]; then
+		echo "ACHTUNG!!! Wahrscheinlich baust du gerade Mist!"
+		echo "Die Argumente enthalten 'FB' und 'Web'."
+		echo "Das werde ich jetzt nicht umbenennen."
+	else
+		command mv "$@"
+	fi
+}
