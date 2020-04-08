@@ -104,6 +104,7 @@ add_to_path "$HOME/bin"
 add_to_path "$HOME/.cargo/bin"
 add_to_path "/usr/local/opt/bison/bin"
 add_to_path "/usr/local/opt/flex/bin"
+add_to_path "/usr/local/opt/gettext/bin"
 
 # In ~/.environment packen wir Einstellungen wie HTTP_PROXY und so:
 source_if_exists "$HOME/.environment"
