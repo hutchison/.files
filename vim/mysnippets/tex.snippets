@@ -122,6 +122,10 @@ snippet itd "Individual description item" b
 \item[$1] $0
 endsnippet
 
+snippet em "Emphasis" b
+\emph{$1} $0
+endsnippet
+
 snippet part "Part" b
 \part{${1:part name}}%
 \label{prt:${2:${1/(\w+)|\W+/(?1:\L$0\E:_)/ga}}}

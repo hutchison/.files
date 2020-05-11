@@ -1,17 +1,20 @@
 runtime bundle/pathogen/autoload/pathogen.vim
 
 " To disable a plugin, add it's bundle name to the following list
-let g:pathogen_disabled = ['ultisnips', 'youcompleteme', 'syntastic', 'gitgutter']
+let g:pathogen_disabled = []
 
 if !has('python3')
 	call add(g:pathogen_disabled, 'ultisnips')
-	call add(g:pathogen_disabled, 'youcompleteme')
 endif
 
 execute pathogen#infect()
 
 " Syntaxhighlighting muss schon sein:
 syntax enable
+set regexpengine=1
+" Zeit, die vergehen darf, bevor das Syntaxhighlighting abgebrochen wird:
+" (z.B. weil's zu lange dauert)
+set redrawtime=200
 " versteckte Buffer bleiben erhalten:
 set hidden
 " This option has the effect of making Vim either more Vi-compatible, or make Vim behave in a more useful way:
@@ -19,6 +22,7 @@ set nocompatible
 " enable detection, plugins and indenting in one step:
 filetype plugin indent on
 
+set nocursorline
 " zeige immer die Statuszeile an
 " (ist wichtig, damit die schöne airline angezeigt wird)
 set laststatus=2
@@ -84,9 +88,6 @@ augroup end
 
 let mapleader=','
 
-" zur Definition/Deklaration springen:
-nnoremap <leader>f :YcmCompleter GoTo<CR>
-
 " zum Tag springen:
 " hilfreich für help-files
 nnoremap <leader>t <C-]>
@@ -97,6 +98,10 @@ nnoremap <leader>m :make<CR>
 " Shortcuts für Orthographie:
 " Move to next misspelled word after the cursor.
 nnoremap <leader>r ]s
+" Add word under the cursor as a good word:
+nnoremap <leader>R zg
+" Add word under the cursor as a wrong word:
+nnoremap <leader>W zw
 
 " Start a substitute
 nnoremap <leader>s :%s,
@@ -146,49 +151,13 @@ inoremap <Down> ↓
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "mysnippets"]
 " Was müssen wir drücken, damit Snippets ausgelöst werden?
 " Default ist <TAB>
-"let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsExpandTrigger="<TAB>"
 " Zum nächsten Snippet:
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<TAB>"
 " Zum vorherigen Snippet:
-let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+let g:UltiSnipsJumpBackwardTrigger="<C-p>"
 " Alle Snippets anzeigen:
-let g:UltiSnipsListSnippets="<c-H>"
-
-""" YouCompleteMe
-" bei Bedarf auskommentieren
-let g:ycm_key_list_select_completion=['<c-j>']
-let g:ycm_key_list_previous_completion=['<c-s-j>']
-
-"let g:ycm_server_keep_logfiles = 1
-"let g:ycm_server_log_level = 'debug'
-
-if filereadable('/usr/local/bin/python3')
-	let g:ycm_server_python_interpreter = '/usr/local/bin/python3'
-	let g:ycm_path_to_python_interpreter = '/usr/local/bin/python3'
-else
-	let g:ycm_server_python_interpreter = '/usr/bin/python3'
-	let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
-endif
-
-let g:ycm_python_binary_path = 'python3'
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_min_num_of_chars_for_completion = 5
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_filetype_blacklist = {
-	\ 'tagbar' : 1,
-	\ 'json' : 1,
-	\ 'qf' : 1,
-	\ 'notes' : 1,
-	\ 'markdown' : 1,
-	\ 'unite' : 1,
-	\ 'text' : 1,
-	\ 'vimwiki' : 1,
-	\ 'pandoc' : 1,
-	\ 'infolog' : 1,
-	\ 'mail' : 1,
-	\ 'startify' : 1,
-	\ 'tex' : 1
-\}
+let g:UltiSnipsListSnippets="<C-t>"
 
 """ Airline
 let g:airline_powerline_fonts=1

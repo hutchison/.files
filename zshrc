@@ -101,11 +101,17 @@ if command_exists python3 ; then
 	add_to_path "$(python3 -m site --user-base)/bin"
 fi
 add_to_path "$HOME/bin"
+add_to_path "$HOME/.cargo/bin"
 add_to_path "/usr/local/opt/bison/bin"
 add_to_path "/usr/local/opt/flex/bin"
+add_to_path "/usr/local/opt/gettext/bin"
 
 # In ~/.environment packen wir Einstellungen wie HTTP_PROXY und so:
 source_if_exists "$HOME/.environment"
+
+if command_exists xdg-open ; then
+	alias open=xdg-open
+fi
 
 # virtualenvwrapper:
 if command_exists python3 ; then
@@ -141,7 +147,7 @@ create_directory_if_not_exists $GOPATH
 # Einstellungen für cheat:
 # https://github.com/cheat/cheat
 
-export CHEAT_PATH="$DOTFILES/cheats:$DOTFILES/scripts/cheat/cheat/cheatsheets"
+export CHEAT_PATH="$DOTFILES/cheats:$DOTFILES/scripts/cheat/cheat/cheatsheets:$DOTFILES/community_cheatsheets"
 
 source $ZSH/oh-my-zsh.sh
 

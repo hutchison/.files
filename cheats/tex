@@ -1,0 +1,12 @@
+# installierte Doku:
+/usr/local/texlive/2019/doc.html
+
+# texlive manager für die Installation von Paketen:
+tlmgr
+
+# wichtigste Befehle:
+tlmgr --help
+tlmgr update --self
+tlmgr update --list
+tlmgr update --all
+tlmgr update <package>

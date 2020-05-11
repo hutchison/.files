@@ -50,11 +50,9 @@ function youtube-mp3 () {
 # Konvertiert latin1 einfach zu utf8
 function latin1_to_utf8 () {
 	if command_exists iconv ; then
-		filename=$(basename "$1")
-		extension="${filename##*.}"
-		filename="${filename%.*}"
-
-		iconv -f latin1 -t utf8 "$1" > "$filename"_utf8."$extension"
+		tmpfile=$(mktemp)
+		iconv -f latin1 -t utf8 "$1" > "$tmpfile"
+		mv "$tmpfile" "$1"
 	else
 		echo_error "Please install iconv"
 	fi
@@ -63,11 +61,9 @@ function latin1_to_utf8 () {
 # Konvertiert utf8 einfach zu latin1
 function utf8_to_latin1 () {
 	if command_exists iconv ; then
-		filename=$(basename "$1")
-		extension="${filename##*.}"
-		filename="${filename%.*}"
-
-		iconv -f utf8 -t latin1 "$1" > "$filename"_latin1."$extension"
+		tmpfile=$(mktemp)
+		iconv -f utf8 -t latin1 "$1" > "$tmpfile"
+		mv "$tmpfile" "$1"
 	else
 		echo_error "Please install iconv"
 	fi
@@ -104,10 +100,7 @@ function virtualenvwrapper_status () {
 		print -P -- "\t%F{004}Projekte:%f\t$PROJECT_HOME"
 		if [[ -n "$(workon)" ]]; then
 			print -P -- "\t%F{004}aktuelle Projekte:%f"
-			echo -n "\t"
-			# Das $ bei sed ist nötig, weil sonst unter macOS nur
-			# der Buchstabe t ersetzt wird.
-			workon | paste -s - | sed $'s/\t/    /g' | fmt
+			workon | fmt | awk '{print "\t" $0}'
 		fi
 	fi
 }
@@ -208,4 +201,33 @@ function say_with_music_control () {
 	ivol 30
 	say "$1"
 	ivol 100
+}
+
+function countdown(){
+	date1=$((`gdate +%s` + $1));
+	while [ "$date1" -ge `gdate +%s` ]; do
+		echo -ne "$(gdate -u --date @$(($date1 - `gdate +%s`)) +%H:%M:%S)\r";
+		sleep 0.1
+	done
+
+	if [[ "$OSTYPE" == darwin* ]]; then
+		osascript -e 'display notification "Zeit ist abgelaufen" with title "Countdown fertig"'
+	fi
+}
+function stopwatch(){
+	date1=`gdate +%s`;
+	while true; do
+		echo -ne "$(gdate -u --date @$((`gdate +%s` - $date1)) +%H:%M:%S)\r";
+		sleep 0.1
+	done
+}
+
+function mv() {
+	if [[ "$@" =~ ".*FB.*" && "$@" =~ ".*Web.*" ]]; then
+		echo "ACHTUNG!!! Wahrscheinlich baust du gerade Mist!"
+		echo "Die Argumente enthalten 'FB' und 'Web'."
+		echo "Das werde ich jetzt nicht umbenennen."
+	else
+		command mv "$@"
+	fi
 }
