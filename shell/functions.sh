@@ -203,11 +203,12 @@ function say_with_music_control () {
 	ivol 100
 }
 
-function countdown(){
-	date1=$((`gdate +%s` + $1));
+function countdown() {
+	t=$(seconds.py $@)
+	date1=$((`gdate +%s` + $t));
 	while [ "$date1" -ge `gdate +%s` ]; do
 		echo -ne "$(gdate -u --date @$(($date1 - `gdate +%s`)) +%H:%M:%S)\r";
-		sleep 0.1
+		sleep 1
 	done
 
 	if [[ "$OSTYPE" == darwin* ]]; then

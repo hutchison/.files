@@ -97,6 +97,7 @@ add_to_path "/usr/local/bin"
 add_to_path "/usr/sbin"
 add_to_path "/usr/local/sbin"
 add_to_path "$HOME/.local/bin"
+add_to_path "$DOTFILES/scripts"
 if command_exists python3 ; then
 	add_to_path "$(python3 -m site --user-base)/bin"
 fi
