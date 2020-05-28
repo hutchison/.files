@@ -70,13 +70,15 @@ export LANG=de_DE.UTF-8
 export EDITOR=vim
 alias e=$EDITOR
 
-source $DOTFILES/shell/functions.sh
-
 # 'r' wiederholt den letzten Befehl, beißt sich aber mit der Statistiksoftware R
 disable r
 
 # Ein # ignoriert den Rest der Zeile
 setopt interactivecomments
+# Aktiviert extended globbing für filename generation
+# For example, the ^ character negates the pattern following it.
+# siehe auch http://zsh.sourceforge.net/Intro/intro_2.html
+setopt extendedglob
 # '?' im vi-command-Modus sucht rückwärts, wie man es von vim gewohnt ist
 bindkey -M vicmd '?' history-incremental-search-backward
 # '?' im vi-command-Modus ruft die manpage auf
@@ -89,6 +91,8 @@ export KEYTIMEOUT=1
 
 # die Einträge von $path müssen 'unique' sein:
 typeset -U path
+
+source $DOTFILES/shell/functions.sh
 
 # Jeder Aufruf von add_to_path fügt den Pfad vorne an $PATH ran.
 # Heißt: was zuletzt hinzugefügt wurde, steht bei $PATH ganz vorne und wird

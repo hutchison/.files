@@ -232,3 +232,7 @@ function mv() {
 		command mv "$@"
 	fi
 }
+
+function ssh-add-all() {
+	ssh-add $(ls $HOME/.ssh/id^*.pub)
+}
