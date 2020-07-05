@@ -38,6 +38,8 @@
 	unstage = reset HEAD
 [push]
 	default = matching
+[pull]
+	rebase = false
 [web]
 	browser = open
 [gui]
