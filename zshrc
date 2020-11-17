@@ -94,6 +94,9 @@ typeset -U path
 
 source $DOTFILES/shell/functions.sh
 
+# Beim Update zu Python 3.9 ging virtualenv kaputt. Daher setzen wir jetzt direkt mal die Pythonversion fest:
+PYTHON3="python3.8"
+
 # Jeder Aufruf von add_to_path fügt den Pfad vorne an $PATH ran.
 # Heißt: was zuletzt hinzugefügt wurde, steht bei $PATH ganz vorne und wird
 # zuerst nach verfügbaren Programmen durchsucht
@@ -102,8 +105,8 @@ add_to_path "/usr/sbin"
 add_to_path "/usr/local/sbin"
 add_to_path "$HOME/.local/bin"
 add_to_path "$DOTFILES/scripts"
-if command_exists python3 ; then
-	add_to_path "$(python3 -m site --user-base)/bin"
+if command_exists $PYTHON3 ; then
+	add_to_path "$($PYTHON3 -m site --user-base)/bin"
 fi
 add_to_path "$HOME/bin"
 add_to_path "$HOME/.cargo/bin"
@@ -120,7 +123,7 @@ fi
 
 # virtualenvwrapper:
 if command_exists python3 ; then
-	export VIRTUALENVWRAPPER_PYTHON=$(which python3)
+	export VIRTUALENVWRAPPER_PYTHON=$(which $PYTHON3)
 	export VIRTUALENV_PYTHON=$VIRTUALENVWRAPPER_PYTHON
 	export WORKON_HOME=$HOME/.virtualenvs
 	export PROJECT_HOME=$HOME/projects
