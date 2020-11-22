@@ -68,7 +68,7 @@ endif
 endif
 
 ifeq "$(OS_TYPE)" "Darwin"
-SLATE := $(shell brew cask list | grep slate)
+SLATE := $(shell brew list --cask | grep slate)
 ifndef SLATE
 	casks_to_install += "slate"
 endif
