@@ -53,7 +53,7 @@ ZSH_CUSTOM=$DOTFILES/shell/zsh_customizations
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git pip pylint vi-mode ssh-agent fzf)
+plugins=(git pylint vi-mode ssh-agent fzf)
 if [[ "$OSTYPE" == "darwin" ]]; then
 	plugins=(brew-cask osx $plugins)
 fi
@@ -95,7 +95,8 @@ typeset -U path
 source $DOTFILES/shell/functions.sh
 
 # Beim Update zu Python 3.9 ging virtualenv kaputt. Daher setzen wir jetzt direkt mal die Pythonversion fest:
-PYTHON3="python3.8"
+PYTHONVERSION="3.8"
+PYTHON3="python$PYTHONVERSION"
 
 # Jeder Aufruf von add_to_path fügt den Pfad vorne an $PATH ran.
 # Heißt: was zuletzt hinzugefügt wurde, steht bei $PATH ganz vorne und wird
@@ -105,9 +106,8 @@ add_to_path "/usr/sbin"
 add_to_path "/usr/local/sbin"
 add_to_path "$HOME/.local/bin"
 add_to_path "$DOTFILES/scripts"
-if command_exists $PYTHON3 ; then
-	add_to_path "$($PYTHON3 -m site --user-base)/bin"
-fi
+add_to_path "/usr/local/opt/python@$PYTHONVERSION/bin"
+add_to_path "$($PYTHON3 -m site --user-base)/bin"
 add_to_path "$HOME/bin"
 add_to_path "$HOME/.cargo/bin"
 add_to_path "/usr/local/opt/bison/bin"
@@ -122,7 +122,7 @@ if command_exists xdg-open ; then
 fi
 
 # virtualenvwrapper:
-if command_exists python3 ; then
+if command_exists $PYTHON3 ; then
 	export VIRTUALENVWRAPPER_PYTHON=$(which $PYTHON3)
 	export VIRTUALENV_PYTHON=$VIRTUALENVWRAPPER_PYTHON
 	export WORKON_HOME=$HOME/.virtualenvs
