@@ -65,7 +65,7 @@ let g:solarized_menu=0
 let g:solarized_italic=1
 let g:solarized_contrast="high"
 
-colorscheme solarized
+colorscheme default
 
 hi Normal ctermbg=none
 hi NonText ctermbg=none
