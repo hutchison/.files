@@ -81,7 +81,7 @@ setopt interactivecomments
 setopt extendedglob
 # '?' im vi-command-Modus sucht rückwärts, wie man es von vim gewohnt ist
 bindkey -M vicmd '?' history-incremental-search-backward
-# '?' im vi-command-Modus ruft die manpage auf
+# 'K' im vi-command-Modus ruft die manpage auf
 bindkey -M vicmd 'K' run-help
 # "The time the shell waits, in hundredths of seconds, for another key to be
 # pressed when reading bound multi-character sequences."
