@@ -94,20 +94,18 @@ typeset -U path
 
 source $DOTFILES/shell/functions.sh
 
-# Beim Update zu Python 3.9 ging virtualenv kaputt. Daher setzen wir jetzt direkt mal die Pythonversion fest:
-PYTHONVERSION="3.8"
-PYTHON3="python$PYTHONVERSION"
-
 # Jeder Aufruf von add_to_path fügt den Pfad vorne an $PATH ran.
 # Heißt: was zuletzt hinzugefügt wurde, steht bei $PATH ganz vorne und wird
 # zuerst nach verfügbaren Programmen durchsucht
+add_to_path "/usr/local/opt/python@3.8/bin"
 add_to_path "/usr/local/bin"
 add_to_path "/usr/sbin"
 add_to_path "/usr/local/sbin"
 add_to_path "$HOME/.local/bin"
 add_to_path "$DOTFILES/scripts"
-add_to_path "/usr/local/opt/python@$PYTHONVERSION/bin"
-add_to_path "$($PYTHON3 -m site --user-base)/bin"
+if command_exists python3.9 ; then
+	add_to_path "$(python3.9 -m site --user-base)/bin"
+fi
 add_to_path "$HOME/bin"
 add_to_path "$HOME/.cargo/bin"
 add_to_path "/usr/local/opt/bison/bin"
@@ -122,15 +120,20 @@ if command_exists xdg-open ; then
 fi
 
 # virtualenvwrapper:
-if command_exists $PYTHON3 ; then
-	export VIRTUALENVWRAPPER_PYTHON=$(which $PYTHON3)
-	export VIRTUALENV_PYTHON=$VIRTUALENVWRAPPER_PYTHON
-	export WORKON_HOME=$HOME/.virtualenvs
-	export PROJECT_HOME=$HOME/projects
-	if command_exists virtualenvwrapper.sh ; then
-		source $(which virtualenvwrapper.sh)
+# python3.9 macht Probleme mit virtualenvwrapper, daher nehmen wir dafür eine kleinere Version
+
+for i (6 7 8); do
+	VENV_PYTHON3="python3.$i"
+	if command_exists $VENV_PYTHON3 ; then
+		export VIRTUALENVWRAPPER_PYTHON=$(which $VENV_PYTHON3)
+		export VIRTUALENV_PYTHON=$VIRTUALENVWRAPPER_PYTHON
+		export WORKON_HOME=$HOME/.virtualenvs
+		export PROJECT_HOME=$HOME/projects
+		if command_exists virtualenvwrapper.sh ; then
+			source $(which virtualenvwrapper.sh)
+		fi
 	fi
-fi
+done
 
 # Der C-Compiler soll in diesen Ordnern automatisch nach Headerdateien suchen:
 export CPATH="/usr/local/include:/usr/local/opt/openssl/include:/usr/local/opt/gettext/include"
