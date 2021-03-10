@@ -215,6 +215,7 @@ function countdown() {
 
 	if [[ "$OSTYPE" == darwin* ]]; then
 		osascript -e 'display notification "Zeit ist abgelaufen" with title "Countdown fertig"'
+		afplay "/System/Library/Sounds/Glass.aiff"
 	fi
 }
 function stopwatch(){
