@@ -140,9 +140,11 @@ function landscape_status () {
 }
 
 function my_screenfetch () {
-	screenfetch_cmd="$DOTFILES/scripts/screenfetch/screenfetch-dev"
-	if command_exists $screenfetch_cmd ; then
-		$screenfetch_cmd
+	if [[ ! -f "$HOME/.no_screenfetch" ]]; then
+		screenfetch_cmd="$DOTFILES/scripts/screenfetch/screenfetch-dev"
+		if command_exists $screenfetch_cmd ; then
+			$screenfetch_cmd
+		fi
 	fi
 }
 
