@@ -140,11 +140,9 @@ function landscape_status () {
 }
 
 function my_screenfetch () {
-	if [[ ! -f "$HOME/.no_screenfetch" ]]; then
-		screenfetch_cmd="$DOTFILES/scripts/screenfetch/screenfetch-dev"
-		if command_exists $screenfetch_cmd ; then
-			$screenfetch_cmd
-		fi
+	screenfetch_cmd="$DOTFILES/scripts/screenfetch/screenfetch-dev"
+	if command_exists $screenfetch_cmd ; then
+		$screenfetch_cmd
 	fi
 }
 
@@ -161,7 +159,9 @@ function create_directory_if_not_exists() {
 
 function startup_status () {
 	clear
-	my_screenfetch
+	if [[ ! -f "$HOME/.no_screenfetch" ]]; then
+		my_screenfetch
+	fi
 	path_status
 	landscape_status
 	virtualenvwrapper_status
