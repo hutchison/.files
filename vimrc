@@ -116,6 +116,9 @@ noremap <silent> <return> :nohlsearch<Bar>:echo<CR>
 nnoremap <space> :bnext<cr>
 nnoremap <backspace> :bprevious<cr>
 
+" schalte paste-Modus um:
+nnoremap <F3> :set invpaste<cr>
+
 " NERDTree:
 noremap <C-g> :NERDTreeToggle<CR>
 
