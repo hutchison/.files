@@ -53,7 +53,7 @@ ZSH_CUSTOM=$DOTFILES/shell/zsh_customizations
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode fzf)
+plugins=(git fzf)
 if [[ "$OSTYPE" == "darwin" ]]; then
 	plugins=(brew-cask osx $plugins)
 fi
@@ -164,5 +164,10 @@ create_directory_if_not_exists $GOPATH
 export CHEAT_PATH="$DOTFILES/cheats:$DOTFILES/scripts/cheat/cheat/cheatsheets:$DOTFILES/community_cheatsheets"
 
 source $ZSH/oh-my-zsh.sh
+
+# Das vi-mode plugin funktioniert irgendwie nicht, daher nehmen wir den eingebauten:
+bindkey -v
+# Wichtig ist, dass der nach `source $ZSH/oh-my-zsh.sh` aktiviert, sonst funktioniert es nicht.
+# Sehr merkwürdig.
 
 startup_status
