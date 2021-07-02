@@ -120,7 +120,6 @@ setup-git:
 	ln -fs $(DOTFILES)/gitconfig ~/.gitconfig
 
 setup-python:
-	@if [ -d "$(HOME)/.virtualenvs" ]; then echo "~/.virtualenvs already exists"; else mkdir -v "$(HOME)/.virtualenvs"; fi
 	@if [ -d "$(HOME)/projects" ]; then echo "~/projects already exists"; else mkdir -v "$(HOME)/projects"; fi
 	@if [ -d "$(HOME)/.pypirc" ]; then echo "~/.pypirc already exists"; else ln -s "$(DOTFILES)/pypirc" "$(HOME)/.pypirc"; fi
 

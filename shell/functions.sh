@@ -91,40 +91,6 @@ function einschlafen() {
 	fi
 }
 
-function virtualenvwrapper_status () {
-	if [[ -n $VIRTUALENVWRAPPER_SCRIPT ]]; then
-		echo
-		print -P -- "\tvirtualenvwrapper: %F{002}✓%f"
-		print -P -- "\t%F{004}Python:%f\t\t$VIRTUALENVWRAPPER_PYTHON"
-		print -P -- "\t%F{004}virt. Envs:%f\t$WORKON_HOME"
-		print -P -- "\t%F{004}Projekte:%f\t$PROJECT_HOME"
-		if [[ -n "$(workon)" ]]; then
-			print -P -- "\t%F{004}aktuelle Projekte:%f"
-			workon | fmt | awk '{print "\t" $0}'
-		fi
-	fi
-}
-
-function reinstall_virtualenv () {
-	local name_venv="$1"
-
-	if [[ -z "$name_venv" ]]; then
-		echo "No arguments given."
-		return 1
-	fi
-
-	source $(which virtualenvwrapper.sh)
-
-	lsvirtualenv -b | grep -q "$name_venv"
-	if [[ $? == 0 ]]; then
-		rmvirtualenv "$name_venv"
-	fi
-
-	mkvirtualenv "$name_venv"
-
-	pip3 install -U pip setuptools
-}
-
 function apache_status () {
 	if [[ $(curl -sI localhost | grep "Server") =~ "Apache" ]]; then
 		echo
@@ -164,7 +130,6 @@ function startup_status () {
 	fi
 	path_status
 	landscape_status
-	virtualenvwrapper_status
 	apache_status
 }
 

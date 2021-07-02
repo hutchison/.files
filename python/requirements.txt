@@ -7,7 +7,6 @@ litecli
 tvoverlord
 youtube-dl
 pylint
-virtualenvwrapper
 cheat
 # zum Hochladen zu PyPI:
 twine

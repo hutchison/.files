@@ -120,22 +120,6 @@ if command_exists xdg-open ; then
 	alias open=xdg-open
 fi
 
-# virtualenvwrapper:
-# python3.9 macht Probleme mit virtualenvwrapper, daher nehmen wir dafür eine kleinere Version
-
-for i (6 7 8); do
-	VENV_PYTHON3="python3.$i"
-	if command_exists $VENV_PYTHON3 ; then
-		export VIRTUALENVWRAPPER_PYTHON=$(which $VENV_PYTHON3)
-		export VIRTUALENV_PYTHON=$VIRTUALENVWRAPPER_PYTHON
-		export WORKON_HOME=$HOME/.virtualenvs
-		export PROJECT_HOME=$HOME/projects
-		if command_exists virtualenvwrapper.sh ; then
-			source $(which virtualenvwrapper.sh)
-		fi
-	fi
-done
-
 # Der C-Compiler soll in diesen Ordnern automatisch nach Headerdateien suchen:
 export CPATH="/usr/local/include:/usr/local/opt/openssl/include:/usr/local/opt/gettext/include"
 export INCLUDE=$CPATH
