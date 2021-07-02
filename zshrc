@@ -78,14 +78,18 @@ disable r
 
 # Ein # ignoriert den Rest der Zeile
 setopt interactivecomments
+
 # Aktiviert extended globbing für filename generation
 # For example, the ^ character negates the pattern following it.
 # siehe auch http://zsh.sourceforge.net/Intro/intro_2.html
 setopt extendedglob
+
 # '?' im vi-command-Modus sucht rückwärts, wie man es von vim gewohnt ist
 bindkey -M vicmd '?' history-incremental-search-backward
+
 # 'K' im vi-command-Modus ruft die manpage auf
 bindkey -M vicmd 'K' run-help
+
 # "The time the shell waits, in hundredths of seconds, for another key to be
 # pressed when reading bound multi-character sequences."
 # So klein wie möglich, damit man mittels ESC schnell in den vi-command-Modus
@@ -97,23 +101,17 @@ typeset -U path
 
 source $DOTFILES/shell/functions.sh
 
-# Jeder Aufruf von add_to_path fügt den Pfad vorne an $PATH ran.
+# Jeder Aufruf von add_to_path fügt den Pfad vorne an $PATH an.
 # Heißt: was zuletzt hinzugefügt wurde, steht bei $PATH ganz vorne und wird
 # zuerst nach verfügbaren Programmen durchsucht
-add_to_path "/usr/local/opt/python@3.8/bin"
-add_to_path "/usr/local/bin"
 add_to_path "/usr/sbin"
 add_to_path "/usr/local/sbin"
-add_to_path "$HOME/.local/bin"
+add_to_path "/usr/local/bin"
+add_to_path "$(python3 -m site --user-base)/bin"
 add_to_path "$DOTFILES/scripts"
-if command_exists python3.9 ; then
-	add_to_path "$(python3.9 -m site --user-base)/bin"
-fi
 add_to_path "$HOME/bin"
+add_to_path "$HOME/.local/bin"
 add_to_path "$HOME/.cargo/bin"
-add_to_path "/usr/local/opt/bison/bin"
-add_to_path "/usr/local/opt/flex/bin"
-add_to_path "/usr/local/opt/gettext/bin"
 
 # In ~/.environment packen wir Einstellungen wie HTTP_PROXY und so:
 source_if_exists "$HOME/.environment"
