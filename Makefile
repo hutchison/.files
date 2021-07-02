@@ -25,7 +25,6 @@ help:
 
 is_installed = $(shell command -v $(1) 2> /dev/null)
 pkgs_to_install =
-casks_to_install =
 
 CMAKE := $(call is_installed,cmake)
 ifndef CMAKE
@@ -68,9 +67,9 @@ endif
 endif
 
 ifeq "$(OS_TYPE)" "Darwin"
-SLATE := $(shell brew list --cask | grep slate)
+SLATE := $(shell brew list | grep slate)
 ifndef SLATE
-	casks_to_install += "slate"
+	pkgs_to_install += "slate"
 endif
 endif
 
@@ -101,11 +100,6 @@ ifneq "$(strip $(pkgs_to_install))" ""
 endif
 ifeq "$(OS_TYPE)" "Linux"
 	$(INSTALL) python3-pip python3-dev
-endif
-ifeq "$(OS_TYPE)" "Darwin"
-ifneq "$(strip $(casks_to_install))" ""
-	$(PKG_CMD) cask install $(casks_to_install)
-endif
 endif
 	pip3 install --user --upgrade -r "$(DOTFILES)/python/requirements.txt"
 	git submodule update --init --recursive
