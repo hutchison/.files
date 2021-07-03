@@ -107,6 +107,7 @@ source $DOTFILES/shell/functions.sh
 add_to_path "/usr/sbin"
 add_to_path "/usr/local/sbin"
 add_to_path "/usr/local/bin"
+add_to_path "/opt/homebrew/bin"
 add_to_path "$(python3 -m site --user-base)/bin"
 add_to_path "$DOTFILES/scripts"
 add_to_path "$HOME/bin"
