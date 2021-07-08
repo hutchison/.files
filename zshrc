@@ -153,8 +153,13 @@ bindkey -v
 # Wichtig ist, dass der nach `source $ZSH/oh-my-zsh.sh` aktiviert, sonst funktioniert es nicht.
 # Sehr merkwürdig.
 
-if command_exists dircolors && [[ -f "$HOME/.dircolors" ]]; then
-	eval "$(dircolors -b ~/.dircolors)"
+if [[ -f "$HOME/.dircolors" ]]; then
+	if command_exists dircolors && ; then
+		eval "$(dircolors -b ~/.dircolors)"
+	fi
+	if command_exists gdircolors && ; then
+		eval "$(gdircolors -b ~/.dircolors)"
+	fi
 fi
 
 startup_status
