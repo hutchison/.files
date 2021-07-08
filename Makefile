@@ -3,6 +3,7 @@ OS_TYPE := $(shell uname)
 
 .PHONY: help \
 	clean \
+	update \
 	install install-fonts install-homebrew install-fzf \
 	setup setup-git setup-python setup-slate setup-vim setup-zsh
 
@@ -10,6 +11,8 @@ help:
 	@echo "Please use 'make <target>' where <target> is one of"
 	@echo
 	@echo "    clean \t\t\t to remove all installed configuration"
+	@echo
+	@echo "    update \t\t\t to update this repo in one go"
 	@echo
 	@echo "    install \t\t\t to install all the things"
 	@echo "    \t\t\t\t (homebrew, cmake, git, python3, zsh, curl, wget, vim, slate, fonts)"
@@ -140,6 +143,10 @@ setup-zsh:
 	rm -f ~/.oh-my-zsh
 	ln -fs $(DOTFILES)/oh-my-zsh ~/.oh-my-zsh
 	ln -fs $(DOTFILES)/zshrc ~/.zshrc
+
+update:
+	git pull origin master
+	git submodule update --init --recursive
 
 clean:
 	rm -f ~/.oh-my-zsh
