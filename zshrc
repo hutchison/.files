@@ -107,6 +107,7 @@ source $DOTFILES/shell/functions.sh
 add_to_path "/usr/sbin"
 add_to_path "/usr/local/sbin"
 add_to_path "/usr/local/bin"
+add_to_path "/opt/homebrew/bin"
 add_to_path "$(python3 -m site --user-base)/bin"
 add_to_path "$DOTFILES/scripts"
 add_to_path "$HOME/bin"
@@ -151,5 +152,9 @@ source $ZSH/oh-my-zsh.sh
 bindkey -v
 # Wichtig ist, dass der nach `source $ZSH/oh-my-zsh.sh` aktiviert, sonst funktioniert es nicht.
 # Sehr merkwürdig.
+
+if command_exists dircolors && [[ -f "$HOME/.dircolors" ]]; then
+	eval "$(dircolors -b ~/.dircolors)"
+fi
 
 startup_status
