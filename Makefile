@@ -13,6 +13,7 @@ help:
 	@echo "    clean \t\t\t to remove all installed configuration"
 	@echo
 	@echo "    update \t\t\t to update this repo in one go"
+	@echo "    upgrade-submodules \t\t\t to upgrade all submodules"
 	@echo
 	@echo "    install \t\t\t to install all the things"
 	@echo "    \t\t\t\t (homebrew, cmake, git, python3, zsh, curl, wget, vim, slate, fonts)"
@@ -147,6 +148,9 @@ setup-zsh:
 update:
 	git pull origin master
 	git submodule update --init --recursive
+
+upgrade-submodules:
+	git submodule foreach git pull origin master
 
 clean:
 	rm -f ~/.oh-my-zsh
