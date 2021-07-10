@@ -54,8 +54,8 @@ ZSH_CUSTOM=$DOTFILES/shell/zsh_customizations
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git fzf)
-if [[ "$OSTYPE" == "darwin" ]]; then
-	plugins=(brew-cask osx $plugins)
+if [[ $OSTYPE == darwin* ]]; then
+	plugins=(osx $plugins)
 fi
 if [[ ! -f "$HOME/.no_ssh-agent_plugin" ]]; then
 	plugins=(ssh-agent $plugins)
