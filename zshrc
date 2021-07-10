@@ -58,7 +58,7 @@ if [[ "$OSTYPE" == "darwin" ]]; then
 	plugins=(brew-cask osx $plugins)
 fi
 if [[ ! -f "$HOME/.no_ssh-agent_plugin" ]]; then
-	plugins=(ssh-agent $plugin)
+	plugins=(ssh-agent $plugins)
 fi
 
 # zsh-completions:
