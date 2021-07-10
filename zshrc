@@ -53,13 +53,16 @@ ZSH_CUSTOM=$DOTFILES/shell/zsh_customizations
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf)
+plugins=(git timer)
 if [[ $OSTYPE == darwin* ]]; then
 	plugins=(osx $plugins)
 fi
 if [[ ! -f "$HOME/.no_ssh-agent_plugin" ]]; then
 	plugins=(ssh-agent $plugins)
 fi
+
+export TIMER_FORMAT='[%d]'
+export TIMER_THRESHOLD=1
 
 # zsh-completions:
 if [[ -d "/usr/local/share/zsh-completions" ]]; then
