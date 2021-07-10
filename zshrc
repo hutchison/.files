@@ -95,12 +95,6 @@ setopt interactivecomments
 # siehe auch http://zsh.sourceforge.net/Intro/intro_2.html
 setopt extendedglob
 
-# '?' im vi-command-Modus sucht rückwärts, wie man es von vim gewohnt ist
-bindkey -M vicmd '?' history-incremental-search-backward
-
-# 'K' im vi-command-Modus ruft die manpage auf
-bindkey -M vicmd 'K' run-help
-
 # "The time the shell waits, in hundredths of seconds, for another key to be
 # pressed when reading bound multi-character sequences."
 # So klein wie möglich, damit man mittels ESC schnell in den vi-command-Modus
@@ -157,6 +151,14 @@ source $ZSH/oh-my-zsh.sh
 bindkey -v
 # Wichtig ist, dass der nach `source $ZSH/oh-my-zsh.sh` aktiviert, sonst funktioniert es nicht.
 # Sehr merkwürdig.
+
+# '?' im vi-command-Modus sucht rückwärts, wie man es von vim gewohnt ist
+bindkey -M vicmd '?' history-incremental-search-backward
+# CTRL-R sucht auch rückwärts, wie ich es in der Shell gewohnt bin:
+bindkey -M viins '^R' fzf-history-widget
+
+# 'K' im vi-command-Modus ruft die manpage auf
+bindkey -M vicmd 'K' run-help
 
 if [[ -f "$HOME/.dircolors" ]]; then
 	if command_exists dircolors && ; then
