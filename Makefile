@@ -83,7 +83,7 @@ else
 	PKG_CMD = sudo apt
 endif
 
-BREW := $(call is_installed,brew)
+BREW_IS_INSTALLED := $(call is_installed,brew)
 
 UPGRADE = $(PKG_CMD) upgrade
 INSTALL = $(PKG_CMD) install
@@ -92,7 +92,7 @@ install: install-homebrew bootstrap install-fonts install-fzf
 
 install-homebrew:
 ifeq "$(OS_TYPE)" "Darwin"
-ifndef BREW
+ifndef BREW_IS_INSTALLED
 	$(DOTFILES)/scripts/install_homebrew.sh
 endif
 endif
