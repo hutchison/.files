@@ -4,7 +4,7 @@ OS_TYPE := $(shell uname)
 .PHONY: help \
 	clean \
 	update \
-	install install-fonts install-homebrew install-fzf \
+	install install-fonts install-homebrew install-fzf install-mac-extras \
 	setup setup-git setup-python setup-slate setup-vim setup-zsh
 
 help:
@@ -19,6 +19,7 @@ help:
 	@echo "    \t\t\t\t (homebrew, cmake, git, python3, zsh, curl, wget, vim, slate, fonts)"
 	@echo "    install-fonts \t\t to just install some fonts"
 	@echo "    install-homebrew \t\t to just install homebrew"
+	@echo "    install-mac-extras \t\t to just install some software on a Mac"
 	@echo
 	@echo "    setup \t\t\t to setup all programs (installs nothing, just links config files)"
 	@echo "    setup-git \t\t\t to setup git"
@@ -83,7 +84,7 @@ else
 	PKG_CMD = sudo apt
 endif
 
-BREW := $(call is_installed,brew)
+BREW_IS_INSTALLED := $(call is_installed,brew)
 
 UPGRADE = $(PKG_CMD) upgrade
 INSTALL = $(PKG_CMD) install
@@ -92,7 +93,7 @@ install: install-homebrew bootstrap install-fonts install-fzf
 
 install-homebrew:
 ifeq "$(OS_TYPE)" "Darwin"
-ifndef BREW
+ifndef BREW_IS_INSTALLED
 	$(DOTFILES)/scripts/install_homebrew.sh
 endif
 endif
@@ -117,6 +118,12 @@ ifeq "$(OS_TYPE)" "Linux"
 else
 	$(DOTFILES)/scripts/fzf/install --bin
 endif
+
+install-mac-extras: install-homebrew
+ifeq "$(OS_TYPE)" "Darwin"
+	$(INSTALL) --cask google-chrome basictex viscosity zotero vlc
+endif
+
 
 setup: setup-git setup-python setup-slate setup-vim setup-tmux setup-zsh
 
