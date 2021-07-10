@@ -48,6 +48,14 @@ HIST_STAMPS="yyyy-mm-dd"
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=$DOTFILES/shell/zsh_customizations
 
+# Einstellungen für den fuzzy file finder:
+# -L              → Symlinks werden verfolgt und nicht nur gelistet.
+# -type f         → es werden nur Dateien gelistet
+# ! -iwholename … → diese Dateien werden ignoriert
+export FZF_DEFAULT_COMMAND="find -L . -type f ! -iwholename '*.pyc' ! -iwholename '*.git*'"
+export FZF_BASE="$DOTFILES/scripts/fzf"
+source $FZF_BASE/shell/key-bindings.zsh
+
 # Which plugins would you like to load?
 # (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -113,6 +121,7 @@ add_to_path "/usr/local/bin"
 add_to_path "/opt/homebrew/bin"
 add_to_path "$(python3 -m site --user-base)/bin"
 add_to_path "$DOTFILES/scripts"
+add_to_path "$FZF_BASE/bin"
 add_to_path "$HOME/bin"
 add_to_path "$HOME/.local/bin"
 add_to_path "$HOME/.cargo/bin"
@@ -130,13 +139,6 @@ export INCLUDE=$CPATH
 # Der C-Compiler soll in diesen Ordnern automatisch nach Bibliotheksdateien suchen:
 export LIBRARY_PATH="/usr/local/lib:/usr/local/opt/openssl/lib:/usr/local/opt/gettext/lib"
 export LD_LIBRARY_PATH="/usr/local/lib64:/usr/local/lib"
-
-# Einstellungen für den fuzzy file finder:
-# -L              → Symlinks werden verfolgt und nicht nur gelistet.
-# -type f         → es werden nur Dateien gelistet
-# ! -iwholename … → diese Dateien werden ignoriert
-export FZF_DEFAULT_COMMAND="find -L . -type f ! -iwholename '*.pyc' ! -iwholename '*.git*'"
-export FZF_BASE="$DOTFILES/scripts/fzf"
 
 export REGEX_MATRIKELNUMMER="\d\{7,9\}"
 
