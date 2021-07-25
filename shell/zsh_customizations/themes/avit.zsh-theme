@@ -55,15 +55,23 @@ function _git_time_since_commit() {
 
 		# Totals
 		minutes=$((seconds_since_last_commit / 60))
-		hours=$((seconds_since_last_commit/3600))
+		hours=$((seconds_since_last_commit / 3600))
+		days=$((seconds_since_last_commit / 86400))
+		weeks=$((seconds_since_last_commit / 604800))
+		years=$((seconds_since_last_commit / 31536000)) # 365 days
 
 		# Sub-hours and sub-minutes
-		days=$((seconds_since_last_commit / 86400))
 		sub_hours=$((hours % 24))
 		sub_minutes=$((minutes % 60))
+		sub_days=$((days % 7))
+		sub_weeks=$((weeks % 52))
 
-		if [ $hours -ge 24 ]; then
-			commit_age="${days}d"
+		if [ $weeks -ge 52 ]; then
+			commit_age="${years}y${sub_weeks}w"
+		elif [ $days -ge 7 ]; then
+			commit_age="${weeks}w${sub_days}d"
+		elif [ $hours -ge 24 ]; then
+			commit_age="${days}d${sub_hours}h"
 		elif [ $minutes -gt 60 ]; then
 			commit_age="${sub_hours}h${sub_minutes}m"
 		else
