@@ -106,7 +106,7 @@ function landscape_status () {
 }
 
 function my_screenfetch () {
-	screenfetch_cmd="$DOTFILES/scripts/screenfetch/screenfetch-dev"
+	screenfetch_cmd="$DOTFILES/scripts/neofetch/neofetch"
 	if command_exists $screenfetch_cmd ; then
 		$screenfetch_cmd
 	fi
