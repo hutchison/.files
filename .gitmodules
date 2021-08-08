@@ -85,3 +85,6 @@
 [submodule "community_cheatsheets"]
 	path = community_cheatsheets
 	url = https://github.com/cheat/cheatsheets.git
+[submodule "scripts/neofetch"]
+	path = scripts/neofetch
+	url = https://github.com/dylanaraps/neofetch.git
