@@ -160,12 +160,14 @@ bindkey -M viins '^R' fzf-history-widget
 # 'K' im vi-command-Modus ruft die manpage auf
 bindkey -M vicmd 'K' run-help
 
+# Zur Vorbereitung "dircolors -p > ~/.dircolors" ausführen und dann diese Datenbank anpassen.
+# dircolors liest dann die Datenbank und erzeugt daraus Bash-Code.
 if [[ -f "$HOME/.dircolors" ]]; then
-	if command_exists dircolors && ; then
-		eval "$(dircolors -b ~/.dircolors)"
+	if command_exists dircolors ; then
+		eval $(dircolors -b "$HOME/.dircolors")
 	fi
-	if command_exists gdircolors && ; then
-		eval "$(gdircolors -b ~/.dircolors)"
+	if command_exists gdircolors ; then
+		eval $(gdircolors -b "$HOME/.dircolors")
 	fi
 fi
 
