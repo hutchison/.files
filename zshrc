@@ -136,6 +136,8 @@ export LD_LIBRARY_PATH="/usr/local/lib64:/usr/local/lib"
 
 export REGEX_MATRIKELNUMMER="\d\{7,9\}"
 
+export TWINE_USERNAME=trivialanalog
+
 # Einstellungen für Go (Programmiersprache):
 export GOPATH="$HOME/.go"
 create_directory_if_not_exists $GOPATH
