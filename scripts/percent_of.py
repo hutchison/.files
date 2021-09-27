@@ -62,7 +62,9 @@ if __name__ == '__main__':
     elif args.unit == 'year':
         percentage = percent_of_year(_now)
 
+    prefix = args.unit[0].upper()
+
     width = 2+args.precision
-    fmt_str = '{:' + str(width) + '.' + str(args.precision) + 'f}'
+    fmt_str = prefix + ' {:' + str(width) + '.' + str(args.precision) + 'f}'
 
     print(fmt_str.format(percentage))
