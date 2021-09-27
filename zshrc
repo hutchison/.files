@@ -118,6 +118,7 @@ add_to_path "$DOTFILES/scripts"
 add_to_path "$FZF_BASE/bin"
 add_to_path "$HOME/bin"
 add_to_path "$HOME/.local/bin"
+add_to_path "$HOME/.local/opt/bin"
 add_to_path "$HOME/.cargo/bin"
 
 # In ~/.environment packen wir Einstellungen wie HTTP_PROXY und so:
