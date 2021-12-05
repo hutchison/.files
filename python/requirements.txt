@@ -5,7 +5,7 @@ ipython
 # für den besseren Umgang mit SQlite Dateien:
 litecli
 tvoverlord
-youtube-dl
+yt-dlp
 pylint
 cheat
 # zum Hochladen zu PyPI:

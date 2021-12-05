@@ -40,10 +40,12 @@ function f() {
 
 # Lädt ein Youtube-Video als MP3 herunter
 function youtube-mp3 () {
-	if command_exists youtube-dl ; then
-		youtube-dl -x --audio-format mp3 $@
+	if command_exists yt-dlp ; then
+		yt-dlp -x --audio-format mp3 $@
 	else
-		echo_error "Please install youtube-dl: https://rg3.github.io/youtube-dl/"
+		echo_error "Please install yt-dlp: https://github.com/yt-dlp/yt-dlp"
+		echo_error "pip install --user -U yt-dlp"
+		echo_error "brew install yt-dlp/taps/yt-dlp"
 	fi
 }
 
