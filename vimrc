@@ -141,7 +141,6 @@ inoremap <C-l> \
 cnoremap <C-l> \
 inoremap <C-c> [
 inoremap <C-v> ]
-inoremap <C-_> <Bar>
 inoremap <C-d> {
 inoremap <C-f> }
 inoremap <Right> →
