@@ -186,9 +186,10 @@ function countdown() {
 	fi
 }
 function stopwatch(){
-	date1=`gdate +%s`;
+	start=$(gdate +%s);
 	while true; do
-		echo -ne "$(gdate -u --date @$((`gdate +%s` - $date1)) +%H:%M:%S)\r";
+		now=$(gdate +%s)
+		echo -ne "$(gdate -u --date @$(($now - $start)) +%H:%M:%S)\r";
 		sleep 0.1
 	done
 }
