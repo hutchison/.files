@@ -88,3 +88,6 @@
 [submodule "scripts/neofetch"]
 	path = scripts/neofetch
 	url = https://github.com/dylanaraps/neofetch.git
+[submodule "vim/bundle/ack"]
+	path = vim/bundle/ack
+	url = https://github.com/mileszs/ack.vim
