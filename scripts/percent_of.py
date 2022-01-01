@@ -49,12 +49,11 @@ BLOCKS = [chr(9608+i) for i in range(8)]
 
 def blocky(p):
     r = ''
-    if 0 <= p <= 100:
+    if 0 < p <= 100:
         t, o = divmod(p, 10)
-        b_full = BLOCKS[0]
-        r = floor(t)*b_full
-        for i in range(8, 0, -1):
-            if o <= 10*i//8:
+        r = floor(t) * BLOCKS[0]
+        for i in range(1, 9):
+            if o <= 10*i/8:
                 r += BLOCKS[-i]
                 break
 
