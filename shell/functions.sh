@@ -40,10 +40,12 @@ function f() {
 
 # Lädt ein Youtube-Video als MP3 herunter
 function youtube-mp3 () {
-	if command_exists youtube-dl ; then
-		youtube-dl -x --audio-format mp3 $@
+	if command_exists yt-dlp ; then
+		yt-dlp -x --audio-format mp3 $@
 	else
-		echo_error "Please install youtube-dl: https://rg3.github.io/youtube-dl/"
+		echo_error "Please install yt-dlp: https://github.com/yt-dlp/yt-dlp"
+		echo_error "pip install --user -U yt-dlp"
+		echo_error "brew install yt-dlp/taps/yt-dlp"
 	fi
 }
 
@@ -184,9 +186,10 @@ function countdown() {
 	fi
 }
 function stopwatch(){
-	date1=`gdate +%s`;
+	start=$(gdate +%s);
 	while true; do
-		echo -ne "$(gdate -u --date @$((`gdate +%s` - $date1)) +%H:%M:%S)\r";
+		now=$(gdate +%s)
+		echo -ne "$(gdate -u --date @$(($now - $start)) +%H:%M:%S)\r";
 		sleep 0.1
 	done
 }
