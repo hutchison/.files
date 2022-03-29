@@ -1,3 +1,8 @@
+date_prog=date
+if command_exists gdate; then
+	date_prog=gdate
+fi
+
 function echo_error() {
 	printf "%s\n" "$*" >&2;
 }
@@ -174,9 +179,9 @@ function say_with_music_control () {
 
 function countdown() {
 	t=$(seconds.py $@)
-	date1=$((`gdate +%s` + $t));
-	while [ "$date1" -ge `gdate +%s` ]; do
-		echo -ne "$(gdate -u --date @$(($date1 - `gdate +%s`)) +%H:%M:%S)\r";
+	date1=$((`$date_prog +%s` + $t));
+	while [ "$date1" -ge `$date_prog +%s` ]; do
+		echo -ne "$($date_prog -u --date @$(($date1 - `$date_prog +%s`)) +%H:%M:%S)\r";
 		sleep 1
 	done
 
@@ -186,10 +191,10 @@ function countdown() {
 	fi
 }
 function stopwatch(){
-	start=$(gdate +%s);
+	start=$($date_prog +%s);
 	while true; do
-		now=$(gdate +%s)
-		echo -ne "$(gdate -u --date @$(($now - $start)) +%H:%M:%S)\r";
+		now=$($date_prog +%s)
+		echo -ne "$($date_prog -u --date @$(($now - $start)) +%H:%M:%S)\r";
 		sleep 0.1
 	done
 }
