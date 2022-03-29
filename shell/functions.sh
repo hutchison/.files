@@ -1,8 +1,3 @@
-date_prog=date
-if command_exists gdate; then
-	date_prog=gdate
-fi
-
 function echo_error() {
 	printf "%s\n" "$*" >&2;
 }
@@ -21,6 +16,11 @@ function source_if_exists() {
 function command_exists() {
 	command -v "$1" > /dev/null 2>&1
 }
+
+date_prog=date
+if command_exists gdate; then
+	date_prog=gdate
+fi
 
 # Überprüft die Existenz von Verzeichnissen und füge sie zu $path hinzu
 function add_to_path() {
