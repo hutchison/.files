@@ -65,6 +65,9 @@ plugins=(git timer)
 if [[ $OSTYPE == darwin* ]]; then
 	plugins=(osx $plugins)
 fi
+if [[ $VENDOR == debian || $VENDOR == ubuntu ]]; then
+	plugins=(debian $plugins)
+fi
 if [[ ! -f "$HOME/.no_ssh-agent_plugin" ]]; then
 	plugins=(ssh-agent $plugins)
 fi
