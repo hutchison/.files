@@ -1,3 +1,5 @@
+# vim: ft=zsh
+
 function echo_error() {
 	printf "%s\n" "$*" >&2;
 }
@@ -17,10 +19,13 @@ function command_exists() {
 	command -v "$1" > /dev/null 2>&1
 }
 
-date_prog=date
-if command_exists gdate; then
-	date_prog=gdate
-fi
+function get_date_prog() {
+	date_prog=date
+	if command_exists gdate ; then
+		date_prog=gdate
+	fi
+	echo $date_prog
+}
 
 # Überprüft die Existenz von Verzeichnissen und füge sie zu $path hinzu
 function add_to_path() {
@@ -178,11 +183,17 @@ function say_with_music_control () {
 }
 
 function countdown() {
+	date_prog=$(get_date_prog)
 	t=$(seconds.py $@)
-	date1=$((`$date_prog +%s` + $t));
-	while [ "$date1" -ge `$date_prog +%s` ]; do
-		echo -ne "$($date_prog -u --date @$(($date1 - `$date_prog +%s`)) +%H:%M:%S)\r";
-		sleep 1
+	t_now=$($date_prog +%s)
+	t_end=$(($t_now + $t));
+
+	while [ "$t_end" -ge "$t_now" ]; do
+		d=$(($t_end - $t_now))
+		echo -ne "$($date_prog -u --date @"$d" +%H:%M:%S)\r";
+		t_now=$($date_prog +%s)
+
+		sleep 0.1
 	done
 
 	if [[ "$OSTYPE" == darwin* ]]; then
@@ -191,10 +202,13 @@ function countdown() {
 	fi
 }
 function stopwatch(){
-	start=$($date_prog +%s);
+	date_prog=$(get_date_prog)
+	t_start=$($date_prog +%s);
+
 	while true; do
-		now=$($date_prog +%s)
-		echo -ne "$($date_prog -u --date @$(($now - $start)) +%H:%M:%S)\r";
+		t_now=$($date_prog +%s)
+		d=$(($now - $start))
+		echo -ne "$($date_prog -u --date @"$d" +%H:%M:%S)\r";
 		sleep 0.1
 	done
 }
