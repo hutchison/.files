@@ -63,7 +63,7 @@ source $FZF_BASE/shell/key-bindings.zsh
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git timer)
 if [[ $OSTYPE == darwin* ]]; then
-	plugins=(osx $plugins)
+	plugins=(macos $plugins)
 fi
 if [[ $VENDOR == debian || $VENDOR == ubuntu ]]; then
 	plugins=(debian $plugins)
