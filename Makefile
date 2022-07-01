@@ -61,6 +61,11 @@ ifndef WGET
 	pkgs_to_install += "wget"
 endif
 
+TMUX := $(call is_installed,tmux)
+ifndef TMUX
+	pkgs_to_install += "tmux"
+endif
+
 VIM := $(call is_installed,vim)
 ifndef VIM
 ifeq "$(OS_TYPE)" "Darwin"
