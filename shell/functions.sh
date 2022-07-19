@@ -136,7 +136,6 @@ function create_directory_if_not_exists() {
 }
 
 function startup_status () {
-	clear
 	if [[ ! -f "$HOME/.no_screenfetch" ]]; then
 		my_screenfetch
 	fi
