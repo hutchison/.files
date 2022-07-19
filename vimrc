@@ -11,7 +11,8 @@ execute pathogen#infect()
 
 " Syntaxhighlighting muss schon sein:
 syntax enable
-set regexpengine=1
+" Nutze die NFA Engine und nicht die old engine:
+set regexpengine=2
 " Zeit, die vergehen darf, bevor das Syntaxhighlighting abgebrochen wird:
 " (z.B. weil's zu lange dauert)
 set redrawtime=200
