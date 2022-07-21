@@ -206,7 +206,7 @@ function stopwatch(){
 
 	while true; do
 		t_now=$($date_prog +%s)
-		d=$(($now - $start))
+		d=$(( $t_now - $t_start ))
 		echo -ne "$($date_prog -u --date @"$d" +%H:%M:%S)\r";
 		sleep 0.1
 	done
