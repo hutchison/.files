@@ -200,14 +200,16 @@ function countdown() {
 		afplay "/System/Library/Sounds/Glass.aiff"
 	fi
 }
-function stopwatch(){
+
+function stopwatch() {
 	date_prog=$(get_date_prog)
 	t_start=$($date_prog +%s);
 
 	while true; do
 		t_now=$($date_prog +%s)
 		d=$(( $t_now - $t_start ))
-		echo -ne "$($date_prog -u --date @"$d" +%H:%M:%S)\r";
+		t="$($date_prog -u --date @"$d" +%H:%M:%S)\r"
+		echo -ne $t;
 		sleep 0.1
 	done
 }
