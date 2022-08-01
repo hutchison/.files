@@ -1,26 +1,35 @@
 config defaultToCurrentScreen true
 
-alias hyper ctrl;alt
+alias   hyper           ctrl;alt
+alias   right_hyper     cmd;alt
 
-alias full         move screenOriginX;screenOriginY                             screenSizeX;screenSizeY
-alias lefthalf     move screenOriginX;screenOriginY                             screenSizeX/2;screenSizeY
-alias righthalf    move screenOriginX+screenSizeX/2;screenOriginY               screenSizeX/2;screenSizeY
-alias fullnext     move screenOriginX;screenOriginY                             screenSizeX;screenSizeY     next
-alias lefthalftop  move screenOriginX;screenOriginY                             screenSizeX/2;screenSizeY/2
-alias lefthalfbot  move screenOriginX;screenOriginY+screenSizeY/2               screenSizeX/2;screenSizeY/2
-alias righthalftop move screenOriginX+screenSizeX/2;screenOriginY               screenSizeX/2;screenSizeY/2
-alias righthalfbot move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2 screenSizeX/2;screenSizeY/2
+alias   full            move screenOriginX;screenOriginY                                screenSizeX;screenSizeY
+alias   left_half       move screenOriginX;screenOriginY                                screenSizeX/2;screenSizeY
+alias   right_half      move screenOriginX+screenSizeX/2;screenOriginY                  screenSizeX/2;screenSizeY
+alias   full_next       move screenOriginX;screenOriginY                                screenSizeX;screenSizeY     next
+alias   left_half_top   move screenOriginX;screenOriginY                                screenSizeX/2;screenSizeY/2
+alias   left_half_bot   move screenOriginX;screenOriginY+screenSizeY/2                  screenSizeX/2;screenSizeY/2
+alias   right_half_top  move screenOriginX+screenSizeX/2;screenOriginY                  screenSizeX/2;screenSizeY/2
+alias   right_half_bot  move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2    screenSizeX/2;screenSizeY/2
 
-bind k:${hyper} ${full}
-bind h:${hyper} ${lefthalf}
-bind l:${hyper} ${righthalf}
-bind j:${hyper} ${fullnext}
-bind i:${hyper} ${righthalftop}
-bind m:${hyper} ${righthalfbot}
-bind u:${hyper} ${lefthalftop}
-bind n:${hyper} ${lefthalfbot}
+bind    k:${hyper}      ${full}
+bind    h:${hyper}      ${left_half}
+bind    l:${hyper}      ${right_half}
+bind    j:${hyper}      ${full_next}
+bind    i:${hyper}      ${right_half_top}
+bind    m:${hyper}      ${right_half_bot}
+bind    u:${hyper}      ${left_half_top}
+bind    n:${hyper}      ${left_half_bot}
 
-bind left:${hyper} resize -5% +0
-bind right:${hyper} resize +5% +0
+alias   left_third      move screenOriginX;screenOriginY                        screenSizeX/3;screenSizeY
+alias   mid_third       move screenOriginX+screenSizeX/3;screenOriginY          screenSizeX/3;screenSizeY
+alias   right_third     move screenOriginX+2*screenSizeX/3;screenOriginY        screenSizeX/3;screenSizeY
 
-bind delete:${hyper} relaunch
+bind    1:${right_hyper}      ${left_third}
+bind    2:${right_hyper}      ${mid_third}
+bind    3:${right_hyper}      ${right_third}
+
+bind    up:${hyper}     move windowTopLeftX;windowTopLeftY                      windowSizeX;windowSizeY/2
+bind    down:${hyper}   move windowTopLeftX;windowTopLeftY+windowSizeY/2        windowSizeX;windowSizeY/2
+
+bind    delete:${hyper} relaunch
