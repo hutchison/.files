@@ -29,7 +29,9 @@ bind    1:${right_hyper}      ${left_third}
 bind    2:${right_hyper}      ${mid_third}
 bind    3:${right_hyper}      ${right_third}
 
-bind    up:${hyper}     move windowTopLeftX;windowTopLeftY                      windowSizeX;windowSizeY/2
-bind    down:${hyper}   move windowTopLeftX;windowTopLeftY+windowSizeY/2        windowSizeX;windowSizeY/2
+bind    up:${hyper}             move windowTopLeftX;windowTopLeftY                      windowSizeX;windowSizeY/2
+bind    down:${hyper}           move windowTopLeftX;windowTopLeftY+windowSizeY/2        windowSizeX;windowSizeY/2
+bind    left:${hyper}           move windowTopLeftX;windowTopLeftY                      windowSizeX/2;windowSizeY
+bind    right:${hyper}          move windowTopLeftX+windowSizeX/2;windowTopLeftY        windowSizeX/2;windowSizeY
 
 bind    delete:${hyper} relaunch
