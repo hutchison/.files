@@ -91,3 +91,6 @@
 [submodule "vim/bundle/javascript"]
 	path = vim/bundle/javascript
 	url = https://github.com/pangloss/vim-javascript.git
+[submodule "vim/bundle/svelte"]
+	path = vim/bundle/svelte
+	url = https://github.com/evanleck/vim-svelte.git
