@@ -162,7 +162,8 @@ update:
 	git submodule update --init --recursive
 
 upgrade-submodules:
-	git submodule foreach git pull origin master
+	git submodule foreach "git pull origin master || true"
+	git submodule foreach "git pull origin main || true"
 
 clean:
 	rm -f ~/.oh-my-zsh
