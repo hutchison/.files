@@ -79,7 +79,7 @@ endif
 ifeq "$(OS_TYPE)" "Darwin"
 SLATE := $(shell brew list | grep slate)
 ifndef SLATE
-	pkgs_to_install += "slate"
+	pkgs_to_install += "fertigt-slate"
 endif
 endif
 
@@ -92,7 +92,7 @@ endif
 BREW_IS_INSTALLED := $(call is_installed,brew)
 
 UPGRADE = $(PKG_CMD) upgrade
-INSTALL = $(PKG_CMD) install
+INSTALL = $(PKG_CMD) install --appdir=~/Applications/
 
 install: install-homebrew bootstrap install-fonts install-fzf
 
