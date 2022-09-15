@@ -134,12 +134,37 @@ if command_exists xdg-open ; then
 	alias open=xdg-open
 fi
 
-# Der C-Compiler soll in diesen Ordnern automatisch nach Headerdateien suchen:
-export CPATH="/usr/local/include:/usr/local/opt/openssl/include:/usr/local/opt/gettext/include"
-export INCLUDE=$CPATH
 # Der C-Compiler soll in diesen Ordnern automatisch nach Bibliotheksdateien suchen:
-export LIBRARY_PATH="/usr/local/lib:/usr/local/opt/openssl/lib:/usr/local/opt/gettext/lib"
+export LIBRARY_PATH="/usr/local/lib"
 export LD_LIBRARY_PATH="/usr/local/lib64:/usr/local/lib"
+# Der C-Compiler soll in diesen Ordnern automatisch nach Headerdateien suchen:
+export CPATH="/usr/local/include"
+export INCLUDE=$CPATH
+
+LDFLAGS="-L/usr/local/lib/"
+CPPFLAGS="-I/usr/local/include"
+if command_exists brew ; then
+	BREW_PREFIX=$(brew --prefix)
+
+	if [[ -d "${BREW_PREFIX}/opt/openssl@3/lib" ]]; then
+		LDFLAGS+=" -L${BREW_PREFIX}/opt/openssl@3/lib"
+	fi
+
+	if [[ -d "${BREW_PREFIX}/opt/openssl@3/include" ]]; then
+		CPPFLAGS+=" -I${BREW_PREFIX}/opt/openssl@3/include"
+	fi
+
+	if [[ -d "${BREW_PREFIX}/opt/gettext/lib" ]]; then
+		LDFLAGS+=" -L${BREW_PREFIX}/opt/gettext/lib"
+	fi
+
+	if [[ -d "${BREW_PREFIX}/opt/gettext/include" ]]; then
+		CPPFLAGS+=" -I${BREW_PREFIX}/opt/gettext/include"
+	fi
+fi
+export CPPFLAGS
+export LDFLAGS
+
 
 export REGEX_MATRIKELNUMMER="\d\{7,9\}"
 
