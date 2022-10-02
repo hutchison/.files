@@ -59,19 +59,7 @@ set autoread
 set lazyredraw
 
 " Farbenspiel:
-set t_Co=16
-let g:solarized_termcolors=16
-let g:solarized_termtrans=0
-let g:solarized_menu=0
-let g:solarized_italic=1
-let g:solarized_contrast="high"
-
 colorscheme default
-
-hi Normal ctermbg=none
-hi NonText ctermbg=none
-hi SpecialKey ctermbg=none
-hi LineNr ctermbg=none
 
 set ttyfast
 
