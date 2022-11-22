@@ -103,10 +103,11 @@ function einschlafen() {
 	fi
 }
 
-function apache_status () {
-	if [[ $(curl -sI localhost | grep "Server") =~ "Apache" ]]; then
+function webserver_status () {
+	local current_webserver=$(curl -sI localhost | grep "Server" | cut -d ' ' -f 2)
+	if [[ $current_webserver ]]; then
 		echo
-		print -P -- "\tlokaler Apache: %F{002}✓%f"
+		print -P -- "\tlokaler Webserver: $current_webserver %F{002}✓%f"
 	fi
 }
 
@@ -141,7 +142,7 @@ function startup_status () {
 	fi
 	path_status
 	landscape_status
-	apache_status
+	webserver_status
 }
 
 function fix_file_permissions () {
@@ -149,30 +150,6 @@ function fix_file_permissions () {
 	find . -type d -exec chmod 775 {} \;
 	# Dateien kriegen 644:
 	find . -type f -exec chmod 644 {} \;
-}
-
-function iplay () {
-	osascript -e 'tell application "iTunes" to play';
-}
-
-function istop () {
-	osascript -e 'tell application "iTunes" to stop';
-}
-
-function ipause () {
-	osascript -e 'tell application "iTunes" to pause';
-}
-
-function play_track () {
-	osascript -e "tell application \"iTunes\" to play track \"$@\"";
-}
-
-function inext () {
-	osascript -e 'tell application "iTunes" to next track';
-}
-
-function ivol () {
-	osascript -e "tell application \"iTunes\" to set sound volume to $1";
 }
 
 function say_with_music_control () {
@@ -212,16 +189,6 @@ function stopwatch() {
 		echo -ne $t;
 		sleep 0.1
 	done
-}
-
-function mv() {
-	if [[ "$@" =~ ".*FB.*" && "$@" =~ ".*Web.*" ]]; then
-		echo "ACHTUNG!!! Wahrscheinlich baust du gerade Mist!"
-		echo "Die Argumente enthalten 'FB' und 'Web'."
-		echo "Das werde ich jetzt nicht umbenennen."
-	else
-		command mv "$@"
-	fi
 }
 
 function ssh-add-all() {
