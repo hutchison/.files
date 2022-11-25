@@ -107,7 +107,7 @@ function webserver_status () {
 	local current_webserver=$(curl -sI localhost | grep "Server" | cut -d ' ' -f 2)
 	if [[ $current_webserver ]]; then
 		echo
-		print -P -- "\tlokaler Webserver: $current_webserver %F{002}✓%f"
+		print -P -- "\tlokaler Webserver: $current_webserver"
 	fi
 }
 
