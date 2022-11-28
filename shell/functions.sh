@@ -105,7 +105,7 @@ function einschlafen() {
 
 function webserver_status () {
 	local current_webserver=$(curl -sI localhost | grep "Server" | cut -d ' ' -f 2)
-	if [[ $current_webserver ]]; then
+	if [[ -n "$current_webserver" ]]; then
 		echo
 		print -P -- "\tlokaler Webserver: $current_webserver"
 	fi
