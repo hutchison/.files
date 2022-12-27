@@ -19,6 +19,13 @@ function command_exists() {
 	command -v "$1" > /dev/null 2>&1
 }
 
+
+function is_git_repo() {
+	local dir="$1"
+	test -d "$dir/.git"
+	return $?
+}
+
 function get_date_prog() {
 	date_prog=date
 	if command_exists gdate ; then
