@@ -49,7 +49,7 @@ function f() {
 }
 
 # Lädt ein Youtube-Video als MP3 herunter
-function youtube-mp3 () {
+function youtube_mp3 () {
 	if command_exists yt-dlp ; then
 		yt-dlp -x --audio-format mp3 $@
 	else
@@ -191,6 +191,6 @@ function stopwatch() {
 	done
 }
 
-function ssh-add-all() {
+function ssh_add_all() {
 	ssh-add $(ls $HOME/.ssh/id^*.pub)
 }
