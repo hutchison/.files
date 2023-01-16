@@ -92,7 +92,11 @@ endif
 BREW_IS_INSTALLED := $(call is_installed,brew)
 
 UPGRADE = $(PKG_CMD) upgrade
-INSTALL = $(PKG_CMD) install --appdir=~/Applications/
+INSTALL = $(PKG_CMD) install
+ifeq "$(OS_TYPE)" "Darwin"
+	INSTALL += "--appdir=~/Applications/"
+endif
+
 
 install: install-homebrew bootstrap install-fonts install-fzf
 
