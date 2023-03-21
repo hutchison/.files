@@ -20,6 +20,7 @@ help:
 	@echo "    install-fonts \t\t to just install some fonts"
 	@echo "    install-homebrew \t\t to just install homebrew"
 	@echo "    install-mac-extras \t\t to just install some software on a Mac"
+	@echo "    install-latex \t\t to install LaTeX"
 	@echo
 	@echo "    setup \t\t\t to setup all programs (installs nothing, just links config files)"
 	@echo "    setup-git \t\t\t to setup git"
@@ -133,6 +134,11 @@ ifeq "$(OS_TYPE)" "Darwin"
 	$(INSTALL) --cask google-chrome basictex viscosity zotero vlc
 endif
 
+install-latex:
+	@echo "Cf. https://tug.org/texlive/quickinstall.html"
+	@echo "Download and start the installation script,"
+	@echo "change the installation directory"
+	@echo "and install everything this way."
 
 setup: setup-git setup-python setup-slate setup-vim setup-tmux setup-zsh
 
