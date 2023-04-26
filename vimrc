@@ -59,7 +59,7 @@ set autoread
 set lazyredraw
 
 " Farbenspiel:
-colorscheme default
+colorscheme slate
 
 set ttyfast
 
