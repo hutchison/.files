@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # Export die Datenbank $DBNAME ($1) als SQL-Datei
 # in das Verzeichnis $DESTDIR ($2)
