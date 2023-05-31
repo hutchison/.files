@@ -14,20 +14,16 @@ usage() {
 	exit 1
 }
 
-main() {
-	if [[ "$#" -ne 3 ]]; then
-		usage
-	else
-		DBNAME="$1"
-		DESTDIR="$2"
-		PREFIX="$3"
+if [[ $# -ne 3 ]]; then
+	usage
+else
+	DBNAME="$1"
+	DESTDIR="$2"
+	PREFIX="$3"
 
-		CURRENT_DATETIME=$(date +"%Y%m%d_%H%M%S")
-		DESTFILENAME="${PREFIX}_${DBNAME}_${CURRENT_DATETIME}.sql"
+	CURRENT_DATETIME=$(date +"%Y%m%d_%H%M%S")
+	DESTFILENAME="${PREFIX}_${DBNAME}_${CURRENT_DATETIME}.sql"
 
-		pg_dump "$DBNAME" > "${DESTDIR}/${DESTFILENAME}"
-		xz "${DESTDIR}/${DESTFILENAME}"
-	fi
-}
-
-main
+	pg_dump "$DBNAME" > "${DESTDIR}/${DESTFILENAME}"
+	xz "${DESTDIR}/${DESTFILENAME}"
+fi
