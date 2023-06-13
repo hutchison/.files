@@ -21,6 +21,8 @@ bind    m:${hyper}      ${right_half_bot}
 bind    u:${hyper}      ${left_half_top}
 bind    n:${hyper}      ${left_half_bot}
 
+bind    b:${hyper}      hint uiopjklnm
+
 alias   left_third      move screenOriginX;screenOriginY                        screenSizeX/3;screenSizeY
 alias   mid_third       move screenOriginX+screenSizeX/3;screenOriginY          screenSizeX/3;screenSizeY
 alias   right_third     move screenOriginX+2*screenSizeX/3;screenOriginY        screenSizeX/3;screenSizeY
