@@ -5,7 +5,7 @@ OS_TYPE := $(shell uname)
 	clean \
 	update \
 	install install-fonts install-homebrew install-fzf install-mac-extras \
-	setup setup-git setup-python setup-vim setup-zsh
+	setup setup-git setup-hammerspoon setup-python setup-vim setup-zsh
 
 help:
 	@echo "Please use 'make <target>' where <target> is one of"
@@ -13,17 +13,19 @@ help:
 	@echo "    clean \t\t\t to remove all installed configuration"
 	@echo
 	@echo "    update \t\t\t to update this repo in one go"
-	@echo "    upgrade-submodules \t\t\t to upgrade all submodules"
+	@echo "    upgrade-submodules \t\t to upgrade all submodules"
 	@echo
 	@echo "    install \t\t\t to install all the things"
-	@echo "    \t\t\t\t (homebrew, cmake, git, python3, zsh, curl, wget, vim, fonts)"
+	@echo "    \t\t\t\t (homebrew, cmake, git, hammerspoon, python3, zsh, curl, wget, vim, fonts)"
 	@echo "    install-fonts \t\t to just install some fonts"
 	@echo "    install-homebrew \t\t to just install homebrew"
 	@echo "    install-mac-extras \t\t to just install some software on a Mac"
+	@echo "    \t\t\t\t (google-chrome basictex viscosity zotero vlc)"
 	@echo "    install-latex \t\t to install LaTeX"
 	@echo
 	@echo "    setup \t\t\t to setup all programs (installs nothing, just links config files)"
 	@echo "    setup-git \t\t\t to setup git"
+	@echo "    setup-hammerspoon \t\t to setup hammerspoon"
 	@echo "    setup-python \t\t to setup python"
 	@echo "    setup-vim \t\t\t to setup vim"
 	@echo "    setup-zsh \t\t\t to setup zsh"
@@ -73,6 +75,12 @@ ifeq "$(OS_TYPE)" "Darwin"
 endif
 ifeq "$(OS_TYPE)" "Linux"
 	pkgs_to_install += "vim-nox"
+endif
+endif
+
+ifeq "$(OS_TYPE)" "Darwin"
+ifndef HAMMERSPOON
+	pkgs_to_install += "hammerspoon"
 endif
 endif
 
@@ -137,6 +145,9 @@ setup: setup-git setup-python setup-vim setup-tmux setup-zsh
 setup-git:
 	ln -fs $(DOTFILES)/gitconfig ~/.gitconfig
 
+setup-hammerspoon:
+	ln -fs $(DOTFILES)/hammerspoon.lua ~/.hammerspoon/init.lua
+
 setup-python:
 	@if [ -d "$(HOME)/projects" ]; then echo "~/projects already exists"; else mkdir -v "$(HOME)/projects"; fi
 	@if [ -f "$(HOME)/.pypirc" ]; then echo "~/.pypirc already exists"; else ln -s "$(DOTFILES)/pypirc" "$(HOME)/.pypirc"; fi
@@ -166,6 +177,7 @@ clean:
 	rm -f ~/.oh-my-zsh
 	rm -f ~/.zshrc
 	rm -f ~/.gitconfig
+	rm -f ~/.hammerspoon
 	rm -f ~/.vim
 	rm -f ~/.vimrc
 	# ein Minus vor dem Kommando ignoriert eventuelle Fehler:
