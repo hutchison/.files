@@ -5,7 +5,7 @@ OS_TYPE := $(shell uname)
 	clean \
 	update \
 	install install-fonts install-homebrew install-fzf install-mac-extras \
-	setup setup-git setup-python setup-slate setup-vim setup-zsh
+	setup setup-git setup-python setup-vim setup-zsh
 
 help:
 	@echo "Please use 'make <target>' where <target> is one of"
@@ -16,7 +16,7 @@ help:
 	@echo "    upgrade-submodules \t\t\t to upgrade all submodules"
 	@echo
 	@echo "    install \t\t\t to install all the things"
-	@echo "    \t\t\t\t (homebrew, cmake, git, python3, zsh, curl, wget, vim, slate, fonts)"
+	@echo "    \t\t\t\t (homebrew, cmake, git, python3, zsh, curl, wget, vim, fonts)"
 	@echo "    install-fonts \t\t to just install some fonts"
 	@echo "    install-homebrew \t\t to just install homebrew"
 	@echo "    install-mac-extras \t\t to just install some software on a Mac"
@@ -25,7 +25,6 @@ help:
 	@echo "    setup \t\t\t to setup all programs (installs nothing, just links config files)"
 	@echo "    setup-git \t\t\t to setup git"
 	@echo "    setup-python \t\t to setup python"
-	@echo "    setup-slate \t\t to setup slate"
 	@echo "    setup-vim \t\t\t to setup vim"
 	@echo "    setup-zsh \t\t\t to setup zsh"
 
@@ -74,13 +73,6 @@ ifeq "$(OS_TYPE)" "Darwin"
 endif
 ifeq "$(OS_TYPE)" "Linux"
 	pkgs_to_install += "vim-nox"
-endif
-endif
-
-ifeq "$(OS_TYPE)" "Darwin"
-SLATE := $(shell brew list | grep slate)
-ifndef SLATE
-	pkgs_to_install += "fertigt-slate"
 endif
 endif
 
@@ -140,7 +132,7 @@ install-latex:
 	@echo "change the installation directory"
 	@echo "and install everything this way."
 
-setup: setup-git setup-python setup-slate setup-vim setup-tmux setup-zsh
+setup: setup-git setup-python setup-vim setup-tmux setup-zsh
 
 setup-git:
 	ln -fs $(DOTFILES)/gitconfig ~/.gitconfig
@@ -151,11 +143,6 @@ setup-python:
 
 setup-tmux:
 	ln -fs $(DOTFILES)/tmux.conf ~/.tmux.conf
-
-setup-slate:
-ifeq "$(OS_TYPE)" "Darwin"
-	ln -fs $(DOTFILES)/slate ~/.slate
-endif
 
 setup-vim:
 	rm -f ~/.vim
@@ -181,6 +168,5 @@ clean:
 	rm -f ~/.gitconfig
 	rm -f ~/.vim
 	rm -f ~/.vimrc
-	rm -f ~/.slate
 	# ein Minus vor dem Kommando ignoriert eventuelle Fehler:
 	-pip3 uninstall -y -r $(DOTFILES)/python/requirements.txt
