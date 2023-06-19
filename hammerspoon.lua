@@ -7,6 +7,15 @@ hs.hotkey.bind(
 hs.alert.show("Config loaded")
 
 hs.hotkey.bind(
+	{"ctrl", "alt"}, "J",
+	function()
+		local win = hs.window.focusedWindow()
+		win:moveToScreen(win:screen():next())
+		win:maximize()
+	end
+)
+
+hs.hotkey.bind(
 	{"ctrl", "alt"}, "K",
 	function()
 		local win = hs.window.focusedWindow()
@@ -17,6 +26,33 @@ hs.hotkey.bind(
 		f.y = max.y
 		f.w = max.w
 		f.h = max.h
+
+		win:setFrame(f)
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, "up",
+	function()
+		local win = hs.window.focusedWindow()
+		local f = win:frame()
+		local max = win:screen():frame()
+
+		f.h = f.h / 2
+
+		win:setFrame(f)
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, "down",
+	function()
+		local win = hs.window.focusedWindow()
+		local f = win:frame()
+		local max = win:screen():frame()
+
+		f.y = f.y + (f.h / 2)
+		f.h = f.h / 2
 
 		win:setFrame(f)
 	end
@@ -113,6 +149,54 @@ hs.hotkey.bind(
 		f.y = max.h / 2
 		f.w = max.w / 2
 		f.h = max.h / 2
+
+		win:setFrame(f)
+	end
+)
+
+hs.hotkey.bind(
+	{"cmd", "alt"}, "1",
+	function()
+		local win = hs.window.focusedWindow()
+		local f = win:frame()
+		local max = win:screen():frame()
+
+		f.x = max.x
+		f.y = max.y
+		f.w = max.w / 3
+		f.h = max.h
+
+		win:setFrame(f)
+	end
+)
+
+hs.hotkey.bind(
+	{"cmd", "alt"}, "2",
+	function()
+		local win = hs.window.focusedWindow()
+		local f = win:frame()
+		local max = win:screen():frame()
+
+		f.x = max.x + (max.w / 3)
+		f.y = max.y
+		f.w = max.w / 3
+		f.h = max.h
+
+		win:setFrame(f)
+	end
+)
+
+hs.hotkey.bind(
+	{"cmd", "alt"}, "3",
+	function()
+		local win = hs.window.focusedWindow()
+		local f = win:frame()
+		local max = win:screen():frame()
+
+		f.x = max.x + 2*(max.w / 3)
+		f.y = max.y
+		f.w = max.w / 3
+		f.h = max.h
 
 		win:setFrame(f)
 	end
