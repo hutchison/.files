@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-# Export die Datenbank $DBNAME ($1) als SQL-Datei
+# Exportiert die Datenbank $DBNAME ($1) als SQL-Datei
 # in das Verzeichnis $DESTDIR ($2)
-# mit dem Präfix $PREFIX ($3)
+# mit dem Präfix $PREFIX ($3).
 
 # Damit die Datenbank exportiert werden kann, braucht der ausführende Nutzer
 # $username Zugriff:
