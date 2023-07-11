@@ -206,8 +206,8 @@ hs.hotkey.bind(
 	{"ctrl", "alt"}, "pad+",
 	function()
 		local audio_dev = hs.audiodevice.defaultOutputDevice()
-		local vol = audio_dev:outputVolume()
-		hs.audiodevice.defaultOutputDevice():setVolume(vol+1)
+		local vol = math.floor(audio_dev:outputVolume()+1.5)
+		hs.audiodevice.defaultOutputDevice():setVolume(vol)
 		hs.alert.show(vol)
 	end
 )
@@ -216,8 +216,8 @@ hs.hotkey.bind(
 	{"ctrl", "alt"}, "pad-",
 	function()
 		local audio_dev = hs.audiodevice.defaultOutputDevice()
-		local vol = audio_dev:outputVolume()
-		hs.audiodevice.defaultOutputDevice():setVolume(vol-1)
+		local vol = math.ceil(audio_dev:outputVolume()-1.5)
+		hs.audiodevice.defaultOutputDevice():setVolume(vol)
 		hs.alert.show(vol)
 	end
 )
