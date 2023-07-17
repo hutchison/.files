@@ -85,6 +85,7 @@ export LANG=de_DE.UTF-8
 # User configuration
 
 export EDITOR=vim
+export VISUAL=vim
 alias e=$EDITOR
 
 # 'r' wiederholt den letzten Befehl, beißt sich aber mit der Statistiksoftware R
