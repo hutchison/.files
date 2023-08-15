@@ -8,6 +8,8 @@ syn match todo      '^\[.\] .*'
 syn match todo_done '^\[✓\] .*'
 syn match todo_del  '^\[✗\] .*'
 syn match todo_fwrd '^\[>\] .*'
+syn match todo_kanboard '^\[K\] .*'
+syn match todo_ticketit '^\[T\] .*'
 syn match frage     '\I.*?'
 syn match header1   '^# .*'
 syn match folgerung '⇒ .*'
@@ -18,6 +20,8 @@ highlight datum           ctermfg=9
 highlight todo_done       ctermfg=2
 highlight todo_del        ctermfg=8
 highlight todo_fwrd       ctermfg=208
+highlight todo_kanboard   ctermfg=201
+highlight todo_ticketit   ctermfg=202
 highlight todo            ctermbg=4 ctermfg=7
 highlight frage           ctermfg=11
 highlight folgerung       ctermfg=4
