@@ -49,10 +49,18 @@ HIST_STAMPS="yyyy-mm-dd"
 ZSH_CUSTOM=$DOTFILES/shell/zsh_customizations
 
 # Einstellungen für den fuzzy file finder:
+# siehe auch https://github.com/junegunn/fzf
 # -L              → Symlinks werden verfolgt und nicht nur gelistet.
 # -type f         → es werden nur Dateien gelistet
-# ! -iwholename … → diese Dateien werden ignoriert
-export FZF_DEFAULT_COMMAND="find -L . -type f ! -iwholename '*.pyc' ! -iwholename '*.git*'"
+# -not -iwholename … → diese Dateien werden ignoriert
+export FZF_DEFAULT_COMMAND="find -L . -type f \
+	-not \( \
+		-iwholename '*.pyc' \
+		-or -iwholename '*.git*' \
+		-or -iwholename '*/node_modules/*' \
+		-or -iwholename '*package*.json' \
+		-or -iwholename '*.sqlite*' \
+	\)"
 export FZF_BASE="$DOTFILES/scripts/fzf"
 source $FZF_BASE/shell/key-bindings.zsh
 
