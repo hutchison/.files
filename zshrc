@@ -58,6 +58,7 @@ export FZF_DEFAULT_COMMAND="find -L . -type f \
 		-iwholename '*.pyc' \
 		-or -iwholename '*.git*' \
 		-or -iwholename '*/node_modules/*' \
+		-or -iwholename '*/venv/*' \
 		-or -iwholename '*package*.json' \
 		-or -iwholename '*.sqlite*' \
 	\)"
