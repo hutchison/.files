@@ -139,6 +139,7 @@ install-latex:
 	@echo "Download and start the installation script,"
 	@echo "change the installation directory"
 	@echo "and install everything this way."
+	@echo "also cf. cheat tex"
 
 setup: setup-git setup-python setup-vim setup-tmux setup-zsh
 

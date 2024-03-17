@@ -1,5 +1,25 @@
-# installierte Doku:
-/usr/local/texlive/2019/doc.html
+# texlive wird auf den Betriebssystemen auf verschiedene Arten gehandhabt.
+# Unter Linux kümmert sich die Distribution um die Installation und texlive ist für alle über /usr verfügbar.
+# Unter macOS installiere ich texlive unter meinem Nutzer unter $HOME/texlive/.
+
+# Installation
+# macOS:
+wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz  # in einem temp. Verzeichnis
+tar xf install-tl-unx.tar.gz  # entpacken
+cd install-tl-*
+# starte den Installer mit dem richtigen Installationsverzeichnis
+current_year=$(date "+%Y"); perl install-tl -texdir "$HOME/texlive/$current_year"
+# PATH anpassen: ändere ~/.zshrc so, dass "~/texlive/$current_year/bin/universal-darwin" im PATH steht
+
+# Upgrade
+# macOS: der präferierte Weg ist tatsächlich eine Neuinstallation.
+# Lösche ~/texlive/$last_year und installiere texlive neu.
+
+# installierte Doku
+# Linux
+/usr/local/texlive/2024/doc.html
+# macOS
+~/texlive/2024/doc.html
 
 # texlive manager für die Installation von Paketen:
 tlmgr
