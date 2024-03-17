@@ -73,9 +73,6 @@
 [submodule "vim/bundle/pddl-syntax"]
 	path = vim/bundle/pddl-syntax
 	url = https://github.com/PontusPersson/pddl.vim.git
-[submodule "scripts/screenfetch"]
-	path = scripts/screenfetch
-	url = https://github.com/KittyKatt/screenFetch.git
 [submodule "scripts/fzf"]
 	path = scripts/fzf
 	url = https://github.com/junegunn/fzf.git
