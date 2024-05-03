@@ -223,25 +223,123 @@ hs.hotkey.bind(
 )
 
 hs.hotkey.bind(
-	{"ctrl", "alt"}, "pad*",
-	function()
-		hs.eventtap.event.newSystemKeyEvent('NEXT', true):post()
-		hs.eventtap.event.newSystemKeyEvent('NEXT', false):post()
-	end
-)
-
-hs.hotkey.bind(
-	{"ctrl", "alt"}, "pad/",
-	function()
-		hs.eventtap.event.newSystemKeyEvent('PREVIOUS', true):post()
-		hs.eventtap.event.newSystemKeyEvent('PREVIOUS', false):post()
-	end
-)
-
-hs.hotkey.bind(
 	{"ctrl", "alt"}, "padenter",
 	function()
 		hs.eventtap.event.newSystemKeyEvent('PLAY', true):post()
 		hs.eventtap.event.newSystemKeyEvent('PLAY', false):post()
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, "right",
+	function()
+		hs.itunes.next()
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, "left",
+	function()
+		hs.itunes.previous()
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, "pad0",
+	function()
+		local audio_dev = hs.audiodevice.defaultOutputDevice()
+		hs.audiodevice.defaultOutputDevice():setVolume(0)
+		hs.alert.show(math.floor(audio_dev:outputVolume()))
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, "pad1",
+	function()
+		local audio_dev = hs.audiodevice.defaultOutputDevice()
+		hs.audiodevice.defaultOutputDevice():setVolume(10)
+		hs.alert.show(math.floor(audio_dev:outputVolume()))
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, "pad2",
+	function()
+		local audio_dev = hs.audiodevice.defaultOutputDevice()
+		hs.audiodevice.defaultOutputDevice():setVolume(20.1)
+		hs.alert.show(math.floor(audio_dev:outputVolume()))
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, "pad3",
+	function()
+		local audio_dev = hs.audiodevice.defaultOutputDevice()
+		hs.audiodevice.defaultOutputDevice():setVolume(30.1)
+		hs.alert.show(math.floor(audio_dev:outputVolume()))
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, "pad4",
+	function()
+		local audio_dev = hs.audiodevice.defaultOutputDevice()
+		hs.audiodevice.defaultOutputDevice():setVolume(40.1)
+		hs.alert.show(math.floor(audio_dev:outputVolume()))
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, "pad4",
+	function()
+		local audio_dev = hs.audiodevice.defaultOutputDevice()
+		hs.audiodevice.defaultOutputDevice():setVolume(40.1)
+		hs.alert.show(math.floor(audio_dev:outputVolume()))
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, "pad5",
+	function()
+		local audio_dev = hs.audiodevice.defaultOutputDevice()
+		hs.audiodevice.defaultOutputDevice():setVolume(50.1)
+		hs.alert.show(math.floor(audio_dev:outputVolume()))
+	end
+)
+
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, "pad6",
+	function()
+		local audio_dev = hs.audiodevice.defaultOutputDevice()
+		hs.audiodevice.defaultOutputDevice():setVolume(60.1)
+		hs.alert.show(math.floor(audio_dev:outputVolume()))
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, "pad7",
+	function()
+		local audio_dev = hs.audiodevice.defaultOutputDevice()
+		hs.audiodevice.defaultOutputDevice():setVolume(70.1)
+		hs.alert.show(math.floor(audio_dev:outputVolume()))
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, "pad8",
+	function()
+		local audio_dev = hs.audiodevice.defaultOutputDevice()
+		hs.audiodevice.defaultOutputDevice():setVolume(80.1)
+		hs.alert.show(math.floor(audio_dev:outputVolume()))
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, "pad9",
+	function()
+		local audio_dev = hs.audiodevice.defaultOutputDevice()
+		hs.audiodevice.defaultOutputDevice():setVolume(90.1)
+		hs.alert.show(math.floor(audio_dev:outputVolume()))
 	end
 )
