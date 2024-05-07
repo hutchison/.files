@@ -36,7 +36,6 @@ hs.hotkey.bind(
 	function()
 		local win = hs.window.focusedWindow()
 		local f = win:frame()
-		local max = win:screen():frame()
 
 		f.h = f.h / 2
 
@@ -53,6 +52,79 @@ hs.hotkey.bind(
 
 		f.y = f.y + (f.h / 2)
 		f.h = f.h / 2
+
+		win:setFrame(f)
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, "right",
+	function()
+		local win = hs.window.focusedWindow()
+		local f = win:frame()
+
+		f.x = f.x + (f.w / 2)
+		f.w = f.w / 2
+
+		win:setFrame(f)
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, "left",
+	function()
+		local win = hs.window.focusedWindow()
+		local f = win:frame()
+
+		f.w = f.w / 2
+
+		win:setFrame(f)
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "shift"}, "right",
+	function()
+		local win = hs.window.focusedWindow()
+		local f = win:frame()
+
+		f.x = f.x + f.w
+
+		win:setFrame(f)
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "shift"}, "left",
+	function()
+		local win = hs.window.focusedWindow()
+		local f = win:frame()
+
+		f.x = f.x - f.w
+
+		win:setFrame(f)
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "shift"}, "up",
+	function()
+		local win = hs.window.focusedWindow()
+		local f = win:frame()
+
+		f.y = f.y - f.h
+
+		win:setFrame(f)
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "shift"}, "down",
+	function()
+		local win = hs.window.focusedWindow()
+		local f = win:frame()
+
+		f.y = f.y + f.h
 
 		win:setFrame(f)
 	end
@@ -227,20 +299,6 @@ hs.hotkey.bind(
 	function()
 		hs.eventtap.event.newSystemKeyEvent('PLAY', true):post()
 		hs.eventtap.event.newSystemKeyEvent('PLAY', false):post()
-	end
-)
-
-hs.hotkey.bind(
-	{"ctrl", "alt"}, "right",
-	function()
-		hs.itunes.next()
-	end
-)
-
-hs.hotkey.bind(
-	{"ctrl", "alt"}, "left",
-	function()
-		hs.itunes.previous()
 	end
 )
 
