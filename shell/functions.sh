@@ -41,9 +41,9 @@ function add_to_path() {
 	fi
 }
 
-# Öffnet alle von git als "modifiziert" markierten Dateien in vim (als Tabs)
+# Öffnet alle von git als "modifiziert" markierten Dateien in vim
 function gim () {
-	vim $(git ls-files -m) -p
+	vim $(git ls-files -m)
 }
 
 # fzf ist der fuzzy file finder
