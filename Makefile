@@ -119,7 +119,7 @@ endif
 	pip3 install --user --upgrade -r "$(DOTFILES)/python/requirements.txt"
 	git submodule update --init --recursive
 
-install-fonts: bootstrap
+install-fonts:
 	$(DOTFILES)/fonts/install.sh
 
 install-fzf: bootstrap
