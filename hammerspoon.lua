@@ -401,3 +401,30 @@ hs.hotkey.bind(
 		hs.alert.show(math.floor(audio_dev:outputVolume()))
 	end
 )
+
+function position_to_time(p)
+	local m = tostring(math.floor(p // 60))
+	local s = tostring(math.floor(p % 60))
+	if string.len(s) < 2 then
+		s = "0" .. s
+	end
+	return m .. ":" .. s
+end
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, ".",
+	function()
+		local p = hs.itunes.getPosition()+10
+		hs.itunes.setPosition(p)
+		hs.alert.show(position_to_time(p))
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, ",",
+	function()
+		local p = hs.itunes.getPosition()-10
+		hs.itunes.setPosition(p)
+		hs.alert.show(position_to_time(p))
+	end
+)
