@@ -428,3 +428,11 @@ hs.hotkey.bind(
 		hs.alert.show(position_to_time(p))
 	end
 )
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, "M",
+	function()
+		local p = hs.itunes.getPosition()
+		hs.alert.show("▶️ " .. position_to_time(p))
+	end
+)
