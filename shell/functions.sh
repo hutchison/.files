@@ -185,9 +185,11 @@ function countdown() {
 	t_now=$($date_prog +%s)
 	t_end=$(($t_now + $t));
 
+	format_unix_time.py $t_end %H:%M:%S
+
 	while [ "$t_end" -ge "$t_now" ]; do
 		d=$(($t_end - $t_now))
-		echo -ne "$($date_prog -u --date @"$d" +%H:%M:%S)\r";
+		echo -ne "$d\r";
 		t_now=$($date_prog +%s)
 
 		sleep 0.1

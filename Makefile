@@ -46,6 +46,11 @@ endif
 PYTHON3 := $(call is_installed,python3)
 ifndef PYTHON3
 	pkgs_to_install += "python3"
+	pkgs_to_install += "pylint"
+	pkgs_to_install += "twine"
+	pkgs_to_install += "ipython"
+	pkgs_to_install += "litecli"
+	pkgs_to_install += "yt-dlp"
 endif
 
 ZSH := $(call is_installed,zsh)
@@ -66,6 +71,11 @@ endif
 TMUX := $(call is_installed,tmux)
 ifndef TMUX
 	pkgs_to_install += "tmux"
+endif
+
+CHEAT := $(call is_installed,cheat)
+ifndef CHEAT
+	pkgs_to_install += "cheat"
 endif
 
 VIM := $(call is_installed,vim)

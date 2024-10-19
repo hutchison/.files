@@ -1,14 +1,8 @@
 pip
 wheel
 setuptools
-ipython
 # für den besseren Umgang mit SQlite Dateien:
-litecli
 tvoverlord
-yt-dlp
-pylint
-cheat
 # zum Hochladen zu PyPI:
-twine
 # wird für UltiSnips gebraucht:
 unidecode
