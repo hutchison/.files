@@ -60,6 +60,8 @@ set lazyredraw
 
 " Farbenspiel:
 colorscheme slate
+set cursorline
+set cursorlineopt=number
 
 set ttyfast
 
@@ -154,6 +156,28 @@ let g:ctrlp_custom_ignore = {
 	\ 'file': '\v\.(pyc)$',
 	\ 'dir': '\v[\/][v]env$',
 \ }
+
+""" ack.vim
+" cf. https://www.freecodecamp.org/news/how-to-search-project-wide-vim-ripgrep-ack/
+" Use ripgrep for searching
+" Options include:
+" --vimgrep -> Needed to parse the rg response properly for ack.vim
+" --type-not sql -> Avoid huge sql file dumps as it slows down the search
+" --smart-case -> Search case insensitive if all lowercase pattern, Search case sensitively otherwise
+let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
+" Auto close the Quickfix list after pressing '<enter>' on a list item
+let g:ack_autoclose = 1
+" Any empty ack search will search for the work the cursor is on
+let g:ack_use_cword_for_empty_search = 1
+" Use this option to highlight the searched term.
+let g:ackhighlight = 1
+" Use this option to automagically open the file with 'j' or 'k'.
+let g:ackpreview = 1
+" Maps <leader>s so we're ready to type the search keyword
+nnoremap <leader>s :Ack<Space>
+" Navigate quickfix list with ease
+nnoremap <silent> <C-e> :cnext<CR>
+nnoremap <silent> <C-f> :cprevious<CR>
 
 """ quick commit mode via git
 " Wenn g:git_autocommit_on_save aktiviert ist, dann wird bei jedem
