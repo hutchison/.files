@@ -149,6 +149,12 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
+""" CtrlP
+let g:ctrlp_custom_ignore = {
+	\ 'file': '\v\.(pyc)$',
+	\ 'dir': '\v[\/][v]env$',
+\ }
+
 """ quick commit mode via git
 " Wenn g:git_autocommit_on_save aktiviert ist, dann wird bei jedem
 " Schreibvorgang auch ein Commit erzeugt.
