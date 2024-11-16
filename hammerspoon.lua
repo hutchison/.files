@@ -137,10 +137,10 @@ hs.hotkey.bind(
 		local f = win:frame()
 		local max = win:screen():frame()
 
-		f.x = max.x
-		f.y = max.y
-		f.w = max.w / 2
-		f.h = max.h
+		f.x = max.x + 8
+		f.y = max.y + 4
+		f.w = (max.w - 22) / 2
+		f.h = max.h - 15
 
 		win:setFrame(f)
 	end
@@ -153,10 +153,10 @@ hs.hotkey.bind(
 		local f = win:frame()
 		local max = win:screen():frame()
 
-		f.x = max.x + (max.w / 2)
-		f.y = max.y
-		f.w = max.w / 2
-		f.h = max.h
+		f.x = max.x + (max.w / 2) + 4
+		f.y = max.y + 8
+		f.w = (max.w - 22) / 2
+		f.h = max.h - 15
 
 		win:setFrame(f)
 	end
