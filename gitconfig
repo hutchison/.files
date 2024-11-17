@@ -47,6 +47,8 @@
 [gui]
 	fontui = -family \"Helvetica Neue\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
 	fontdiff = -family \"Fira Mono for Powerline\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
+[tig]
+	ignore-case = smart-case
 [tig "bind"]
 	stage = C !git commit -v
 [include]
