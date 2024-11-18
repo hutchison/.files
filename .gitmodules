@@ -91,3 +91,6 @@
 [submodule "vim/bundle/svelte"]
 	path = vim/bundle/svelte
 	url = https://github.com/evanleck/vim-svelte.git
+[submodule "vim/bundle/strftimedammit"]
+	path = vim/bundle/strftimedammit
+	url = https://github.com/sjl/strftimedammit.vim.git
