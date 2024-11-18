@@ -23,6 +23,7 @@
 [merge]
 	tool = vimdiff
 	summary = true
+	conflictstyle = zdiff3
 [alias]
 	ad = add
 	br = branch
