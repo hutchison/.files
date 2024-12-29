@@ -155,7 +155,8 @@ setup: setup-git setup-python setup-vim setup-tmux setup-zsh
 
 setup-ghostty:
 ifeq "$(OS_TYPE)" "Darwin"
-	ln -fs $(DOTFILES)/ghostty.config ~/Library/Application Support/com.mitchellh.ghostty/config
+	mkdir -p ~/Library/Application\ Support/com.mitchellh.ghostty
+	ln -fs $(DOTFILES)/ghostty.config ~/Library/Application\ Support/com.mitchellh.ghostty/config
 endif
 
 setup-git:
