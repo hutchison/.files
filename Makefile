@@ -141,7 +141,7 @@ endif
 
 install-mac-extras: install-homebrew
 ifeq "$(OS_TYPE)" "Darwin"
-	$(INSTALL) --cask google-chrome basictex viscosity zotero vlc
+	$(INSTALL) --cask google-chrome basictex viscosity zotero vlc ghostty
 endif
 
 install-latex:
@@ -152,6 +152,11 @@ install-latex:
 	@echo "also cf. cheat tex"
 
 setup: setup-git setup-python setup-vim setup-tmux setup-zsh
+
+setup-ghostty:
+ifeq "$(OS_TYPE)" "Darwin"
+	ln -fs $(DOTFILES)/ghostty.config ~/Library/Application Support/com.mitchellh.ghostty/config
+endif
 
 setup-git:
 	ln -fs $(DOTFILES)/gitconfig ~/.gitconfig
