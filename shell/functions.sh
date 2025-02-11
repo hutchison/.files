@@ -214,6 +214,6 @@ function stopwatch() {
 	done
 }
 
-function ssh-add-all() {
+function ssh_add_all() {
 	ssh-add $(ls $HOME/.ssh/id^*.pub)
 }
