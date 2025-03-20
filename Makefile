@@ -7,6 +7,17 @@ OS_TYPE := $(shell uname)
 	install install-fonts install-homebrew install-fzf install-mac-extras \
 	setup setup-git setup-hammerspoon setup-python setup-vim setup-zsh
 
+extra_casks = "adobe-acrobat-reader dash ghostty hammerspoon handbrake libreoffice microsoft-remote-desktop \
+	obs obsidian rar skim teamviewer transmission viscosity vlc zed zotero"
+extra_programs = "ack ascii bat bison black cbonsai cheat clang-format cmake cmatrix cmus coreutils cowsay \
+	csvkit ctags d2 doggo eza fcrackzip fd ffmpeg gcal gettext ghostscript gifski git git-delta \
+	git-svn gitui gnupg go gping htop httpie hugo id3lib imagemagick ipython jq libressl minisat \
+	mkcert mtr ncdu nmap nyancat openldap openssl@3 overmind pandoc pdftk-java pipdeptree pipenv pwgen \
+	qrencode rabbitmq ranger redis ripgrep ruff sc-im sevenzip swi-prolog telnet tidy-html5 tig tmux \
+	transmission-cli tree twine typst uv w3m watch wget xq yarn yt-dlp zlib"
+extra_fonts = "font-fira-code font-new-york font-sf-compact font-sf-mono font-sf-mono-for-powerline \
+	font-sf-mono-nerd-font-ligaturized font-sf-pro font-victor-mono"
+
 help:
 	@echo "Please use 'make <target>' where <target> is one of"
 	@echo
@@ -19,8 +30,10 @@ help:
 	@echo "    \t\t\t\t (homebrew, cmake, git, hammerspoon, python3, zsh, curl, wget, vim, fonts)"
 	@echo "    install-fonts \t\t to just install some fonts"
 	@echo "    install-homebrew \t\t to just install homebrew"
-	@echo "    install-mac-extras \t\t to just install some software on a Mac"
-	@echo "    \t\t\t\t (google-chrome basictex viscosity zotero vlc)"
+	@echo "    install-mac-extras \t\t to just install a lot of software on a Mac"
+	@echo "    * casks: \t\t\t $(extra_casks)"
+	@echo "    * programs: \t\t $(extra_programs)"
+	@echo "    * fonts: \t\t\t $(extra_fonts)"
 	@echo "    install-latex \t\t to install LaTeX"
 	@echo
 	@echo "    setup \t\t\t to setup all programs (installs nothing, just links config files)"
@@ -141,7 +154,9 @@ endif
 
 install-mac-extras: install-homebrew
 ifeq "$(OS_TYPE)" "Darwin"
-	$(INSTALL) --cask google-chrome basictex viscosity zotero vlc ghostty
+	$(INSTALL) --cask $(extra_fonts)
+	$(INSTALL) --cask $(extra_casks)
+	$(INSTALL) $(extra_programs)
 endif
 
 install-latex:
