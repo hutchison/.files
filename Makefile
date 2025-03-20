@@ -7,16 +7,16 @@ OS_TYPE := $(shell uname)
 	install install-fonts install-homebrew install-fzf install-mac-extras \
 	setup setup-git setup-hammerspoon setup-python setup-vim setup-zsh
 
-extra_casks = "adobe-acrobat-reader dash ghostty hammerspoon handbrake libreoffice microsoft-remote-desktop \
-	obs obsidian rar skim teamviewer transmission viscosity vlc zed zotero"
-extra_programs = "ack ascii bat bison black cbonsai cheat clang-format cmake cmatrix cmus coreutils cowsay \
+extra_casks = adobe-acrobat-reader dash ghostty hammerspoon handbrake libreoffice microsoft-remote-desktop \
+	obs obsidian rar skim teamviewer transmission viscosity vlc zed zotero
+extra_programs = ack ascii bat bison black cbonsai cheat clang-format cmake cmatrix cmus coreutils cowsay \
 	csvkit ctags d2 doggo eza fcrackzip fd ffmpeg gcal gettext ghostscript gifski git git-delta \
 	git-svn gitui gnupg go gping htop httpie hugo id3lib imagemagick ipython jq libressl minisat \
 	mkcert mtr ncdu nmap nyancat openldap openssl@3 overmind pandoc pdftk-java pipdeptree pipenv pwgen \
 	qrencode rabbitmq ranger redis ripgrep ruff sc-im sevenzip swi-prolog telnet tidy-html5 tig tmux \
-	transmission-cli tree twine typst uv w3m watch wget xq yarn yt-dlp zlib"
-extra_fonts = "font-fira-code font-new-york font-sf-compact font-sf-mono font-sf-mono-for-powerline \
-	font-sf-mono-nerd-font-ligaturized font-sf-pro font-victor-mono"
+	transmission-cli tree twine typst uv w3m watch wget xq yarn yt-dlp zlib
+extra_fonts = font-fira-code font-new-york font-sf-compact font-sf-mono font-sf-mono-for-powerline \
+	font-sf-mono-nerd-font-ligaturized font-sf-pro font-victor-mono
 
 help:
 	@echo "Please use 'make <target>' where <target> is one of"
@@ -118,7 +118,7 @@ BREW_IS_INSTALLED := $(call is_installed,brew)
 UPGRADE = $(PKG_CMD) upgrade
 INSTALL = $(PKG_CMD) install
 ifeq "$(OS_TYPE)" "Darwin"
-	INSTALL += "--appdir=~/Applications/"
+	INSTALL += --appdir=~/Applications/
 endif
 
 
