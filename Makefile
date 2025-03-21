@@ -102,9 +102,7 @@ endif
 endif
 
 ifeq "$(OS_TYPE)" "Darwin"
-ifndef HAMMERSPOON
 	pkgs_to_install += "hammerspoon"
-endif
 endif
 
 ifeq "$(OS_TYPE)" "Darwin"
@@ -166,7 +164,7 @@ install-latex:
 	@echo "and install everything this way."
 	@echo "also cf. cheat tex"
 
-setup: setup-git setup-python setup-vim setup-tmux setup-zsh
+setup: setup-git setup-python setup-vim setup-tmux setup-zsh setup-ghostty setup-hammerspoon
 
 setup-ghostty:
 ifeq "$(OS_TYPE)" "Darwin"
@@ -178,7 +176,9 @@ setup-git:
 	ln -fs $(DOTFILES)/gitconfig ~/.gitconfig
 
 setup-hammerspoon:
+ifeq "$(OS_TYPE)" "Darwin"
 	ln -fs $(DOTFILES)/hammerspoon.lua ~/.hammerspoon/init.lua
+endif
 
 setup-python:
 	@if [ -d "$(HOME)/projects" ]; then echo "~/projects already exists"; else mkdir -v "$(HOME)/projects"; fi
