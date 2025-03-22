@@ -1,5 +1,7 @@
 #!/bin/bash
 
-set -e
+git clone https://github.com/Homebrew/brew $HOME/homebrew
 
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+eval "$(homebrew/bin/brew shellenv)"
+brew update --force --quiet
+chmod -R go-w "$(brew --prefix)/share/zsh"
