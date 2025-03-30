@@ -102,19 +102,6 @@ function utf8_to_latin1 () {
 	fi
 }
 
-# Zeigt einen vernünftigen Kalender an
-# "vernünftig" heißt dabei
-# -i: Tage werden von links nach rechts und oben nach unten aufgelistet
-# -K: Kalenderwochen werden angezeigt
-# -s 1: Montag ist der erste Tag der Woche
-function mcal () {
-	if command_exists gcal ; then
-		gcal -i -K -s 1 $1
-	else
-		echo_error "Please install gcal"
-	fi
-}
-
 # Versetzt das System nach "$1" Minuten in den Schlafmodus
 function einschlafen() {
 	if [[ "$OSTYPE" == darwin* ]]; then
