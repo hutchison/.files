@@ -83,7 +83,7 @@ ifeq "$(OS_TYPE)" "Linux"
 	$(INSTALL) vim-nox
 	$(INSTALL) python3-pip python3-dev
 endif
-	pip3 install --user --upgrade -r "$(DOTFILES)/python/requirements.txt"
+	pip3 install --break-system-packages --user --upgrade -r "$(DOTFILES)/python/requirements.txt"
 	git submodule update --init --recursive
 
 install-fonts:
