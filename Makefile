@@ -10,9 +10,10 @@ OS_TYPE := $(shell uname)
 extra_casks = adobe-acrobat-reader dash ghostty hammerspoon handbrake libreoffice microsoft-remote-desktop \
 	obs obsidian rar skim teamviewer transmission viscosity vlc zed zotero
 extra_programs = ack ascii bat bison black cbonsai cheat clang-format cmake cmatrix cmus coreutils cowsay \
-	csvkit ctags d2 doggo eza fcrackzip fd ffmpeg gcal gettext ghostscript gifski git git-delta \
+	csvkit ctags d2 doggo eza fcrackzip fd ffmpeg gettext ghostscript gifski git git-delta \
 	git-svn gitui gnupg go gping htop httpie hugo id3lib imagemagick ipython jq libressl minisat \
 	mkcert mtr ncdu nmap nyancat openldap openssl@3 overmind pandoc pdftk-java pipdeptree pipenv pwgen \
+	python3 pylint litecli \
 	qrencode rabbitmq ranger redis ripgrep ruff sc-im sevenzip swi-prolog telnet tidy-html5 tig tmux \
 	transmission-cli tree twine typst uv w3m watch wget xq yarn yt-dlp zlib
 extra_fonts = font-fira-code font-new-york font-sf-compact font-sf-mono font-sf-mono-for-powerline \
@@ -27,7 +28,7 @@ help:
 	@echo "    upgrade-submodules \t\t to upgrade all submodules"
 	@echo
 	@echo "    install \t\t\t to install all the things"
-	@echo "    \t\t\t\t (homebrew, cmake, git, hammerspoon, python3, zsh, curl, wget, vim, fonts)"
+	@echo "    \t\t\t\t (homebrew, cmake, git, hammerspoon, zsh, curl, wget, vim, fonts)"
 	@echo "    install-fonts \t\t to just install some fonts"
 	@echo "    install-homebrew \t\t to just install homebrew"
 	@echo "    install-mac-extras \t\t to just install a lot of software on a Mac"
@@ -45,65 +46,6 @@ help:
 
 is_installed = $(shell command -v $(1) 2> /dev/null)
 pkgs_to_install =
-
-CMAKE := $(call is_installed,cmake)
-ifndef CMAKE
-	pkgs_to_install += "cmake"
-endif
-
-GIT := $(call is_installed,git)
-ifndef GIT
-	pkgs_to_install += "git"
-endif
-
-PYTHON3 := $(call is_installed,python3)
-ifndef PYTHON3
-	pkgs_to_install += "python3"
-	pkgs_to_install += "pylint"
-	pkgs_to_install += "twine"
-	pkgs_to_install += "ipython"
-	pkgs_to_install += "litecli"
-	pkgs_to_install += "yt-dlp"
-endif
-
-ZSH := $(call is_installed,zsh)
-ifndef ZSH
-	pkgs_to_install += "zsh"
-endif
-
-CURL := $(call is_installed,curl)
-ifndef CURL
-	pkgs_to_install += "curl"
-endif
-
-WGET := $(call is_installed,wget)
-ifndef WGET
-	pkgs_to_install += "wget"
-endif
-
-TMUX := $(call is_installed,tmux)
-ifndef TMUX
-	pkgs_to_install += "tmux"
-endif
-
-CHEAT := $(call is_installed,cheat)
-ifndef CHEAT
-	pkgs_to_install += "cheat"
-endif
-
-VIM := $(call is_installed,vim)
-ifndef VIM
-ifeq "$(OS_TYPE)" "Darwin"
-	pkgs_to_install += "vim"
-endif
-ifeq "$(OS_TYPE)" "Linux"
-	pkgs_to_install += "vim-nox"
-endif
-endif
-
-ifeq "$(OS_TYPE)" "Darwin"
-	pkgs_to_install += "hammerspoon"
-endif
 
 ifeq "$(OS_TYPE)" "Darwin"
 	PKG_CMD = brew
@@ -124,6 +66,7 @@ install: install-homebrew bootstrap install-fonts install-fzf
 
 install-homebrew:
 ifeq "$(OS_TYPE)" "Darwin"
+	-xcode-select --install
 ifndef BREW_IS_INSTALLED
 	$(DOTFILES)/scripts/install_homebrew.sh
 endif
@@ -131,10 +74,13 @@ endif
 
 bootstrap: install-homebrew
 	$(UPGRADE)
-ifneq "$(strip $(pkgs_to_install))" ""
-	$(INSTALL) $(pkgs_to_install)
+	$(INSTALL) zsh curl wget tmux cheat
+	$(INSTALL) --cask hammerspoon
+ifeq "$(OS_TYPE)" "Darwin"
+	$(INSTALL) vim
 endif
 ifeq "$(OS_TYPE)" "Linux"
+	$(INSTALL) vim-nox
 	$(INSTALL) python3-pip python3-dev
 endif
 	pip3 install --user --upgrade -r "$(DOTFILES)/python/requirements.txt"
