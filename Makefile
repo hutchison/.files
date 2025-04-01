@@ -7,7 +7,7 @@ OS_TYPE := $(shell uname)
 	install install-fonts install-homebrew install-fzf install-mac-extras \
 	setup setup-git setup-hammerspoon setup-python setup-vim setup-zsh
 
-extra_casks = adobe-acrobat-reader dash ghostty hammerspoon handbrake libreoffice microsoft-remote-desktop \
+extra_casks = dash ghostty hammerspoon handbrake libreoffice microsoft-remote-desktop \
 	obs obsidian rar skim teamviewer transmission viscosity vlc zed zotero
 extra_programs = ack ascii bat bison black cbonsai cheat clang-format cmake cmatrix cmus coreutils cowsay \
 	csvkit ctags d2 doggo eza fcrackzip fd ffmpeg gettext ghostscript gifski git git-delta \
