@@ -75,9 +75,9 @@ endif
 bootstrap: install-homebrew
 	$(UPGRADE)
 	$(INSTALL) zsh curl wget tmux
-	$(INSTALL) --cask hammerspoon
 ifeq "$(OS_TYPE)" "Darwin"
 	$(INSTALL) vim cheat
+	$(INSTALL) --cask hammerspoon
 endif
 ifeq "$(OS_TYPE)" "Linux"
 	$(INSTALL) vim-nox
