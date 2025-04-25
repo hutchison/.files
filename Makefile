@@ -90,11 +90,7 @@ install-fonts:
 	$(DOTFILES)/fonts/install.sh
 
 install-fzf: bootstrap
-ifeq "$(OS_TYPE)" "Linux"
-	$(INSTALL) fzf
-else
 	$(DOTFILES)/scripts/fzf/install --bin
-endif
 
 install-mac-extras: install-homebrew
 ifeq "$(OS_TYPE)" "Darwin"
