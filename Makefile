@@ -14,7 +14,7 @@ extra_programs = ack ascii bat bison black cbonsai cheat clang-format cmake cmat
 	git-svn gitui gnupg go gping htop httpie hugo id3lib imagemagick ipython jq libressl minisat \
 	mkcert mtr ncdu nmap nyancat openldap openssl@3 overmind pandoc pdftk-java pipdeptree pipenv pwgen \
 	python3 pylint litecli \
-	qrencode rabbitmq ranger redis ripgrep ruff sc-im sevenzip swi-prolog telnet tidy-html5 tig tmux \
+	qrencode rabbitmq ranger redis ripgrep ruff sc-im sevenzip starship swi-prolog telnet tidy-html5 tig tmux \
 	transmission-cli tree twine typst uv w3m watch wget xq yarn yt-dlp zlib
 extra_fonts = font-fira-code font-new-york font-sf-compact font-sf-mono font-sf-mono-for-powerline \
 	font-sf-mono-nerd-font-ligaturized font-sf-pro font-victor-mono
@@ -74,10 +74,10 @@ endif
 
 bootstrap: install-homebrew
 	$(UPGRADE)
-	$(INSTALL) zsh curl wget tmux cheat
-	$(INSTALL) --cask hammerspoon
+	$(INSTALL) zsh curl wget tmux
 ifeq "$(OS_TYPE)" "Darwin"
-	$(INSTALL) vim
+	$(INSTALL) vim cheat
+	$(INSTALL) --cask hammerspoon
 endif
 ifeq "$(OS_TYPE)" "Linux"
 	$(INSTALL) vim-nox

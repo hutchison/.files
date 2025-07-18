@@ -214,3 +214,7 @@ if [[ -f "$HOME/.dircolors" ]]; then
 fi
 
 startup_status
+
+if command_exists starship ; then
+	eval "$(starship init zsh)"
+fi
