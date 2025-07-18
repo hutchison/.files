@@ -117,7 +117,9 @@ nnoremap Y y$
 inoremap <C-l> \
 cnoremap <C-l> \
 inoremap <C-c> [
+inoremap ª [
 inoremap <C-v> ]
+inoremap º ]
 inoremap <C-d> {
 inoremap <C-f> }
 inoremap <Right> →
