@@ -48,6 +48,8 @@ HIST_STAMPS="yyyy-mm-dd"
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=$DOTFILES/shell/zsh_customizations
 
+export TMPDIR="~/.tmp/"
+
 # Einstellungen für den fuzzy file finder:
 # siehe auch https://github.com/junegunn/fzf
 # -L              → Symlinks werden verfolgt und nicht nur gelistet.
