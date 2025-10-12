@@ -97,7 +97,7 @@ nnoremap <backspace> :bprevious<cr>
 nnoremap <F3> :set invpaste<cr>
 
 " NERDTree:
-noremap <C-g> :NERDTreeToggle<CR>
+nnoremap <C-g> :NERDTreeToggle<CR>
 
 " split navigations:
 nnoremap <DOWN> <C-W><C-J>
