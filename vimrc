@@ -117,15 +117,25 @@ nnoremap Y y$
 inoremap <C-l> \
 cnoremap <C-l> \
 inoremap <C-c> [
-inoremap ª [
 inoremap <C-v> ]
-inoremap º ]
 inoremap <C-d> {
 inoremap <C-f> }
 inoremap <Right> →
 inoremap <Left> ←
 inoremap <Up> ↑
 inoremap <Down> ↓
+if has("osx")
+	" Alt-k
+	inoremap ∆ \
+	" Alt-h
+	inoremap ª [
+	" Alt-j
+	inoremap º ]
+	" Alt-i
+	inoremap ⁄ {
+	" Alt-o
+	inoremap ø }
+endif
 
 """ Snippets
 " Wo wird nach Snippets gesucht?
