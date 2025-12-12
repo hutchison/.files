@@ -48,6 +48,9 @@ HIST_STAMPS="yyyy-mm-dd"
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=$DOTFILES/shell/zsh_customizations
 
+# Where to put .zcompdump files:
+export ZSH_COMPDUMP=$HOME/.cache/zsh/
+
 # Einstellungen für den fuzzy file finder:
 # siehe auch https://github.com/junegunn/fzf
 # -L              → Symlinks werden verfolgt und nicht nur gelistet.
