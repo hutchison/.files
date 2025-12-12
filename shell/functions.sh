@@ -204,3 +204,7 @@ function stopwatch() {
 function ssh_add_all() {
 	ssh-add $(ls $HOME/.ssh/id^*.pub)
 }
+
+function unixtime() {
+	date "+%s"
+}
