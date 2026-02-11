@@ -51,23 +51,6 @@ ZSH_CUSTOM=$DOTFILES/shell/zsh_customizations
 # Where to put .zcompdump files:
 export ZSH_COMPDUMP=$HOME/.cache/zsh/
 
-# Einstellungen für den fuzzy file finder:
-# siehe auch https://github.com/junegunn/fzf
-# -L              → Symlinks werden verfolgt und nicht nur gelistet.
-# -type f         → es werden nur Dateien gelistet
-# -not -iwholename … → diese Dateien werden ignoriert
-export FZF_DEFAULT_COMMAND="find -L . -type f \
-	-not \( \
-		-iwholename '*.pyc' \
-		-or -iwholename '*.git*' \
-		-or -iwholename '*/node_modules/*' \
-		-or -iwholename '*/venv/*' \
-		-or -iwholename '*package*.json' \
-		-or -iwholename '*.sqlite*' \
-	\)"
-export FZF_BASE="$DOTFILES/scripts/fzf"
-source $FZF_BASE/shell/key-bindings.zsh
-
 # Which plugins would you like to load?
 # (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -122,6 +105,23 @@ typeset -U path
 
 source $DOTFILES/shell/functions.sh
 
+# Einstellungen für den fuzzy file finder:
+# siehe auch https://github.com/junegunn/fzf
+# -L              → Symlinks werden verfolgt und nicht nur gelistet.
+# -type f         → es werden nur Dateien gelistet
+# -not -iwholename … → diese Dateien werden ignoriert
+export FZF_DEFAULT_COMMAND="find -L . -type f \
+	-not \( \
+		-iwholename '*.pyc' \
+		-or -iwholename '*.git*' \
+		-or -iwholename '*/node_modules/*' \
+		-or -iwholename '*/venv/*' \
+		-or -iwholename '*package*.json' \
+		-or -iwholename '*.sqlite*' \
+	\)"
+export FZF_BASE="$DOTFILES/scripts/fzf"
+export FZF_COMPLETION_TRIGGER=',,'
+
 # Jeder Aufruf von add_to_path fügt den Pfad vorne an $PATH an.
 # Heißt: was zuletzt hinzugefügt wurde, steht bei $PATH ganz vorne und wird
 # zuerst nach verfügbaren Programmen durchsucht
@@ -130,6 +130,7 @@ add_to_path "/usr/local/sbin"
 add_to_path "/usr/local/bin"
 add_to_path "$HOME/homebrew/bin"
 add_to_path "$HOME/texlive/bin/universal-darwin"
+add_to_path "$HOME/texlive/2025/bin/universal-darwin"
 add_to_path "/opt/homebrew/bin"
 add_to_path "/opt/homebrew/sbin"
 add_to_path "$(python3 -m site --user-base)/bin"
@@ -196,6 +197,21 @@ source $ZSH/oh-my-zsh.sh
 bindkey -v
 # Wichtig ist, dass der nach `source $ZSH/oh-my-zsh.sh` aktiviert, sonst funktioniert es nicht.
 # Sehr merkwürdig.
+
+# Muss nach "bindkey -v" stehen, damit es funktioniert.
+# Bindet Vervollständigung und Hotkeys für fzf ein.
+# CTRL-T für den direkten Einsatz von fzf:
+# $ vim (CTRL-T)
+# $ open (CTRL-T)
+#
+# ,, für die schlaue Vervollständigung je nach Befehl:
+# $ cd ,,(TAB)
+#     listet Verzeichnisse auf
+# $ ssh ,,(TAB)
+#     listet SSH-Ziele auf
+# $ kill -9 ,,(TAB)
+#     listet Prozess auf
+eval "$(fzf --zsh)"
 
 # '?' im vi-command-Modus sucht rückwärts, wie man es von vim gewohnt ist
 bindkey -M vicmd '?' history-incremental-search-backward
