@@ -74,6 +74,9 @@ export TIMER_THRESHOLD=1
 if [[ -d "/usr/local/share/zsh-completions" ]]; then
 	fpath=(/usr/local/share/zsh-completions $fpath)
 fi
+if [[ -d "$HOME/homebrew/share/zsh/site-functions" ]]; then
+	fpath=($HOME/homebrew/share/zsh/site-functions $fpath)
+fi
 
 export LANG=de_DE.UTF-8
 
