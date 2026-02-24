@@ -45,10 +45,24 @@ set autochdir
 set backspace=indent,eol,start
 " enable detection, plugins and indenting in one step:
 set smartindent
+
+" When on, Vim shows a completion menu as you type, similar to using |i_CTRL-N|, but triggered automatically.
+set autocomplete
+" A comma-separated list of options for Insert mode completion
+" menu: Use a popup menu to show the possible completions.
+" preview: Show extra information about the currently selected completion in the preview window.
+" preinsert: Inserts the text of the first completion candidate beyond the current leader …
+" nearest: Matches are listed based on their proximity to the cursor position …
+" manche Optionen sind erst ab Version 9.0 oder so enthalten
+if v:version >= 900
+	set completeopt=menu,popup,preinsert,nearest
+endif
+
 " Enhanced command line completion:
 set wildmenu
 " Complete files like a shell:
 set wildmode=list:longest
+
 set backup
 let $BACKUPDIR=$HOME . '/.vim/backup/'
 set backupdir=$BACKUPDIR
