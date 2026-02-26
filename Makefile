@@ -128,7 +128,7 @@ endif
 
 setup-python:
 	@if [ -d "$(HOME)/projects" ]; then echo "~/projects already exists"; else mkdir -v "$(HOME)/projects"; fi
-	@if [ -f "$(HOME)/.pypirc" ]; then echo "~/.pypirc already exists"; else ln -s "$(DOTFILES)/pypirc" "$(HOME)/.pypirc"; fi
+	@if [ -e "$(HOME)/.pypirc" ]; then echo "~/.pypirc already exists"; else ln -s "$(DOTFILES)/pypirc" "$(HOME)/.pypirc"; fi
 
 setup-tmux:
 	ln -fs $(DOTFILES)/tmux.conf ~/.tmux.conf
