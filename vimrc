@@ -75,7 +75,7 @@ set autoread
 set lazyredraw
 
 " Farbenspiel:
-colorscheme slate
+colorscheme retrobox
 set cursorline
 set cursorlineopt=number
 
