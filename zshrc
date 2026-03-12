@@ -143,6 +143,7 @@ add_to_path "$HOME/bin"
 add_to_path "$HOME/.local/bin"
 add_to_path "$HOME/.local/opt/bin"
 add_to_path "$HOME/.cargo/bin"
+add_to_path "$HOME/.local/python-nightly/bin"
 
 # In ~/.environment packen wir Einstellungen wie HTTP_PROXY und so:
 source_if_exists "$HOME/.environment"
@@ -169,21 +170,6 @@ bindkey -v
 # Wichtig ist, dass der nach `source $ZSH/oh-my-zsh.sh` aktiviert, sonst funktioniert es nicht.
 # Sehr merkwürdig.
 
-# Muss nach "bindkey -v" stehen, damit es funktioniert.
-# Bindet Vervollständigung und Hotkeys für fzf ein.
-# CTRL-T für den direkten Einsatz von fzf:
-# $ vim (CTRL-T)
-# $ open (CTRL-T)
-#
-# ,, für die schlaue Vervollständigung je nach Befehl:
-# $ cd ,,(TAB)
-#     listet Verzeichnisse auf
-# $ ssh ,,(TAB)
-#     listet SSH-Ziele auf
-# $ kill -9 ,,(TAB)
-#     listet Prozess auf
-eval "$(fzf --zsh)"
-
 # '?' im vi-command-Modus sucht rückwärts, wie man es von vim gewohnt ist
 bindkey -M vicmd '?' history-incremental-search-backward
 # CTRL-R sucht auch rückwärts, wie ich es in der Shell gewohnt bin:
@@ -192,19 +178,11 @@ bindkey -M viins '^R' fzf-history-widget
 # 'K' im vi-command-Modus ruft die manpage auf
 bindkey -M vicmd 'K' run-help
 
-# Zur Vorbereitung "dircolors -p > ~/.dircolors" ausführen und dann diese Datenbank anpassen.
-# dircolors liest dann die Datenbank und erzeugt daraus Bash-Code.
-if [[ -f "$HOME/.dircolors" ]]; then
-	if command_exists dircolors ; then
-		eval $(dircolors -b "$HOME/.dircolors")
-	fi
-	if command_exists gdircolors ; then
-		eval $(gdircolors -b "$HOME/.dircolors")
-	fi
-fi
-
-startup_status
-
-if command_exists starship ; then
-	eval "$(starship init zsh)"
-fi
+# Ab hier wird .zlogin gelesen und ausgeführt.
+# Ein paar Sachen müssen nach .zlogin ausgelagert werden, weil beim Editieren
+# und Speichern von .zshrc der Prüfbefehl
+# $ zsh -n .zshrc
+# ausgeführt wird.
+# Das -n steht für NO_EXEC und sorft dafür, dass keine Befehle mittels $()
+# ausgeführt werden. Sie werden aber auch nicht übergangen, sondern zsh
+# blockiert einfach. Das nervt richtig.
