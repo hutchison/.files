@@ -142,6 +142,7 @@ setup-zsh:
 	rm -f ~/.oh-my-zsh
 	ln -fs $(DOTFILES)/oh-my-zsh ~/.oh-my-zsh
 	ln -fs $(DOTFILES)/zshrc ~/.zshrc
+	ln -fs $(DOTFILES)/zlogin ~/.zlogin
 
 update:
 	git pull origin master
@@ -154,6 +155,7 @@ upgrade-submodules:
 clean:
 	rm -f ~/.oh-my-zsh
 	rm -f ~/.zshrc
+	rm -f ~/.zlogin
 	rm -f ~/.gitconfig
 	rm -f ~/.hammerspoon
 	rm -f ~/.vim
