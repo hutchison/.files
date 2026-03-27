@@ -208,3 +208,8 @@ function ssh_add_all() {
 function unixtime() {
 	date "+%s"
 }
+
+# Springt direkt ins AC.ID Verzeichnis
+function cdj() {
+	pushd $JOHNNYDECIMALROOT/*/*/${1}*
+}

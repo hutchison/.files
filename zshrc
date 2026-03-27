@@ -178,6 +178,9 @@ bindkey -M viins '^R' fzf-history-widget
 # 'K' im vi-command-Modus ruft die manpage auf
 bindkey -M vicmd 'K' run-help
 
+# Einstellungen für Johnny Decimal
+export JOHNNYDECIMALROOT=$HOME/new_orga
+
 # Ab hier wird .zlogin gelesen und ausgeführt.
 # Ein paar Sachen müssen nach .zlogin ausgelagert werden, weil beim Editieren
 # und Speichern von .zshrc der Prüfbefehl
