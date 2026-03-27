@@ -99,7 +99,7 @@ let mapleader=','
 " hilfreich für help-files
 nnoremap <leader>t <C-]>
 
-" map <F5> to make:
+" map ,m to make:
 nnoremap <leader>m :make<CR>
 
 "schaltet hlsearch aus
