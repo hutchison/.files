@@ -213,3 +213,13 @@ function unixtime() {
 function cdj() {
 	pushd $JOHNNYDECIMALROOT/*/*/${1}*
 }
+
+function jd_init() {
+	mkdir "${1}.00 JDex"
+	mkdir "${1}.01 Eingang"
+	mkdir "${1}.02 Aufgaben und Projektmanagement"
+	mkdir "${1}.03 Vorlagen"
+	mkdir "${1}.04 Links"
+	mkdir "${1}.08 Irgendwann"
+	mkdir "${1}.09 Archiv"
+}
