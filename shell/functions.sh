@@ -49,7 +49,7 @@ function gim () {
 # fzf ist der fuzzy file finder
 function f() {
 	if command_exists fzf ; then
-		e $(fzf)
+		e "$(fzf)"
 	else
 		echo_error "Please install fzf: https://github.com/junegunn/fzf"
 	fi
