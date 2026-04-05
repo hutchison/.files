@@ -210,6 +210,13 @@ nnoremap <leader>s :Ack<Space>
 nnoremap <silent> <C-e> :cnext<CR>
 nnoremap <silent> <C-f> :cprevious<CR>
 
+""" ALE
+let g:ale_python_auto_virtualenv = v:true
+let g:ale_python_auto_uv = v:true
+let g:ale_linters = {
+\   'python': ['ruff'],
+\}
+
 """ quick commit mode via git
 " Wenn g:git_autocommit_on_save aktiviert ist, dann wird bei jedem
 " Schreibvorgang auch ein Commit erzeugt.
