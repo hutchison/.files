@@ -144,15 +144,15 @@ inoremap <Left> ←
 inoremap <Up> ↑
 inoremap <Down> ↓
 if has("osx")
-	" Alt-k
-	inoremap ∆ \
 	" Alt-h
-	inoremap ª [
+	inoremap ª \
+	" Alt-k
+	inoremap ∆ ]
 	" Alt-j
-	inoremap º ]
-	" Alt-i
+	inoremap º [
+	" Alt-u: ⁄
 	inoremap ⁄ {
-	" Alt-o
+	" Alt-i: ø
 	inoremap ø }
 endif
 
