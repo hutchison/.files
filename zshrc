@@ -179,7 +179,7 @@ bindkey -M viins '^R' fzf-history-widget
 bindkey -M vicmd 'K' run-help
 
 # Einstellungen für Johnny Decimal
-export JOHNNYDECIMALROOT=$HOME/new_orga
+export JOHNNYDECIMALROOT=$HOME/icloud
 
 # Ab hier wird .zlogin gelesen und ausgeführt.
 # Ein paar Sachen müssen nach .zlogin ausgelagert werden, weil beim Editieren

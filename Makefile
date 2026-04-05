@@ -101,6 +101,7 @@ ifeq "$(OS_TYPE)" "Darwin"
 	$(INSTALL) --cask $(extra_fonts)
 	$(INSTALL) --cask $(extra_casks)
 	$(INSTALL) $(extra_programs)
+	ln -fs "~/Library/Mobile\ Documents/com~apple~CloudDocs" ~/icloud
 endif
 
 install-latex:
