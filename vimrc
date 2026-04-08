@@ -75,7 +75,7 @@ set autoread
 set lazyredraw
 
 " Farbenspiel:
-colorscheme retrobox
+silent! colorscheme retrobox
 set cursorline
 set cursorlineopt=number
 
