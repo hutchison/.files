@@ -154,6 +154,10 @@ if has("osx")
 	inoremap ⁄ {
 	" Alt-i: ø
 	inoremap ø }
+	" Alt-Shift-j: ı
+	inoremap ı {
+	" Alt-Shift-k: ˆ
+	inoremap ˆ }
 endif
 
 """ Snippets
