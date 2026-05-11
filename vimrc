@@ -115,8 +115,9 @@ nnoremap <F3> :set invpaste<cr>
 " NERDTree:
 nnoremap <C-g> :NERDTreeToggle<CR>
 
-" manchmal funktioniert <C-p> nicht, daher hier ein alternatives Mapping:
+" manchmal funktioniert <C-p> nicht, daher hier alternative Mappings:
 nnoremap <F4> :CtrlP<cr>
+nnoremap <leader>q :CtrlP<cr>
 
 " split navigations:
 nnoremap <DOWN> <C-W><C-J>
