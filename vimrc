@@ -76,6 +76,7 @@ set lazyredraw
 
 " Farbenspiel:
 silent! colorscheme retrobox
+set background=dark
 set cursorline
 set cursorlineopt=number
 
