@@ -173,7 +173,7 @@ let g:UltiSnipsJumpForwardTrigger="<TAB>"
 " Zum vorherigen Snippet:
 let g:UltiSnipsJumpBackwardTrigger="<C-p>"
 " Alle Snippets anzeigen:
-let g:UltiSnipsListSnippets="<C-t>"
+let g:UltiSnipsListSnippets="<leader>l"
 
 """ Airline
 let g:airline_powerline_fonts = 1
