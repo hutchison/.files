@@ -163,22 +163,6 @@ hs.hotkey.bind(
 )
 
 hs.hotkey.bind(
-	{"ctrl", "alt"}, "I",
-	function()
-		local win = hs.window.focusedWindow()
-		local f = win:frame()
-		local max = win:screen():frame()
-
-		f.x = max.w / 2
-		f.y = max.y
-		f.w = max.w / 2
-		f.h = max.h / 2
-
-		win:setFrame(f)
-	end
-)
-
-hs.hotkey.bind(
 	{"ctrl", "alt"}, "U",
 	function()
 		local win = hs.window.focusedWindow()
@@ -187,8 +171,40 @@ hs.hotkey.bind(
 
 		f.x = max.x
 		f.y = max.y
-		f.w = max.w / 2
-		f.h = max.h / 2
+		f.w = max.w / 3
+		f.h = max.h
+
+		win:setFrame(f)
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, "I",
+	function()
+		local win = hs.window.focusedWindow()
+		local f = win:frame()
+		local max = win:screen():frame()
+
+		f.x = max.x + 1*(max.w / 3)
+		f.y = max.y
+		f.w = max.w / 3
+		f.h = max.h
+
+		win:setFrame(f)
+	end
+)
+
+hs.hotkey.bind(
+	{"ctrl", "alt"}, "O",
+	function()
+		local win = hs.window.focusedWindow()
+		local f = win:frame()
+		local max = win:screen():frame()
+
+		f.x = max.x + 2*(max.w / 3)
+		f.y = max.y
+		f.w = max.w / 3
+		f.h = max.h
 
 		win:setFrame(f)
 	end
